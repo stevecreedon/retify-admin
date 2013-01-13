@@ -317,10 +317,18 @@
 	      <li><a href="file-manager.html"><i class="icon-folder-open icon-white"></i><span class="hidden-tablet"> File Manager</span></a></li>
 	      <li><a href="icon.html"><i class="icon-star icon-white"></i><span class="hidden-tablet"> Icons</span></a></li>
 	      <li><a href="login.html"><i class="icon-lock icon-white"></i><span class="hidden-tablet"> Login Page</span></a></li>
-            </ul>
+            :</ul>
           </div><!--/.well -->
         </div><!--/span-->
-        <div class="span9">
+
+        <noscript>
+	  <div class="alert alert-block span10">
+	    <h4 class="alert-heading">Warning!</h4>
+	      <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+	  </div>
+	</noscript>
+
+        <div id="content" class="span10">
           <%= yield %>
         </div>
       </div><!--/row-->
