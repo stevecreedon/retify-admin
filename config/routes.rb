@@ -64,6 +64,7 @@ RentifyAdmin::Application.routes.draw do
     get :destroy, :path => 'sign_out', :as => "destroy"
   end
 
+  resources :properties, :only => [:index]
 
   root :to => 'home#index'
 
