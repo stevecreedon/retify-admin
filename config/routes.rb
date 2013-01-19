@@ -1,6 +1,7 @@
 RentifyAdmin::Application.routes.draw do
 
   resources :login, :only => [:index]
+  resources :home, :only => [:index]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -51,7 +52,22 @@ RentifyAdmin::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  #
+  #
+  #
+  #
+  
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/auth/failure", to: "sessions#failure"
+  resource :session do
+    get :new, :path => 'sign_in', :as => "new"
+    get :destroy, :path => 'sign_out', :as => "destroy"
+  end
+
+
+  root :to => 'home#index'
+
+
 
   # See how all your routes lay out with "rake routes"
 
