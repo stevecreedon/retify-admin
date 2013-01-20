@@ -16,6 +16,13 @@ $.namespace("Rentify.content");
 
 
 $(document).ready(function(){
+
+  $("div.sidebar-nav a").each(function(){
+     var url =  $(this).attr("href");
+     $(this).attr("href", "#");
+     $(this).attr("data-url",url);     
+  });
+
   $("div.sidebar-nav a").click(function(){
      var url = $(this).attr("data-url");
      var request = $.ajax({
@@ -24,7 +31,7 @@ $(document).ready(function(){
 	dataType: 'html', 
      });
      request.done(function(data){Rentify.content.set(data)});
-     request.fail(function(){alert("something went wrong, please try again")});
+     request.fail(function(){alert("ooops something went wrong, do try again")});
   })
 })
 
