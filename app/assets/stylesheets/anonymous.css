@@ -6,6 +6,7 @@ body#anonymous{
 }
 
 body#anonymous h1{
+  padding-top: 40px;
   color: white;
   text-align: center;
   font-size:3em;
@@ -17,7 +18,7 @@ div#photo-container{
 }
 
 div#form-container{
-  margin-top: 140px;
+  margin-top: 105px;
   background-color: white;
   opacity: 0.85;
   padding: 20px;
