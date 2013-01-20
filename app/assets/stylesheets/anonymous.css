@@ -28,7 +28,7 @@ form#sign-in {
   text-transform:lowercase;
 }
 
-input{
+input, button{
   width: 100%;
   padding: 11px 10px 9px 10px;
   display: block;
@@ -39,4 +39,10 @@ input{
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+button {
+  border: thin solid #444;
+  margin-top: 10px;
+  border-radius: 5px;
 }
