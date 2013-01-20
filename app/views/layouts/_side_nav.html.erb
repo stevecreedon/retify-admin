@@ -3,7 +3,10 @@
     <ul class="nav nav-tabs nav-stacked main-menu">
       <li><a href="#" data-link=""><i class="icon-home icon-white"></i><span class="hidden-tablet"> Dashboard</span></a></li>
       <li><a href="#" data-url="/properties"><i class="icon-eye-open icon-white"></i><span class="hidden-tablet"> Properties</span></a></li>
-      <li><a href="#" class="disabled"><i class="icon-eye-closed icon-white"></i><span class="hidden-tablet"> Description</span></a></li>
+      <li><%= link_to(properties_path, :remote => true) do %>
+            <i class="icon-eye-open icon-white"></i><span class="hidden-tablet"> Description</span>
+          <% end %> 
+      </li>
     </ul>
   </div><!--/.well -->
 </div><!--/span-->

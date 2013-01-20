@@ -21,9 +21,10 @@ $(document).ready(function(){
      var request = $.ajax({
 	type: "GET",     
      	url: url,
-	dataType: 'html' 
+	dataType: 'html', 
      });
      request.done(function(data){Rentify.content.set(data)});
+     request.fail(function(){alert("something went wrong, please try again")});
   })
 })
 
