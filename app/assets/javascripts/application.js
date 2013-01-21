@@ -48,7 +48,7 @@
 //= require jquery.masonry.min
 //= require jquery.knob
 //= require jquery.sparkline.min
-//= require jquery-extensions
+//= require jquery.namespace
 //= require custom
 //= require bootstrap
 //= require application/content
