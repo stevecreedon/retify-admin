@@ -51,65 +51,19 @@
 //= require jquery-extensions
 //= require custom
 //= require bootstrap
+//= require application/content
+//= require application/sidebar
 //= require_self
-
-$.namespace("Application.sidebar");
-$.namespace("Application.content");
 
 $(document).ready(function(){
 
+  Application.sidebar.selector = "div.sidebar-nav";
+  Application.content.selector = "div#dynamic-content";
+
   Application.sidebar.setLinksToRemote();
 
-  Application.sidebar.get().bind("sidebar.beforeContentSet", function(e, data){
-    Application.sidebar.get().find("li").each(function(){ $(this).removeClass("active"); });
-    data.activeLink.parent().addClass('active');
+  Application.sidebar.beforeContentSet(function(activeLink, html){
+    Application.sidebar.setActiveMenu(activeLink);
   });
 });
-
-Application.content = {
-  selector: "div#dynamic-content",
-  get: function(){
-    return $(this.selector);
-  },
-  setHtml: function(html){
-    this.get().html(html);
-  },
-};
-
-Application.sidebar = {
-  selector: "div.sidebar-nav",
-  get: function(){
-    return $(this.selector);
-  },
-  beforeContentSet: function(active, html){
-    this.get().trigger("sidebar.beforeContentSet", { activeLink: active, html: html });
-  },
-  afterContentSet: function(active, html){
-    this.get().trigger("sidebar.afterContentSet", { activeLink: active, html: html });
-  },
-  setLinksToRemote: function(){
-    this.get().find('a').each(function(){
-       var elem = $(this);
-       var url =  elem.attr("href");
-       elem.attr("href", "#");
-       elem.attr("data-url",url);
-    });
-
-    this.get().find('a').click(function(){
-       var current = $(this);
-       var url = $(this).attr("data-url");
-       var request = $.ajax({
-         type: "GET",
-         url: url,
-         dataType: 'html',
-       });
-       request.done(function(data){
-         Application.sidebar.beforeContentSet(current, data);
-         Application.content.setHtml(data);
-         Application.sidebar.afterContentSet(current, data);
-       });
-       request.fail(function(){alert("ooops something went wrong, do try again")});
-    });
-  },
-};
 
