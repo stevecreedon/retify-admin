@@ -63,7 +63,7 @@ $(document).ready(function(){
   Application.sidebar.setLinksToRemote();
 
   Application.sidebar.beforeContentSet(function(data){
-    Application.sidebar.setActiveMenu(data.activeLink);
+    Application.sidebar.setActiveMenuItem(data.activeLink);
   });
 });
 

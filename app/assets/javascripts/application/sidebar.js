@@ -10,7 +10,7 @@ Application.sidebar.get = function(){
   return $(this.selector);
 }
 
-Application.sidebar.setActiveMenu = function(activeLink){
+Application.sidebar.setActiveMenuItem = function(activeLink){
   this.get().find("li").each(function(){ 
     $(this).removeClass("active");
    });
