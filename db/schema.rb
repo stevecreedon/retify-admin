@@ -11,23 +11,87 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130119133341) do
+ActiveRecord::Schema.define(:version => 20130119131652) do
 
-  create_table "properties", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+  create_table "addresses", :force => true do |t|
+    t.string   "address"
+    t.string   "address2"
+    t.string   "country"
+    t.string   "city"
+    t.string   "state"
+    t.string   "post_code"
+    t.float    "lat"
+    t.float    "lng"
+    t.float    "user_set_lat"
+    t.float    "user_set_lng"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "articles", :force => true do |t|
+    t.integer  "source_id"
+    t.string   "source_type"
     t.string   "title"
     t.text     "description"
+    t.string   "group"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "articles", ["source_type", "source_id"], :name => "index_articles_on_source_type_and_source_id"
+
+  create_table "calendars", :force => true do |t|
+    t.string   "path"
+    t.string   "provider"
+    t.boolean  "enabled"
+    t.integer  "property_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "calendars", ["property_id"], :name => "index_calendars_on_property_id"
+  add_index "calendars", ["provider", "property_id"], :name => "index_calendars_on_provider_and_property_id"
+
+  create_table "directions", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "property_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "properties", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "site_id"
+    t.integer  "address_id"
     t.integer  "userd_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "properties", ["site_id"], :name => "index_properties_on_site_id"
+
+  create_table "sites", :force => true do |t|
+    t.string   "title"
+    t.string   "subdomain"
+    t.string   "domain"
+    t.string   "style"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "address_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
     t.string   "password_digest"
     t.string   "provider"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end

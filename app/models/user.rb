@@ -1,12 +1,13 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  attr_accessible :email, :name
+  attr_accessible :email, :name, :provider
 
   has_many :properties
+  has_many :sites
 
   def self.from_omniauth(auth)
-    find_by_provider_and_password_digest(auth["provider"], auth["uid"]) || create_with_omniauth(auth)
+    where(provider: auth["provider"], password_digest: auth["uid"]).first || create_with_omniauth(auth)
   end
 
   def self.create_with_omniauth(auth)

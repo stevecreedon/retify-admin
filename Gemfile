@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
+gem 'pg'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'omniauth'
 gem 'omniauth-password'
 gem "therubyracer"
@@ -26,7 +26,14 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem "rspec-rails", :group => [:test, :development]
+gem 'jquery-ui-rails'
+
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'pry'
+  gem 'pry-debugger'
+  gem 'pry-rails'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

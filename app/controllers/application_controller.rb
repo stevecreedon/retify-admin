@@ -3,13 +3,15 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate!
 
+  helper_method :current_user
 
   def current_user
     @user ||= User.find(session[:user_id])
   end
 
+protected
+
   def authenticate!
-    return if params[:controller] == "sessions"
     redirect_to new_session_path unless session[:user_id]
   end
 
