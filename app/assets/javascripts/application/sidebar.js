@@ -43,16 +43,17 @@ Application.sidebar.setLinksToRemote = function(){
 }
 
 Application.sidebar.beforeContentSet = function(callback) {
-  var c = callback;
-  this.get().bind("sidebar.beforeContentSet", function(e, data){
-    c(data.activeLink, data.html);
-  });
+  this.bind("sidebar.beforeContentSet", callback);
 }
 
 Application.sidebar.afterContentSet = function(callback) {
+  this.bind("sidebar.afterContentSet", callback);
+}
+
+Application.sidebar.bind = function(eventName, callback){
   var c = callback;
-  this.get().bind("sidebar.afterContentSet", function(e, data){
-    c(data.activeLink, data.html);
+  this.get().bind(eventName, function(e, data){
+    c(data);
   });
 }
 
