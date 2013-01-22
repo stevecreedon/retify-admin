@@ -51,19 +51,19 @@
 //= require jquery.namespace
 //= require custom
 //= require bootstrap
-//= require application/content
-//= require application/sidebar
+//= require rentify/content
+//= require rentify/sidebar
 //= require_self
 
 $(document).ready(function(){
 
-  Application.$sidebar = $("div.sidebar-nav");
-  Application.$content = $("div#dynamic-content");
+  Rentify.$sidebar = $("div.sidebar-nav");
+  Rentify.$content = $("div#dynamic-content");
 
-  Application.sidebar.setLinksToRemote();
+  Rentify.sidebar.setLinksToRemote();
 
-  Application.sidebar.beforeContentSet(function(data){
-    Application.sidebar.setActiveMenuItem(data.activeLink);
+  Rentify.sidebar.beforeContentSet(function(data){
+    Rentify.sidebar.setActiveMenuItem(data.activeLink);
   });
 });
 
