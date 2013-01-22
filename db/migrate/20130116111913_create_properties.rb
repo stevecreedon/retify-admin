@@ -5,7 +5,7 @@ class CreateProperties < ActiveRecord::Migration
       t.text    :description
       t.integer :site_id
       t.integer :address_id
-      t.integer :userd_id
+      t.integer :user_id
 
       t.timestamps
     end

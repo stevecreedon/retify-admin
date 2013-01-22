@@ -49,7 +49,7 @@
 
   <!-- For all other devices -->
   <!-- Size should be 32 x 32 pixels -->
-  <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+  <%= favicon_link_tag '/favicon.ico', :rel => 'shortcut icon' %>
 
   <!-- start: JavaScript -->
   <%= javascript_include_tag "application" %>
@@ -68,7 +68,6 @@
         </div>
       </noscript>
       <div id="content" class="span10">
-        <%= render :partial => 'shared/breadcrumbs' %>
         <div id="dynamic-content">
           <%= yield %>
         </div>

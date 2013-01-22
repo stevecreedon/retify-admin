@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20130119131652) do
     t.text     "description"
     t.integer  "site_id"
     t.integer  "address_id"
-    t.integer  "userd_id"
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -84,6 +84,9 @@ ActiveRecord::Schema.define(:version => 20130119131652) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "sites", ["domain"], :name => "index_sites_on_domain"
+  add_index "sites", ["subdomain"], :name => "index_sites_on_subdomain"
 
   create_table "users", :force => true do |t|
     t.string   "name"

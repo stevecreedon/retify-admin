@@ -31,6 +31,7 @@ Rentify.sidebar.setLinksToRemote = function(){
       Rentify.$sidebar.trigger("sidebar.afterContentSet", { activeLink: current, html: data });
     });
     request.fail(function(){alert("ooops something went wrong, do try again")});
+    return false;
   });
 }
 

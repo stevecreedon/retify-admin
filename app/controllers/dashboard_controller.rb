@@ -1,9 +1,10 @@
 class DashboardController < ApplicationController
-
   def index
-     respond_to do |format|
-       format.html {render :partial => 'dashboard/index'}
-     end
+    if request.xhr?
+      render layout: false
+    else
+      render
+    end
   end
 
 end
