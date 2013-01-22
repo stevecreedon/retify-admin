@@ -60,10 +60,17 @@ $(document).ready(function(){
   Rentify.$sidebar = $("div.sidebar-nav");
   Rentify.$content = $("div#dynamic-content");
 
-  Rentify.sidebar.setLinksToRemote();
+  Rentify.content.addListenersForRemoteLinks($(document));
 
-  Rentify.sidebar.beforeContentSet(function(data){
-    Rentify.sidebar.setActiveMenuItem(data.activeLink);
+  Rentify.content.beforeContentSet(function(event, data){
+    if(Rentify.content.$currentLink.data('menu')){ 
+      Rentify.sidebar.setActiveMenuItem(Rentify.content.$currentLink);
+    }
+  });
+
+  Rentify.content.afterContentSet(function(event, data){
+    Rentify.content.addListenersForRemoteLinks(Rentify.$content);
+    Rentify.content.addListenersForRemoteForms(Rentify.$content);
   });
 });
 

@@ -3,19 +3,19 @@
   <div class="nav-collapse sidebar-nav">
     <ul class="nav nav-tabs nav-stacked main-menu">
       <li class='active'>
-         <a href="<%= url_for dashboard_index_path %>">
-           <i class="icon-home icon-white"></i><span class="hidden-tablet"> Dashboard</span>
-         </a>
+        <%= link_to dashboard_index_path, data: { remote: true, menu: true } do %>
+          <i class="icon-home icon-white"></i><span class="hidden-tablet"> Dashboard</span>
+        <% end %>
       </li>
       <li>
-        <a href="<%= url_for sites_path %>">
+        <%= link_to sites_path, data: { remote: true, menu: true } do %>
           <i class="icon-globe icon-white"></i><span class="hidden-tablet"> Sites</span>
-        </a>
+        <% end %>
       </li>
       <li>
-        <a href="<%= url_for properties_path %>">
+        <%= link_to properties_path, data: { remote: true, menu: true } do %>
           <i class="icon-eye-open icon-white"></i><span class="hidden-tablet"> Properties</span>
-        </a>
+        <% end %>
       </li>
       <li>
         <a href="form.html">
