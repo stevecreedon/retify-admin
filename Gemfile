@@ -31,6 +31,10 @@ gem 'jquery-ui-rails'
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'factory_girl_rails'
+
   gem 'pry'
   gem 'pry-debugger'
   gem 'pry-rails'
