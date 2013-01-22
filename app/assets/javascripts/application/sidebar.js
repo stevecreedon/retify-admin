@@ -2,30 +2,22 @@
 
 $.namespace("Application.sidebar");
 
-if(Application.sidebar.selector == undefined){
-  Application.sidebar.selector = "div.sidebar-nav";
-}
-
-Application.sidebar.get = function(){
-  return $(this.selector);
-}
-
 Application.sidebar.setActiveMenuItem = function(activeLink){
-  this.get().find("li").each(function(){ 
+  Application.$sidebar.find("li").each(function(){ 
     $(this).removeClass("active");
    });
   activeLink.parent().addClass('active');
 }
 
 Application.sidebar.setLinksToRemote = function(){
-  this.get().find('a').each(function(){
+  Application.$sidebar.find('a').each(function(){
      var elem = $(this);
      var url =  elem.attr("href");
      elem.attr("href", "#");
      elem.attr("data-url",url);
   });
 
-  this.get().find('a').click(function(){
+  Application.$sidebar.find('a').click(function(){
      var current = $(this);
      var url = $(this).attr("data-url");
      var request = $.ajax({
@@ -52,16 +44,16 @@ Application.sidebar.afterContentSet = function(callback) {
 
 Application.sidebar.bind = function(eventName, callback){
   var c = callback;
-  this.get().bind(eventName, function(e, data){
+  Application.$sidebar.bind(eventName, function(e, data){
     c(data);
   });
 }
 
 Application.sidebar.triggerBeforeContentSet = function(active, html){
-  this.get().trigger("sidebar.beforeContentSet", { activeLink: active, html: html });
+  Application.$sidebar.trigger("sidebar.beforeContentSet", { activeLink: active, html: html });
 }
 
 Application.sidebar.triggerAfterContentSet = function(active, html){
-  this.get().trigger("sidebar.afterContentSet", { activeLink: active, html: html });
+  Application.$sidebar.trigger("sidebar.afterContentSet", { activeLink: active, html: html });
 }
 

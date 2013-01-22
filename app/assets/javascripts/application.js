@@ -57,8 +57,8 @@
 
 $(document).ready(function(){
 
-  Application.sidebar.selector = "div.sidebar-nav";
-  Application.content.selector = "div#dynamic-content";
+  Application.$sidebar = $("div.sidebar-nav");
+  Application.$content = $("div#dynamic-content");
 
   Application.sidebar.setLinksToRemote();
 
