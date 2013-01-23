@@ -39,6 +39,9 @@ group :test, :development do
   gem 'pry'
   gem 'pry-debugger'
   gem 'pry-rails'
+
+  gem 'capistrano'
+  gem 'capistrano-tools', :git => 'git://github.com/fragallia/capistrano-tools.git', :require => false
 end
 
 # To use ActiveModel has_secure_password

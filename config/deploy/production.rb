@@ -7,7 +7,7 @@ set :branch,       "master"
 set :env,          'production'
 set :rails_env,    'production'
 set :scm,          :git
-set :deploy_to,    "/var/www/kuztusweb"
+set :deploy_to,    "/var/www/kuztusadmin"
 set :user,         "deploy"
 set :use_sudo,     false
 
