@@ -34,8 +34,8 @@ div#form-container{
 }
 
 form#sign-in {
-  margin: 0
-  padding: 0
+  margin: 0;
+  padding: 0;
   text-transform:lowercase;
 }
 
