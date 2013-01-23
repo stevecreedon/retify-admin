@@ -8,19 +8,19 @@ Rentify.content.setHtml = function(html){
 
 Rentify.content.addListenersForRemoteForms = function(scope) {
   scope.find("form[data-ajax]").submit( function() {
-    $.ajax( {
+    var request = $.ajax( {
       type: "POST",
       url: $(this).attr('action'),
       data: $(this).serialize(),
-      success: function( response ) {
-        Rentify.content.setHtml( response );
-      },
-      error: function(xhr, status, error){
-        alert("ooops something went wrong, do try again");
-      }
-    } );
+    });
+    request.done(function( response ) {
+      Rentify.content.setHtml( response );
+    });
+    request.fail(function(xhr, status, error){
+      alert("ooops something went wrong, do try again");
+    });
     return false;
-  } );
+  });
 }
 
 Rentify.content.addListenersForRemoteLinks = function(scope) {
