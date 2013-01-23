@@ -6,27 +6,32 @@ Rentify.content.setHtml = function(html){
   Rentify.$content.trigger("content.afterContentSet", { html: html });
 }
 
-Rentify.content.addListenersForRemoteForms = function() {
-  Rentify.$content.find("form[data-remote]")
-    .bind('ajax:before', function(){ })
-    .bind('ajax:complete', function(){ })
-    .bind('ajax:success', function(event, data, status, xhr){
-      Rentify.content.setHtml(data);
-    })
-    .bind('ajax:error', function(xhr, status, error){
-      alert("ooops something went wrong, do try again")
-    })
+Rentify.content.addListenersForRemoteForms = function(scope) {
+  scope.find("form[data-ajax]").submit( function() {
+    $.ajax( {
+      type: "POST",
+      url: $(this).attr('action'),
+      data: $(this).serialize(),
+      success: function( response ) {
+        Rentify.content.setHtml( response );
+      },
+      error: function(xhr, status, error){
+        alert("ooops something went wrong, do try again");
+      }
+    } );
+    return false;
+  } );
 }
 
 Rentify.content.addListenersForRemoteLinks = function(scope) {
-  $(scope).find('a[data-remote]').each(function(){
+  $(scope).find('a[data-ajax]').each(function(){
     var elem = $(this);
     var url =  elem.attr("href");
     elem.attr("href", "#");
     elem.attr("data-url",url);
   });
 
-  $(scope).find('a[data-remote]').click(function(){
+  $(scope).find('a[data-ajax]').click(function(){
     Rentify.content.$currentLink = $(this);
     var url = $(this).attr("data-url");
     var request = $.ajax({

@@ -9,5 +9,6 @@ FactoryGirl.define do
     email     { generate(:email) }
     name     "User name"
     password "pass"
+    provider "password"
   end
 end

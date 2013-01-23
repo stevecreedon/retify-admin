@@ -3,11 +3,11 @@
  <div id="form-container">
   <%= form_for(:sessions, {url: "/auth/password/callback", :html => {:id => 'sign-in'}}) do |f| %>
     <span class="field">
-      <%= label_tag :email %>
+      <%= f.label :email %>
       <%= f.text_field :email %>
     </span>
     <span class="field">
-      <%= label_tag :password %>
+      <%= f.label :password %>
       <%= f.password_field :password %>
     </span>
     <span class="actions">

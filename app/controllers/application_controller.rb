@@ -5,8 +5,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :form_helper
 
+  layout Proc.new { |controller| request.xhr? ? false : 'application' }
+
   def current_user
-    @user ||= User.find(session[:user_id])
+    @current_user ||= User.find(session[:user_id])
   end
 
 protected

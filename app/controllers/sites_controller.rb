@@ -1,6 +1,4 @@
 class SitesController < ApplicationController
-  layout false
-
   def index
     if site = current_user.sites.first
       redirect_to site_path(site) 

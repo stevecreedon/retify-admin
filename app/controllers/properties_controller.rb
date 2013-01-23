@@ -1,6 +1,4 @@
 class PropertiesController < ApplicationController
-  layout false
-
   def index
     if property = current_user.properties.first
       redirect_to property_path(property) 

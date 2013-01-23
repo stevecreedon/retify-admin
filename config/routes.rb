@@ -7,6 +7,7 @@ RentifyAdmin::Application.routes.draw do
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure", to: "sessions#failure"
+
   resource :session do
     get :new, :path => 'sign_in', :as => "new"
     get :destroy, :path => 'sign_out', :as => "destroy"
