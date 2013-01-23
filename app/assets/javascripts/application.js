@@ -52,6 +52,7 @@
 //= require custom
 //= require bootstrap
 //= require rentify/content
+//= require rentify/form
 //= require rentify/sidebar
 //= require_self
 
