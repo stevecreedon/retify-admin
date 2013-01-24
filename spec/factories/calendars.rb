@@ -2,8 +2,9 @@
 
 FactoryGirl.define do
   factory :calendar do
-    google_calendar_path "MyString"
-    enabled false
-    property_id 1
+    path     "path_to_some_google_calendar"
+    provider "google"
+    enabled  true
+    property
   end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Dashboard', :js => true do
+describe 'Dashboard' do
   context 'without authentication' do
     it 'redirects to sign_in page' do
       visit dashboard_index_path
@@ -9,7 +9,7 @@ describe 'Dashboard', :js => true do
     end 
   end
  
-  context 'with authentication' do
+  context 'with authentication', :js => true do
     it 'shows the dashboard content' do
       user = User.create(provider: 'password', email: 'test@domain.com', password: 'pass')
 

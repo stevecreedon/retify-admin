@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Sites', :js => true do
+describe 'Sites' do
   context 'user not authenticated' do
     it 'redirects to sign_in page' do
       visit sites_path
@@ -8,7 +8,7 @@ describe 'Sites', :js => true do
       page.current_path.should == new_session_path
     end
   end
-  context 'user authenticated' do
+  context 'user authenticated', :js => true do
     let(:user) { FactoryGirl.create(:user) }
     before do
       sign_in(user)

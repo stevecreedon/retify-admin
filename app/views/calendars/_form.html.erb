@@ -1,0 +1,23 @@
+<%= form_for [@property, @calendar], html: { data: { ajax: true }, class: 'form-horizontal' } do |f| %>
+  <fieldset>
+    <div class="control-group <%= form_helper.error_class(:provider, @calendar) %>">
+      <%= f.label :provider, 'Provider', class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :provider, class: 'input-xlarge' %>
+        <%= form_helper.error_message(:provider, @calendar) %>
+      </div>
+    </div>
+    <div class="control-group <%= form_helper.error_class(:path, @calendar) %>">
+      <%= f.label :path, 'Path', class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :path, class: 'input-xlarge', rows: 8 %>
+        <%= form_helper.error_message(:path, @calendar) %>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-actions">
+    <%= f.submit 'Save changes', class: 'btn btn-primary' %>
+    <%= link_to 'Back', @calendar.new_record? ? properties_path : property_calendars_path(params[:property_id]), data: { ajax: true}, class: 'btn' %>
+  </div>
+<% end %>
+

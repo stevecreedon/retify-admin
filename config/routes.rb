@@ -14,7 +14,9 @@ RentifyAdmin::Application.routes.draw do
   end
 
   resources :sites
-  resources :properties
+  resources :properties do
+    resources :calendars
+  end
   resources :dashboard,  :only => [:index]
 
 

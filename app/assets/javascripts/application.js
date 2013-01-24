@@ -43,7 +43,6 @@
 //= require jquery.raty.min
 //= require jquery.iphone.toggle
 //= require jquery.uploadify-3.1.min
-//= require jquery.gritter.min
 //= require jquery.imagesloaded
 //= require jquery.masonry.min
 //= require jquery.knob
