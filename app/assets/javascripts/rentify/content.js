@@ -7,7 +7,8 @@ Rentify.content.setHtml = function(html){
 }
 
 Rentify.content.addListenersForRemoteForms = function(scope) {
-  scope.find("form[data-ajax]").submit( function() {
+  scope.find("form[data-ajax]").submit( function(e) {
+    e.stopPropagation();
     var request = $.ajax( {
       type: "POST",
       url: $(this).attr('action'),

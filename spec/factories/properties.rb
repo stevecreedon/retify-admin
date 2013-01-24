@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :property do
     title       "Property title"
     description "Property description"
-    site
+    user
+    address
   end
 end

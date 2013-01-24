@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe Site do
-  let(:user)    { FactoryGirl.create(:user) }
-  let(:address) { FactoryGirl.create(:address) }
-
   def valid_attributes  
     {
       title:     'Site title',
@@ -49,7 +46,7 @@ describe Site do
       site.errors.to_a.should include("Email is invalid")
     end
 
-    it 'should be not valid if the email is not set' do
+    it 'should be not valid if the style is not set' do
       site = Site.new(valid_attributes.except(:style))
       site.valid?.should be_false
       site.errors.to_a.should include("Style can't be blank")
@@ -68,7 +65,7 @@ describe Site do
       site.errors.to_a.should include("Subdomain has already been taken")
     end
 
-    it 'should be not valid if the subdomain is not unique' do
+    it 'should be not valid if the domain is not unique' do
       Site.create(valid_attributes.merge(domain: 'domain', subdomain: 'sub1'))
       site = Site.new(valid_attributes.merge(domain: 'domain', subdomain: 'sub2'))
       site.valid?.should be_false

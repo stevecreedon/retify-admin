@@ -26,7 +26,7 @@ $(document).ready(function(){
   });
 
   /* ---------- Acivate Functions ---------- */
-  $("#overlay").delay(500).fadeOut(500);
+  $("#overlay").delay(300).fadeOut(300);
   template_functions();
   init_masonry();
   sparkline_charts();

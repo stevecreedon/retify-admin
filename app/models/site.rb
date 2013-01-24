@@ -4,8 +4,6 @@ class Site < ActiveRecord::Base
   belongs_to  :address
   belongs_to  :user
 
-  has_many :properties
-
   validates :user,      presence: true
   validates :phone,     presence: true
   validates :email,     presence: true,

@@ -14,24 +14,12 @@ describe 'Sites', :js => true do
       sign_in(user)
     end
 
-    it 'shows site creation form if there is no sites for this user' do
-      within '.main-menu' do
-        click_link('Sites')
-      end
-      page.should have_content('Create your Micro-Hotel website!')
-    end
-
-    it 'shows site if there is site created for this user' do
-      FactoryGirl.create(:site, :user => user)
-
-      within '.main-menu' do
-        click_link('Sites')
-      end
-      page.should have_content('Your Micro-Hotel website settings')
-    end
-
     it 'adds new site' do
-      visit sites_path
+      within '.main-menu' do
+        click_link('Sites')
+      end
+
+      page.should have_content('Create your Micro-Hotel website!')
 
       fill_in('Title',        :with => 'Site title' )
       fill_in('Site name',    :with => 'mysite')
@@ -53,7 +41,11 @@ describe 'Sites', :js => true do
     it 'edits the site' do
       FactoryGirl.create(:site, :user => user)
 
-      visit sites_path
+      within '.main-menu' do
+        click_link('Sites')
+      end
+
+      page.should have_content('Your Micro-Hotel website settings')
 
       click_link('Edit')
 
