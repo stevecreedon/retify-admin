@@ -5,6 +5,7 @@ class Property < ActiveRecord::Base
   belongs_to :address
 
   has_many   :directions
+  has_many   :photos, class_name: 'PropertyPhoto'
   has_many   :calendars
   has_many   :articles, conditions: { source_type: 'property' },
                         foreign_key: 'source_id',

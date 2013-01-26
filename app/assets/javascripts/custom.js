@@ -28,7 +28,6 @@ $(document).ready(function(){
   /* ---------- Acivate Functions ---------- */
   $("#overlay").delay(300).fadeOut(300);
   template_functions();
-  init_masonry();
   sparkline_charts();
   charts();
   calendars();
@@ -36,38 +35,6 @@ $(document).ready(function(){
   circle_progess();
 
 });
-
-/* ---------- Masonry Gallery ---------- */
-
-function init_masonry(){
-  if($('.masonry-gallery')){
-      var $container = $('.masonry-gallery');
-
-      var gutter = 6;
-      var min_width = 250;
-      $container.imagesLoaded( function(){
-          $container.masonry({
-              itemSelector : '.masonry-thumb',
-              gutterWidth: gutter,
-              isAnimated: true,
-                columnWidth: function( containerWidth ) {
-                  var num_of_boxes = (containerWidth/min_width | 0);
-
-                  var box_width = (((containerWidth - (num_of_boxes-1)*gutter)/num_of_boxes) | 0) ;
-
-                  if (containerWidth < min_width) {
-                      box_width = containerWidth;
-                  }
-
-                  $('.masonry-thumb').width(box_width);
-
-                  return box_width;
-                }
-          });
-      });
-  
-  }
-}
 
 /* ---------- Numbers Sepparator ---------- */
 
@@ -172,21 +139,9 @@ function template_functions(){
   /* ---------- Popover ---------- */
   $('[rel="popover"],[data-rel="popover"]').popover();
 
-  /* ---------- File Manager ---------- */
-  var elf = $('.file-manager').elfinder({
-    url : 'misc/elfinder-connector/connector.php'  // connector URL (REQUIRED)
-  }).elfinder('instance');
-
   /* ---------- Star Rating ---------- */
   $('.raty').raty({
     score : 4 //default stars
-  });
-
-  /* ---------- Uploadify ---------- */
-  $('#file_upload').uploadify({
-    'swf'      : 'misc/uploadify.swf',
-    'uploader' : 'misc/uploadify.php'
-    // Put your options here
   });
 
   /* ---------- Fullscreen ---------- */
@@ -232,85 +187,6 @@ function template_functions(){
     e.preventDefault();
     $('#myModal').modal('show');
   });
-  
-  
-  /* ---------- Progress  ---------- */
-
-    $(".simpleProgress").progressbar({
-      value: 89
-    });
-
-    $(".progressAnimate").progressbar({
-      value: 1,
-      create: function() {
-        $(".progressAnimate .ui-progressbar-value").animate({"width":"100%"},{
-          duration: 10000,
-          step: function(now){
-            $(".progressAnimateValue").html(parseInt(now)+"%");
-          },
-          easing: "linear"
-        })
-      }
-    });
-
-    $(".progressUploadAnimate").progressbar({
-      value: 1,
-      create: function() {
-        $(".progressUploadAnimate .ui-progressbar-value").animate({"width":"100%"},{
-          duration: 20000,
-          easing: 'linear',
-          step: function(now){
-            $(".progressUploadAnimateValue").html(parseInt(now*40.96)+" Gb");
-          },
-          complete: function(){
-            $(".progressUploadAnimate + .field_notice").html("<span class='must'>Upload Finished</span>");
-          } 
-        })
-      }
-    });
-    
-    if($(".taskProgress")) {
-    
-      $(".taskProgress").each(function(){
-        
-        var endValue = parseInt($(this).html());
-                        
-        $(this).progressbar({
-          value: endValue
-        });
-        
-        $(this).parent().find(".percent").html(endValue + "%");
-        
-      });
-    
-    }
-    
-    if($(".progressBarValue")) {
-    
-      $(".progressBarValue").each(function(){
-        
-        var endValueHTML = $(this).find(".progressCustomValueVal").html();
-        
-        var endValue = parseInt(endValueHTML);
-                        
-        $(this).find(".progressCustomValue").progressbar({
-          
-          value: 1,
-          create: function() {
-            $(this).find(".ui-progressbar-value").animate({"width": endValue + "%"},{
-              duration: 5000,
-              step: function(now){
-                                
-                $(this).parent().parent().find(".progressCustomValueVal").html(parseInt(now)+"%");
-              },
-              easing: "linear"
-            })
-          }
-        });
-        
-      });
-    
-    }
   
   
   /* ---------- Custom Slider ---------- */

@@ -39,10 +39,8 @@
 //= require jquery.uniform.min
 //= require jquery.cleditor.min
 //= require jquery.noty
-//= require jquery.elfinder.min
 //= require jquery.raty.min
 //= require jquery.iphone.toggle
-//= require jquery.uploadify-3.1.min
 //= require jquery.imagesloaded
 //= require jquery.masonry.min
 //= require jquery.knob
@@ -52,6 +50,8 @@
 //= require bootstrap
 //= require rentify/content
 //= require rentify/sidebar
+//= require jquery.file.upload/jquery.iframe-transport
+//= require jquery.file.upload/jquery.fileupload
 //= require_self
 
 $(document).ready(function(){

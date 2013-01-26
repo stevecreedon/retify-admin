@@ -1,0 +1,40 @@
+<%= render 'properties/menu' %>
+<div class="row-fluid sortable">
+  <div class="box span12">
+    <div class="box-header">
+      <h2><i class="icon-tasks"></i><span class="break"></span>Photo upload</h2>
+    </div>
+    <div class="box-content">
+      <span class='row'>
+        <span class='span3'>
+          <input id="fileupload" type="file" name="files[]" data-url="<%= property_photos_path(@property) %>" multiple>
+        </span>
+        <span class='span9'>
+          <div class="progress progressBlue"></div>
+        </span>
+      </span>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div><!--/row-->
+<div class="row-fluid sortable">
+  <div class="box span12">
+    <div class="box-header" data-original-title>
+      <h2><i class="icon-picture"></i> Gallery</h2>
+    </div>
+    <div class="box-content">
+      <div class="masonry-gallery" id='gallery'>
+        <% @property.photos.each do | photo | %>
+        <div id="image-1" class="masonry-thumb">
+          <a data-ajax='true' style="background:url(<%= photo.image.url %>)" href="<%= property_photo_path(@property, photo) %>">
+            <img class="grayscale" src="<%= photo.image.thumb.url %>">
+          </a>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div><!--/span-->
+</div><!--/row-->
+
+<%= javascript_include_tag "file-uploads" %>
+

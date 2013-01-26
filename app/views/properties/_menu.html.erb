@@ -6,10 +6,10 @@
   <i class="fa-icon-calendar"></i>
   <p>Calendar</p>
 <% end %>
-<a class="quick-button span2">
+<%= link_to property_photos_path(@property), data: { ajax: true }, class: 'quick-button span2' do %>
   <i class="fa-icon-camera"></i>
   <p>Photos</p>
-</a>
+<% end %>
 <a class="quick-button span2">
   <i class="fa-icon-retweet"></i>
   <p>Directions</p>
