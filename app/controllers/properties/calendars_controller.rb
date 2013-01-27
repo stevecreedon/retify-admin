@@ -1,4 +1,4 @@
-class CalendarsController < ApplicationController
+class Properties::CalendarsController < ApplicationController
   before_filter :load_property
   before_filter :check_if_property_belongs_to_user
 

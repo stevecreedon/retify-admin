@@ -1,5 +1,3 @@
-//= require rentify/content
-
 $.namespace("Rentify.sidebar");
 
 Rentify.sidebar.setActiveMenuItem = function(activeLink){
