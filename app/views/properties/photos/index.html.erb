@@ -25,7 +25,7 @@
     <div class="box-content">
       <div class="masonry-gallery" id='gallery'>
         <% @property.photos.each do | photo | %>
-        <div id="image-1" class="masonry-thumb">
+        <div class="masonry-thumb">
           <a data-ajax='true' style="background:url(<%= photo.image.url %>)" href="<%= property_photo_path(@property, photo) %>">
             <img class="grayscale" src="<%= photo.image.thumb.url %>">
           </a>

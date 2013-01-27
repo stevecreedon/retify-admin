@@ -40,7 +40,7 @@ describe 'Property calendars' do
 
     end
 
-    it 'edits the property' do
+    it 'edits the calendar' do
       FactoryGirl.create(:calendar, :property => property)
 
       within '.main-menu' do
