@@ -16,4 +16,4 @@
 *DS_Store
 .rspec
 *.swp
-
+/public/property_photo/*
