@@ -5,7 +5,7 @@ class RegistrationController < ApplicationController
 
   def create
     redirect_to(new_session_path, :notice => "#{params["registrations"]["email"]} exists" ) if User.where(email: params["registrations"]["email"]).count > 0
-    user = User.new(params[:registrations])
+    user = User.new(params[:registrations].merge(:provider => 'password'))
     
     if user.save
       session[:user_id] = user.id
