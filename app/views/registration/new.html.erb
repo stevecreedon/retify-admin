@@ -1,7 +1,7 @@
 <div id="photo-container">
  <h1>Micro Hotels</h1>
  <div id="form-container">
-  <%= form_for(:sessions, {url: "/auth/password/callback", :html => {:id => 'sign-in'}}) do |f| %>
+   <%= form_for(:registrations, {:url => registration_index_path,:html => {:id => 'sign-in'}}) do |f| %>
     <span class="field">
       <%= f.label :email %>
       <%= f.text_field :email %>
@@ -11,10 +11,10 @@
       <%= f.password_field :password %>
     </span>
     <span class="actions">
-      <button type="submit">sign in</button>
+      <button type="submit">sign up</button>
     </span>
   <% end %>
-  don't have an account ? <%= link_to "sign up here", new_registration_path %>
+  return to <%= link_to "sign in", new_session_path %>
 </div>
 
 </div>
