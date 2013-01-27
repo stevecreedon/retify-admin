@@ -4,6 +4,7 @@ development:
   database: rentify
   username: rentify
   password: rentify
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -14,4 +15,4 @@ test:
   database: rentify-test
   username: rentify
   password: rentify
-
+  host: localhost

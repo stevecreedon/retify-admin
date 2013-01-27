@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :name, :provider, :password
 
+  validates :email, :presence => true
+  validates :provider, :presence => true
+  validates :password, :presence => true
+
   has_many :properties
   has_many :sites
 
