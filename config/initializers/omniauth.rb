@@ -1,5 +1,5 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :password
+  provider :password, :user_model => Identity
 end
 
 OmniAuth.config.on_failure do |env|
