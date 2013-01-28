@@ -1,10 +1,10 @@
 <div id="photo-container">
  <h1>Micro Hotels</h1>
  <div id="form-container">
-   <%= form_for(:registrations, {:url => registration_index_path,:html => {:id => 'sign-in'}}) do |f| %>
+   <%= form_for(@identity, {:url => registration_index_path,:html => {:id => 'sign-in'}}) do |f| %>
     <span class="field">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.label :email, :for => :name %>
+      <%= f.text_field :name %>
     </span>
     <span class="field">
       <%= f.label :password %>
