@@ -9,7 +9,7 @@ describe Site do
       style:     'style_01',
       email:     'test@domain.com',
       phone:     '09876544331',
-      user:      FactoryGirl.create(:user),
+      user:      FactoryGirl.create(:user_with_identity),
       address:   FactoryGirl.create(:address)
     }
   end

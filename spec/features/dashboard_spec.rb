@@ -10,10 +10,10 @@ describe 'Dashboard' do
   end
  
   context 'with authentication', :js => true do
-    it 'shows the dashboard content' do
-      user = User.create(provider: 'password', email: 'test@domain.com', password: 'pass')
+    let(:user)    { FactoryGirl.create(:user_with_identity) }
 
-      sign_in(user)
+    it 'shows the dashboard content' do
+      sign_in(user.identities.first.email, 'pass')
 
       visit dashboard_index_path
 

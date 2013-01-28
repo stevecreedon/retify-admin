@@ -9,10 +9,10 @@ describe 'Properties' do
     end
   end
   context 'user authenticated', :js => true do
-    let(:user)    { FactoryGirl.create(:user) }
+    let(:user)    { FactoryGirl.create(:user_with_identity) }
     let(:address) { FactoryGirl.create(:address) }
     before do
-      sign_in(user)
+      sign_in(user.identities.first.email, 'pass')
     end
 
     it 'adds new property' do

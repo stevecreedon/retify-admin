@@ -1,10 +1,9 @@
 class User < ActiveRecord::Base
-
-  validates :identities, :presence => true
-  
   has_many :properties
   has_many :sites
   has_many :identities
+
+  validates :identities, :presence => true
 
   def self.from_omniauth(auth)
     #note we don't use name in this lookup. Suspect uid is a combination of oauth[name] and password 
