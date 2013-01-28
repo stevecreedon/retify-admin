@@ -17,8 +17,9 @@ RentifyAdmin::Application.routes.draw do
 
   resources :sites
   resources :properties do
-    resources :calendars, controller: 'properties/calendars'
-    resources :photos,    controller: 'properties/photos'
+    resources :calendars,  controller: 'properties/calendars'
+    resources :photos,     controller: 'properties/photos'
+    resources :directions, controller: 'properties/directions', only: [:index, :new, :create]
   end
   resources :dashboard,  :only => [:index]
 
