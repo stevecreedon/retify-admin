@@ -9,9 +9,9 @@ describe 'Sites' do
     end
   end
   context 'user authenticated', :js => true do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user_with_identity) }
     before do
-      sign_in(user)
+      sign_in(user.identities.first.email, 'pass')
     end
 
     it 'adds new site' do
@@ -34,7 +34,7 @@ describe 'Sites' do
       page.should have_content('www.mysite.com')
       page.should have_content('0987654321')
       page.should have_content('style_01')
-      page.should have_content(user.email)
+      page.should have_content(user.identities.first.email)
 
     end
 

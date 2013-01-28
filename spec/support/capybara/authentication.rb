@@ -1,12 +1,12 @@
 # coding: utf-8
 module MyHelpers
   module AuthenticationHelpers
-    def sign_in(user)
+    def sign_in(email, password = 'pass')
       visit new_session_path
 
       within '#sign-in' do
-        fill_in('Email',    :with => user.email)
-        fill_in('Password', :with => user.password)
+        fill_in('Email',    :with => email)
+        fill_in('Password', :with => password)
 
         click_button('sign in')
       end

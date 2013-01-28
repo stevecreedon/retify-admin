@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe 'Property directions' do
-  let(:user)    { FactoryGirl.create(:user) }
-  let(:property)    { FactoryGirl.create(:property, user: user) }
+  let(:user)     { FactoryGirl.create(:user_with_identity) }
+  let(:property) { FactoryGirl.create(:property, user: user) }
 
   context 'user not authenticated' do
     it 'redirects to sign_in page' do
@@ -14,7 +14,7 @@ describe 'Property directions' do
   context 'user authenticated', :js => true do
     before do
       property # create property
-      sign_in(user)
+      sign_in(user.identities.first.email, 'pass')
     end
 
     it 'adds new directions' do

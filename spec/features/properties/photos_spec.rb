@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'Property photos' do
-  let(:user)    { FactoryGirl.create(:user) }
+  let(:user)     { FactoryGirl.create(:user_with_identity) }
   let(:property)    { FactoryGirl.create(:property, user: user) }
 
   context 'user not authenticated' do
@@ -14,7 +14,7 @@ describe 'Property photos' do
   context 'user authenticated', :js => true do
     before do
       property # create property
-      sign_in(user)
+      sign_in(user.identities.first.email, 'pass')
     end
 
     it 'adds new photo' do
