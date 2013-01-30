@@ -17,3 +17,4 @@
 .rspec
 *.swp
 /public/property_photo/*
+/public/uploads/*

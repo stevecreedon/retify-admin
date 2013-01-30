@@ -10,6 +10,7 @@ set :scm,          :git
 set :deploy_to,    "/var/www/kuztusadmin"
 set :user,         "deploy"
 set :use_sudo,     false
+set :shared_children, shared_children + %w{public/uploads}
 
 set :templater, :templates => ['database']
 
