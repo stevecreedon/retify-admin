@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     user = User.from_omniauth(request.env["omniauth.auth"])
     
     session[:user_id] = user.id
-    redirect_to root_url, notice: "Signed in"
+    redirect_to root_url, alert: "Signed in"
   end
 
   def destroy
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    redirect_to new_session_path, notice: "Authentication failed"
+    redirect_to new_session_path, alert: "Authentication failed"
   end
 
 end

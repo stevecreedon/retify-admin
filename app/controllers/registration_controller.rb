@@ -11,7 +11,7 @@ class RegistrationController < ApplicationController
     identity = Identity.new(params[:identity].merge(:provider => 'password'))
 
     if Identity.where(name: identity.name, provider: "password").count > 0
-      redirect_to(new_session_path, :notice => "#{identity.email} exists for #{identity.provider}")
+      redirect_to(new_session_path, :alert => "#{identity.name} exists")
       return 
     end
 
@@ -26,9 +26,9 @@ class RegistrationController < ApplicationController
 
     if user.save
       session[:user_id] = user.id
-      redirect_to root_url, notice: "Signed up"
+      redirect_to root_url, notice: "welcome to micro hotels"
     else
-      redirect_to new_registration_path, :notice => user.errors.full_messages
+      redirect_to new_registration_path, alert: "sign up failed #{user.full_messages.join(" ")}"
     end  
   end
 
