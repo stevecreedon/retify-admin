@@ -6,6 +6,22 @@ Rentify.content.setHtml = function(html){
   Rentify.$content.trigger("content.afterContentSet", { html: html });
 }
 
+Rentify.content.setHtmlFromRemote = function(options){
+  defaults = { type: 'GET' }
+  opts = $.extend(defaults, options)
+  var request = $.ajax({
+    type: opts.type,
+    url: opts.url,
+    dataType: 'html',
+  });
+  request.done(function(data){
+    Rentify.content.setHtml(data);
+  });
+  request.fail(function(){
+    alert("ooops something went wrong, do try again");
+  });
+}
+
 Rentify.content.addListenersForRemoteForms = function(scope) {
   scope.find("form[data-ajax]").submit( function(e) {
     e.stopPropagation();
@@ -38,17 +54,7 @@ Rentify.content.addListenersForRemoteLinks = function(scope) {
         if($(this).data('method')){
           type = $(this).data('method');
         };
-        var request = $.ajax({
-          type: type,
-          url: url,
-          dataType: 'html',
-        });
-        request.done(function(data){
-          Rentify.content.setHtml(data);
-        });
-        request.fail(function(){
-          alert("ooops something went wrong, do try again");
-        });
+        Rentify.content.setHtmlFromRemote({ url: url, type: type});
         return false;
       });
     };

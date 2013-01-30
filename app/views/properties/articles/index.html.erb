@@ -1,0 +1,41 @@
+<%= render 'properties/menu' %>
+<div class="row-fluid sortable">
+  <div class="box span12">
+    <div class="box-header" data-original-title>
+      <h2><i class="icon-edit"></i><span class="break"></span>Articles</h2>
+    </div>
+    <div class="box-content">
+      <%= link_to new_property_article_path(@property), data: { ajax: true }, class: 'quick-button-small span1' do %>
+        <i class="fa-icon-plus icon-white"></i>  
+        <p>Add New</p>
+      <% end %>
+      <div class="clearfix"></div>
+      <hr>
+      <table class="table table-striped table-bordered bootstrap-datatable">
+        <thead>
+          <tr>
+            <th>Group</th>
+            <th>Title</th>
+            <th>Actions</th>
+          </tr>
+        </thead>   
+        <tbody>
+        <% @articles.each do | article | %>
+          <tr>
+            <td><%= article.group_name %></td>
+            <td><%= article.title %></td>
+            <td class="center">
+              <%= link_to 'Show', property_article_path(@property, article), data: { ajax: true }, class: 'btn btn-success' %>
+              <%= link_to 'Edit', edit_property_article_path(@property, article), data: { ajax: true }, class: 'btn btn-info' %>
+              <%= link_to 'Delete', property_article_path(@property, article),
+                confirm: 'Are you sure?', method: :delete,
+                data: { ajax: true }, class: 'btn btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div><!--/span-->
+</div><!--/row-->
+

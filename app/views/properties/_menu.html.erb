@@ -14,10 +14,10 @@
   <i class="fa-icon-retweet"></i>
   <p>Directions</p>
 <% end %>
-<a class="quick-button span2">
+<%= link_to property_articles_path(@property), data: { ajax: true }, class: 'quick-button span2' do %>
   <i class="fa-icon-book"></i>
   <p>Articles</p>
-</a>
+<% end %>
 <div class="clearfix"></div>
 
 <hr>

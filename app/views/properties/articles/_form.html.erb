@@ -1,0 +1,30 @@
+<%= form_for [@property, @article], html: { data: { ajax: true }, class: 'form-horizontal' } do |f| %>
+  <fieldset>
+    <div class="control-group <%= 'error' if @article.has_error?(:group) %>">
+      <%= f.label :group, 'Group', class: 'control-label' %>
+      <div class="controls">
+        <%= f.select :group, @article.group_list  %>
+        <%= @article.error_message(:group) %>
+      </div>
+    </div>
+    <div class="control-group <%= 'error' if @article.has_error?(:title) %>">
+      <%= f.label :title, 'Title', class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :title, class: 'input-xxlarge' %>
+        <%= @article.error_message(:title) %>
+      </div>
+    </div>
+    <div class="control-group <%= form_helper.error_class(:description, @article) %>">
+      <%= f.label :description, 'Description', class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :description, class: 'input-xxlarge', rows: 8 %>
+        <%= form_helper.error_message(:description, @article) %>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-actions">
+    <%= f.submit 'Save changes', class: 'btn btn-primary' %>
+    <%= link_to 'Back', property_articles_path(@property), data: { ajax: true}, class: 'btn' %>
+  </div>
+<% end %>
+

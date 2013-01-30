@@ -29,7 +29,6 @@
 //= require twitter/bootstrap
 //= require jquery.cookie
 //= require fullcalendar.min
-//= require jquery.dataTables.min
 //= require excanvas
 //= require jquery.flot.min
 //= require jquery.flot.pie.min
