@@ -58,6 +58,24 @@ describe Site do
       site.errors.to_a.should include("Subdomain can't be blank")
     end
 
+    it 'should be not valid if the subdomain is shorter than 3 symbols' do
+      site = Site.new(valid_attributes.merge(subdomain: 'xx'))
+      site.valid?.should be_false
+      site.errors.to_a.should include("Subdomain is too short (minimum is 3 characters)")
+    end
+
+    it 'should be not valid if the subdomain is included in list' do
+      site = Site.new(valid_attributes.merge(subdomain: 'admin'))
+      site.valid?.should be_false
+      site.errors.to_a.should include("Subdomain is reserved")
+    end
+
+    it 'should be not valid if the subdomain is containing ilegal charachters' do
+      site = Site.new(valid_attributes.merge(subdomain: 'admin++@.'))
+      site.valid?.should be_false
+      site.errors.to_a.should include("Subdomain is invalid")
+    end
+
     it 'should be not valid if the subdomain is not unique' do
       Site.create(valid_attributes.merge(subdomain: 'subdomain'))
       site = Site.new(valid_attributes.merge(subdomain: 'subdomain'))
@@ -72,6 +90,11 @@ describe Site do
       site.errors.to_a.should include("Domain has already been taken")
     end
 
+    it 'should be not valid if the domain contains our website name' do
+      site = Site.new(valid_attributes.merge(domain: 'xxx.kuztus.com'))
+      site.valid?.should be_false
+      site.errors.to_a.should include("Domain can't contain our domain name")
+    end
   end
 
 end
