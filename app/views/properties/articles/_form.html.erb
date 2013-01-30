@@ -14,11 +14,11 @@
         <%= @article.error_message(:title) %>
       </div>
     </div>
-    <div class="control-group <%= form_helper.error_class(:description, @article) %>">
+    <div class="control-group <%= 'error' if @article.has_error?(:description) %>">
       <%= f.label :description, 'Description', class: 'control-label' %>
       <div class="controls">
         <%= f.text_area :description, class: 'input-xxlarge', rows: 8 %>
-        <%= form_helper.error_message(:description, @article) %>
+        <%= @article.error_message(:description) %>
       </div>
     </div>
   </fieldset>

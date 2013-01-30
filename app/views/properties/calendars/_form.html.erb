@@ -1,17 +1,17 @@
 <%= form_for [@property, @calendar], html: { data: { ajax: true }, class: 'form-horizontal' } do |f| %>
   <fieldset>
-    <div class="control-group <%= form_helper.error_class(:provider, @calendar) %>">
+    <div class="control-group <%= 'error' if @calendar.has_error?(:provider) %>">
       <%= f.label :provider, 'Provider', class: 'control-label' %>
       <div class="controls">
         <%= f.text_field :provider, class: 'input-xlarge' %>
-        <%= form_helper.error_message(:provider, @calendar) %>
+        <%= @calendar.error_message(:provider) %>
       </div>
     </div>
-    <div class="control-group <%= form_helper.error_class(:path, @calendar) %>">
+    <div class="control-group <%= 'error' if @calendar.has_error?(:path) %>">
       <%= f.label :path, 'Path', class: 'control-label' %>
       <div class="controls">
         <%= f.text_field :path, class: 'input-xlarge', rows: 8 %>
-        <%= form_helper.error_message(:path, @calendar) %>
+        <%= @calendar.error_message(:path) %>
       </div>
     </div>
   </fieldset>

@@ -1,48 +1,48 @@
 <%= form_for @site, html: { data: { ajax: true }, class: 'form-horizontal' } do |f| %>
   <fieldset>
-    <div class="control-group <%= form_helper.error_class(:title, @site) %>">
+    <div class="control-group <%= 'error' if @site.has_error?(:title) %>">
       <%= f.label :title, 'Title', class: 'control-label' %>
       <div class="controls">
         <%= f.text_field :title, class: 'input-xlarge' %>
-        <%= form_helper.error_message(:title, @site) %>
+        <%= @site.error_message(:title) %>
       </div>
     </div>
-    <div class="control-group <%= form_helper.error_class(:subdomain, @site) %>">
+    <div class="control-group <%= 'error' if @site.has_error?(:subdomain) %>">
       <%= f.label :subdomain, 'Site name', class: 'control-label' %>
       <div class="controls">
         <div class="input-append">
           <%= f.text_field :subdomain, class: 'input-medium' %>
           <span class="add-on">.<%= configatron.domain %> </span>
         </div>
-        <%= form_helper.error_message(:subdomain, @site) %>
-        <%= form_helper.help_block('Choose your micro-hotel name!') %>
+        <%= @site.error_message(:subdomain) %>
+        <p class='help-block'>Choose your micro-hotel name!</p>
       </div>
     </div>
-    <div class="control-group <%= form_helper.error_class(:domain, @site) %>">
+    <div class="control-group <%= 'error' if @site.has_error?(:domain) %>">
       <%= f.label :domain, 'Domain name', class: 'control-label' %>
       <div class="controls">
         <%= f.text_field :domain, class: 'input-xlarge' %>
-        <%= form_helper.error_message(:domain, @site) %>
-        <%= form_helper.help_block('You can enter your personal domain name. [Need help how to point domain to our servers]') %>
+        <%= @site.error_message(:domain) %>
+        <p class='help-block'>You can enter your personal domain name. [Need help how to point domain to our servers]</p>
       </div>
     </div>
-    <div class="control-group <%= form_helper.error_class(:email, @site) %>">
+    <div class="control-group <%= 'error' if @site.has_error?(:email) %>">
       <%= f.label :email, 'Contact email', class: 'control-label' %>
       <div class="controls">
         <%= f.text_field :email, class: 'input-xlarge' %>
-        <%= form_helper.error_message(:email, @site) %>
-        <%= form_helper.help_block('Contact email to use on your micro-hotel site.') %>
+        <%= @site.error_message(:email) %>
+        <p class='help-block'>Contact email to use on your micro-hotel site.</p>
       </div>
     </div>
-    <div class="control-group <%= form_helper.error_class(:phone, @site) %>">
+    <div class="control-group <%= 'error' if @site.has_error?(:phone) %>">
       <%= f.label :phone, 'Phone number', class: 'control-label' %>
       <div class="controls">
         <%= f.text_field :phone, class: 'input-xlarge' %>
-        <%= form_helper.error_message(:phone, @site) %>
-        <%= form_helper.help_block('Contact phone to use on your micro-hotel site.') %>
+        <%= @site.error_message(:phone) %>
+        <p class='help-block'>Contact phone to use on your micro-hotel site.</p>
       </div>
     </div>
-    <div class="control-group <%= form_helper.error_class(:style, @site) %>">
+    <div class="control-group <%= 'error' if @site.has_error?(:style) %>">
       <%= f.label :style, 'Micro-Hotel site style', class: 'control-label' %>
       <div class="controls">
         <span class="input-xlarge uneditable-input">style_01</span>

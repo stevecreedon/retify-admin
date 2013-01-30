@@ -12,13 +12,17 @@ class Properties::CalendarsController < ApplicationController
 
   def show
     @calendar = @property.calendars.where(id: params[:id]).first
-    redirect_to action: :new unless @calendar
+    unless @calendar
+      redirect_to action: :new
+    else
+      @calendar = @calendar.decorate
+    end
   end
 
   def new
     redirect_to action: :index if @property.calendars.count > 0
 
-    @calendar = Calendar.new property: @property
+    @calendar = Calendar.new(property: @property).decorate
   end
 
   def create
@@ -30,12 +34,13 @@ class Properties::CalendarsController < ApplicationController
     if @calendar.save
       redirect_to(property_calendar_path(@property, @calendar), notice: 'Calendar was successfully created.')
     else
+      @calendar = @calendar.decorate
       render :action => "new"
     end
   end
 
   def edit
-    @calendar = @property.calendars.where(id: params[:id]).first
+    @calendar = @property.calendars.where(id: params[:id]).first.decorate
   end
 
   def update
@@ -44,6 +49,7 @@ class Properties::CalendarsController < ApplicationController
     if @calendar.update_attributes(params[:calendar].merge(property: @property))
       redirect_to(property_calendar_path(@property, @calendar), notice: 'Calendar was successfully updated.')
     else
+      @calendar = @calendar.decorate
       render :action => "edit"
     end
   end

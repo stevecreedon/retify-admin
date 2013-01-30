@@ -9,13 +9,17 @@ class PropertiesController < ApplicationController
 
   def show
     @property = current_user.properties.where(id: params[:id]).first
-    redirect_to action: :new unless @property
+    unless @property
+      redirect_to action: :new
+    else
+      @property = @property.decorate
+    end
   end
 
   def new
     redirect_to action: :index if current_user.properties.count > 0
 
-    @property = Property.new address: Address.new
+    @property = Property.new(address: Address.new).decorate
   end
 
   def create
@@ -28,12 +32,13 @@ class PropertiesController < ApplicationController
     if @property.save
       redirect_to(@property, notice: 'Property was successfully created.')
     else
+      @property = @property.decorate
       render :action => "new"
     end
   end
 
   def edit
-    @property = current_user.properties.where(id: params[:id]).first
+    @property = current_user.properties.where(id: params[:id]).first.decorate
   end
 
   def update
@@ -43,6 +48,7 @@ class PropertiesController < ApplicationController
     if @property.update_attributes(params[:property].except(:address))
       redirect_to(@property, notice: 'Property was successfully updated.')
     else
+      @property = @property.decorate
       render :action => "edit"
     end
   end
