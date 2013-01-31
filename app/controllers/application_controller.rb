@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :form_helper
 
-  layout Proc.new { |controller| request.xhr? ? false : 'application' }
+  layout Proc.new { |controller| request.xhr? ? 'remote' : 'application' }
 
   def current_user
     @current_user ||= User.find(session[:user_id])

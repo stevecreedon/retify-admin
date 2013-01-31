@@ -102,14 +102,6 @@ function template_functions(){
     
   }
   
-  
-  /* ---------- Notifications ---------- */
-  $('.noty').click(function(e){
-    e.preventDefault();
-    var options = $.parseJSON($(this).attr('data-noty-options'));
-    noty(options);
-  });
-
   /* ---------- Uniform ---------- */
   $("input:checkbox, input:radio, input:file").not('[data-no-uniform="true"],#uniform-is-ajax').uniform();
 

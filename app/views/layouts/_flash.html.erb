@@ -1,7 +1,27 @@
 <% if flash[:notice] %>
-  <div class="flash-notice"><%= flash[:notice] %></div>
+  <span class="flash-notice"><%= flash[:notice] %></span>
+  <script>
+    $("span.flash-notice").each(function(){
+      noty({
+        text: $(this).html(),
+        layout:'topCenter',
+        animateOpen: { opacity: 'show' },
+        type: 'success'
+      });
+    }).hide();
+  </script>
 <% end %>
 <% if flash[:alert] %>
-  <div class="flash-alert"><%= flash[:alert] %></div>
+  <span class="flash-alert"><%= flash[:alert] %></span>
+  <script>
+    $("span.flash-alert").each(function(){
+      noty({
+        text: $(this).html(),
+        layout:'topCenter',
+        animateOpen: { opacity: 'show' },
+        type: 'error'
+      });
+    }).hide();
+  </script>
 <% end %>
 
