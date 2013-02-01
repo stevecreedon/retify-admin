@@ -90,6 +90,12 @@ describe Site do
       site.errors.to_a.should include("Domain has already been taken")
     end
 
+    it 'does not check uniqueness if domain is blank' do
+      Site.create(valid_attributes.merge(domain: '', subdomain: 'sub1'))
+      site = Site.new(valid_attributes.merge(domain: '', subdomain: 'sub2'))
+      site.valid?.should be_true
+    end
+
     it 'should be not valid if the domain contains our website name' do
       site = Site.new(valid_attributes.merge(domain: 'xxx.kuztus.com'))
       site.valid?.should be_false

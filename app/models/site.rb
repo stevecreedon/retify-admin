@@ -14,7 +14,8 @@ class Site < ActiveRecord::Base
                         length:     { minimum: 3 },
                         exclusion:  { in: %w(admin info doc wiki staging mail pop smtp pop3 landing news blog forum storage finance analytics stats) },
                         format:     { with: /^[a-z0-9_-]+$/ }
-  validates :domain,    uniqueness: true
+  validates :domain,    uniqueness:  true,
+                        allow_blank: true
 
   validate :domain_cannot_contain_our_domain
 
