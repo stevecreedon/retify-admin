@@ -4,7 +4,7 @@ class Identity < ActiveRecord::Base
   attr_accessible :password, :provider, :name, :email
 
   validates :provider, :presence => true
-  validates :name, :presence => true
+  validates :email, :presence => true
 
   belongs_to :user
 end

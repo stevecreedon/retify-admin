@@ -16,12 +16,13 @@ class User < ActiveRecord::Base
   end
 
   def self.create_with_omniauth(auth)
-    create! do |user|
-      identity = Identity.new
-      identity.provider = auth["provider"]
-      identity.password_digest = auth["uid"]
-      identity.name = auth["info"]["name"] #this can be email for some providers like omniauth-password
-      identity.email = auth["info"]["email"] #email not required in oauth spec. Twitter, for example, doesn't provide email
+    identity = Identity.create!({
+      provider:        auth["provider"],
+      password_digest: auth["uid"],
+      name:            auth["info"]["name"], #this can be email for some providers like omniauth-password
+      email:           auth["info"]["email"] #email not required in oauth spec. Twitter, for example, doesn't provide email
+    })
+    User.create! do | user |
       user.identities << identity
     end
   end

@@ -3,8 +3,8 @@
  <div id="form-container">
    <%= form_for(@identity, {:url => registration_index_path,:html => {:id => 'sign-in'}}) do |f| %>
     <span class="field">
-      <%= f.label :email, :for => :name %>
-      <%= f.text_field :name %>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
     </span>
     <span class="field">
       <%= f.label :password %>
