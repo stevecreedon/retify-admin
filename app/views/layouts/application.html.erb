@@ -57,10 +57,10 @@
 </head>
 
 <body>
-  <%= render :partial => 'shared/header' %>
+  <%= render :partial => 'layouts/header' %>
   <div class="container-fluid">
     <div class="row-fluid">
-      <%= render :partial => 'shared/side_nav' %>
+      <%= render :partial => 'layouts/side_nav' %>
       <noscript>
         <div class="alert alert-block span10">
           <h4 class="alert-heading">Warning!</h4>
@@ -73,7 +73,7 @@
         </div>
       </div>
     </div><!--/fluid-row-->
-    <%= render :partial => 'shared/footer' %>
+    <%= render :partial => 'layouts/footer' %>
   </div><!--/.fluid-container-->
 
   <%= render partial: 'layouts/flash', locals: { flash: flash } %>
