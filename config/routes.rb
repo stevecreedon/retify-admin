@@ -24,7 +24,6 @@ RentifyAdmin::Application.routes.draw do
   end
   resources :dashboard,  :only => [:index]
 
-
   root :to => 'home#index'
 
 end

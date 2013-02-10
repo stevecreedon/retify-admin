@@ -1,7 +1,7 @@
 class RegistrationController < ApplicationController
   skip_before_filter :authenticate!
 
-  layout 'anonymous'
+  layout 'home'
 
   def new
     @identity = Identity.new
@@ -20,7 +20,7 @@ class RegistrationController < ApplicationController
 
     if user.save
       session[:user_id] = user.id
-      redirect_to root_url, notice: "welcome to micro hotels"
+      redirect_to dashboard_index_path, notice: "welcome to micro hotels"
     else
       redirect_to new_registration_path, alert: "sign up failed #{user.errors.full_messages.join(" ")}"
     end  

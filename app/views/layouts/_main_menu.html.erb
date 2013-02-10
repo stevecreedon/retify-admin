@@ -1,0 +1,25 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">LoveBNB</a>
+      <div class="container-fluid nav-collapse">
+        <ul class="nav pull-right">
+          <li><%= link_to "Features", "#"  %></li>
+          <li><%= link_to "Examples", "#"  %></li>
+          <li><%= link_to "Pricing", "#"  %></li>
+          <li><%= link_to "Blog", "#"  %></li>
+          <% if current_user %>
+            <li><%= link_to "Logout", destroy_session_path  %></li>
+          <% else %>
+            <li><%= link_to "Login", new_session_path  %></li>
+          <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>

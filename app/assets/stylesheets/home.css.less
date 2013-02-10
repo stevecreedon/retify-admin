@@ -1,0 +1,69 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require jquery.noty
+ *= require noty_theme_default
+ *= require_self
+ */
+
+body {
+  padding-top: 60px;
+  background: transparent url('/assets/sign-in-bg.jpg') no-repeat left 30px;
+}
+
+.home-sign-up-form {
+  padding: 15px 10px 1px 10px; background: #fff; .opacity(95);
+  input[type=email], input[type=password], input[type=submit] { padding: 7px 5px; margin: 10px 0px; }
+}
+
+.main-title {
+  background: #fff; margin-top: 40px; .opacity(70); text-align: center;
+}
+
+.sign-form {
+  padding: 25px 10px 1px 10px; background: #fff; .opacity(90);
+}
+
+@media (min-width: 1200px) {
+  .main-title { padding: 20px; font-size: 40px; }
+  .home-sign-up-form { margin: 290px 0 0 auto; width: 600px; }
+  .sign-form { margin: 150px 0 0 auto; width: 450px; }
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+  .main-title { padding: 15px; font-size: 32px; }
+  .home-sign-up-form { margin: 300px 0 0 auto; width: 600px; }
+  .sign-form { margin: 160px 0 0 auto; width: 450px; }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .main-title { padding: 10px; font-size: 24px; }
+  .home-sign-up-form { margin: 310px 0 0 auto; width: 300px;}
+  .sign-form { margin: 170px 0 0 auto; width: 450px; }
+}
+
+@media (max-width: 767px) {
+  .main-title { padding: 10px; font-size: 22px; }
+  .home-sign-up-form { margin: 10px 0 0 0; width: auto; }
+  .sign-form { margin: 10px 0 0 auto; width: auto; }
+}
+
+@import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: "twitter/bootstrap/glyphicons-halflings.png";
+@iconWhiteSpritePath: "twitter/bootstrap/glyphicons-halflings-white.png";
+
+// Glyphicons
+@import "twitter/bootstrap/sprites.less";
+
+// Variables
+@navbarCollapseWidth: 767px;

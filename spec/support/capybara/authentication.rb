@@ -4,11 +4,11 @@ module MyHelpers
     def sign_in(email, password = 'pass')
       visit new_session_path
 
-      within '#sign-in' do
+      within '.sign-form' do
         fill_in('Email',    :with => email)
         fill_in('Password', :with => password)
 
-        click_button('sign in')
+        click_button('Sign in')
       end
     end
 

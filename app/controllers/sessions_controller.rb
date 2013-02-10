@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   skip_before_filter :authenticate!
 
-  layout 'anonymous'
+  layout 'home'
 
   def new
   end
@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     user = User.from_omniauth(request.env["omniauth.auth"])
     
     session[:user_id] = user.id
-    redirect_to root_url, alert: "Signed in"
+    redirect_to dashboard_index_path, alert: "Signed in"
   end
 
   def destroy
