@@ -7,4 +7,8 @@ class Identity < ActiveRecord::Base
   validates :email, :presence => true
 
   belongs_to :user
+
+  scope :rentified, lambda{where(:provider => "password")}
+  scope :unverified, lambda{rentified.where(:email_verified => nil)}
+ 
 end
