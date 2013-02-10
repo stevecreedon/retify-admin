@@ -39,6 +39,18 @@ describe 'email verification' do
     end
   end
 
+  context 'verify' do
+
+    it 'should verify the user with the supplied guid' do
+      user = FactoryGirl.create(:user_with_identity)
+
+      visit verify_registration_path(user.guid)
+      user.reload
+      user.verified?.should be_true
+    end
+
+  end
+
 
 end
 
