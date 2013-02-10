@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   validates :identities, :presence => true
 
+  before_create {|model| model.guid = SecureRandom.urlsafe_base64}
+
   def self.from_omniauth(auth)
     #note we don't use name in this lookup. Suspect uid is a combination of oauth[name] and password 
     identity = Identity.where(provider: auth["provider"], password_digest: auth["uid"]).first
@@ -26,4 +28,13 @@ class User < ActiveRecord::Base
       user.identities << identity
     end
   end
+
+  def verified? 
+    identities.rentified.unverified.count == 0 
+  end
+
+  def email
+    identities.rentified.first.try(:email)
+  end
+
 end
