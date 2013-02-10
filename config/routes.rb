@@ -13,7 +13,11 @@ RentifyAdmin::Application.routes.draw do
     get :destroy, :path => 'sign_out', :as => "destroy"
   end
 
-  resources :registration, :only => [:new, :create]
+  resources :registration, :only => [:new, :create] do
+    member do
+      get 'verify'
+    end
+  end
 
   resources :sites
   resources :properties do
