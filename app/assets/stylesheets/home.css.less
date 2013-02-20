@@ -13,18 +13,34 @@
  *= require_self
  */
 
-body {
-  padding-top: 60px;
-  background: transparent url('/assets/sign-in-bg.jpg') no-repeat left 30px;
+#page-1 {
+  height: 800px; background: transparent url('/assets/sign-in-bg.jpg') no-repeat left 30px;
 }
 
+#page-2 {
+  height: 800px; background: #f9f9f9;
+  .main-title{ background: #000; color: #fff; }
+  .tabbable {
+     margin: 100px auto; width: 950px;
+     .nav-tabs {
+       margin-right: 1px; width: 300px; margin-top: 30px;
+       li a { padding-top: 30px; padding-bottom: 30px; }
+     }
+     .tab-content { height: 400px; padding: 20px; background: #cfcfcf; }
+  }
+}
+
+#page-3 {
+  height: 800px; background: #f0f0f0;
+  .main-title{ background: #000; color: #fff; }
+}
 .home-sign-up-form {
   padding: 15px 10px 1px 10px; background: #fff; .opacity(95);
   input[type=email], input[type=password], input[type=submit] { padding: 7px 5px; margin: 10px 0px; }
 }
 
 .main-title {
-  background: #fff; margin-top: 40px; .opacity(70); text-align: center;
+  background: #fff; margin-top: 80px; .opacity(70); text-align: center;
 }
 
 .sign-form {
@@ -50,9 +66,12 @@ body {
 }
 
 @media (max-width: 767px) {
-  .main-title { padding: 10px; font-size: 22px; }
+  .main-title { padding: 10px; font-size: 22px; margin-top: 20px; }
   .home-sign-up-form { margin: 10px 0 0 0; width: auto; }
   .sign-form { margin: 10px 0 0 auto; width: auto; }
+  #page-1 { height: 350px; margin: -20px -20px 0 -20px; background-position: left top;}
+  #page-2 { height: 350px; margin: -20px -20px 0 -20px; }
+  #page-3 { height: 350px; margin: -20px -20px 0 -20px; }
 }
 
 @import "twitter/bootstrap/bootstrap";

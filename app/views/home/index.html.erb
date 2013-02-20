@@ -1,15 +1,57 @@
-<div class="container">
-  <div class="row">
-    <div class="span12">
-      <h1 class='main-title'>Use LoveBNB to manage and market your Holiday Rental.</h1>
-      <div class='home-sign-up-form'>
-        <%= form_for(@identity, {url: registration_index_path, html: {class: 'form-inline'}}) do |f| %>
-          <%= f.email_field :email, class: "input-large", placeholder: "Email" %>
-          <%= f.password_field :password, class: "input-large", placeholder: "Password" %>
-          <%= f.submit 'Create your account', class: 'btn' %>
-        <% end %>
+<div id='page-1'>
+  <div class='container'>
+    <div class="row">
+      <div class="span12">
+        <h1 class='main-title'>Use LoveBNB to manage and market your Holiday Rental.</h1>
+        <div class='home-sign-up-form'>
+          <%= form_for(@identity, {url: registration_index_path, html: {class: 'form-inline'}}) do |f| %>
+            <%= f.email_field :email, class: "input-large", placeholder: "Email" %>
+            <%= f.password_field :password, class: "input-large", placeholder: "Password" %>
+            <%= f.submit 'Create your account', class: 'btn' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+</div>
+<div id='page-2'>
+  <div class='container'>
+    <div class="row">
+      <div class="span12">
+        <h1 class='main-title'>Set up your Holiday Rental website in just a few easy steps</h1>
+        <div class='tabbable  tabs-left'>
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Select and customize your template</a></li>
+            <li><a href="#tab2" data-toggle="tab">Upload your property details</a></li>
+            <li><a href="#tab3" data-toggle="tab">Configure your website details</a></li>
+            <li><a href="#tab4" data-toggle="tab">Start accepting orders worldwide</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+              <p>Select and customize your template image and text</p>
+            </div>
+            <div class="tab-pane" id="tab2">
+              <p>Upload your property details image and text</p>
+            </div>
+            <div class="tab-pane" id="tab3">
+              <p>Configure your website details</p>
+            </div>
+            <div class="tab-pane" id="tab4">
+              <p>Start accepting orders worldwide</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id='page-3'>
+  <div class='container'>
+    <div class="row">
+      <div class="span12">
+        <h1 class='main-title'>All the features you need to run your Holiday Rental business</h1>
+        <p> LoveBNB takes the hassle out of managing and marketing online holiday rentals </p>
+      </div>
+    </div>
   </div>
 </div>

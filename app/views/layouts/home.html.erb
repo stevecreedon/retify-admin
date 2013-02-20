@@ -41,15 +41,10 @@
   </head>
   <body>
     <%= render 'layouts/main_menu' %>
-    <div class="container">
-      <%= render partial: 'layouts/flash', locals: { flash: flash } %>
-      <%= yield %>
-
-      <footer>
-        <p>&copy; LoveBNB 2012</p>
-      </footer>
-
-    </div> <!-- /container -->
-
+    <%= render partial: 'layouts/flash', locals: { flash: flash } %>
+    <%= yield %>
+    <footer>
+      <p>&copy; LoveBNB 2012</p>
+    </footer>
   </body>
 </html>
