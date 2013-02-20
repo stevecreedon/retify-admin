@@ -7,30 +7,25 @@ describe 'email verification' do
 
       visit root_path
 
-      click_link("sign up here")
-
       fill_in(:identity_email, :with => 'test@test.co.ab')
       fill_in(:identity_password, :with => 'abcdefgh')
-      click_button('sign up')
+      click_button('Create your account')
 
       page.current_path.should == dashboard_index_path
       page.should have_content('please verify your email address')
 
     end
 
-  
-    it 'should not show a nag screen to a verified user' do       
-      
-      user = FactoryGirl.build(:user)
-      user.identities.build(:email => 'joe@test.co', :password => 'password', :provider => 'password')
-      user.save
+    it 'should not show a nag screen to a verified user' do
 
-      identity = user.identities.rentified.first      
+      user = FactoryGirl.create(:user_with_identity)
+
+      identity = user.identities.rentified.first
       identity.email_verified = true
       identity.save!
 
-      sign_in(user.identities.first.email, 'password')
-      
+      sign_in(identity.email, 'pass')
+
       visit root_path
 
       page.current_path.should == dashboard_index_path
