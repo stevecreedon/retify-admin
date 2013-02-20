@@ -3,12 +3,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate!
 
-  helper_method :current_user, :form_helper
+  helper_method :current_user, :form_helper, :notifications
 
   layout Proc.new { |controller| request.xhr? ? 'remote' : 'application' }
 
   def current_user
     @current_user ||= User.where(id: session[:user_id]).first
+  end
+
+  def notifications
+    @notifications ||= []
   end
 
 protected

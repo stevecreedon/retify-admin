@@ -8,15 +8,14 @@ class RegistrationController < ApplicationController
   end
 
   def create
+
     if Identity.where(email: params[:identity][:email], provider: "password").count > 0
       redirect_to(new_session_path, alert: "#{params[:identity][:email]} exists")
       return 
     end
 
-    identity = Identity.create params[:identity].merge(:provider => 'password')
-
     user = User.new
-    user.identities << identity
+    user.identities.build(params[:identity].merge(:provider => 'password'))
 
     if user.save
       session[:user_id] = user.id
@@ -24,6 +23,13 @@ class RegistrationController < ApplicationController
     else
       redirect_to new_registration_path, alert: "sign up failed #{user.errors.full_messages.join(" ")}"
     end  
+  end
+
+  def verify
+    user = User.where(guid: params[:id]).first!
+    identity = user.identities.rentified.first!
+    identity.email_verified = true
+    identity.save!
   end
 
 end

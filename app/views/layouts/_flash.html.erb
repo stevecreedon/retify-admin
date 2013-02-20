@@ -24,4 +24,20 @@
     }).hide();
   </script>
 <% end %>
+<% unless notifications.empty? %>
+  <% notifications.each do |notification| %>
+    <span class="notification"><%= notification %></span>  
+  <% end %>
+  <script>
+    $("span.notifiction").each(function(){
+      noty({
+        text: $(this).html(),
+        layout:'topCenter',
+        animateOpen: { opacity: 'show' },
+        type: 'error'
+      });
+    }).hide();
+  </script>
+<% end %>
+
 
