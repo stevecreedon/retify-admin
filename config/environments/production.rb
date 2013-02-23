@@ -51,6 +51,10 @@ RentifyAdmin::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = YAML.load_file(
+    Rails.root.join('config', 'mailer.yml'))[Rails.env].to_options
 
   # Enable threaded mode
   # config.threadsafe!

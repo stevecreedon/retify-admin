@@ -12,7 +12,7 @@ set :user,         "deploy"
 set :use_sudo,     false
 set :shared_children, shared_children + %w{public/uploads}
 
-set :templater, :templates => ['database']
+set :templater, :templates => ['database', 'mailer']
 
 role :web, hostname                          # Your HTTP server, Apache/etc
 role :app, hostname                          # This may be the same as your `Web` server
