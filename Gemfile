@@ -20,6 +20,8 @@ gem 'carrierwave'
 
 gem 'draper'
 
+gem "transitions", :require => ["transitions", "active_model/transitions"]
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

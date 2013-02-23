@@ -13,7 +13,7 @@ FactoryGirl.define do
 
       before(:create) do | user, evaluator |
         evaluator.identity_count.times do | index |
-          user.identities << FactoryGirl.create(:identity, {
+          user.identities << FactoryGirl.build(:identity, {
             name: user.name, provider: 'password', password: 'pass', user: nil
           })
         end

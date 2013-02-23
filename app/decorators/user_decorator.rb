@@ -1,11 +1,7 @@
 class UserDecorator < ApplicationDecorator
+  delegate_all
 
   def nag?
-    !verified?
+    rentified? && identities.rentified.first.verifying?
   end
-
-  def send_verification_email!
-    
-  end
-
 end
