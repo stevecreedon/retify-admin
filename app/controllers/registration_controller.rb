@@ -30,6 +30,7 @@ class RegistrationController < ApplicationController
     identity = user.identities.rentified.first!
     identity.email_verified = true
     identity.save!
+    render :nothing => true 
   end
 
 end
