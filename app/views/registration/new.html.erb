@@ -7,7 +7,7 @@
           <div class="control-group">
             <%= f.label :email, class: 'control-label' %>
             <div class="controls">
-              <%= f.email_field :email, class: "input-large", placeholder: "Email" %>
+              <%= f.email_field :email, value: flash[:email], class: "input-large", placeholder: "Email" %>
             </div>
           </div>
           <div class="control-group">

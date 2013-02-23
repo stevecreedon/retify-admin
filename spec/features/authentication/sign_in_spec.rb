@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'home page' do
+describe 'sign-in' do
 
   let(:user){FactoryGirl.create(:user_with_identity)}
   let(:identity){ user.identities.rentified.first!}
