@@ -18,3 +18,4 @@
 *.swp
 /public/property_photo/*
 /public/uploads/*
+.ruby-version
