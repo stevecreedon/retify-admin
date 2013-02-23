@@ -29,12 +29,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def verified? 
-    identities.rentified.unverified.count == 0 
+  def rentified?
+   identities.rentified.count > 0;
   end
 
   def email
     identities.rentified.first.try(:email)
   end
-
-end
+  
+ end

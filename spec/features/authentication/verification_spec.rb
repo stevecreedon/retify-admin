@@ -21,7 +21,7 @@ describe 'email verification' do
       user = FactoryGirl.create(:user_with_identity)
 
       identity = user.identities.rentified.first
-      identity.email_verified = true
+      identity.verify!
       identity.save!
 
       sign_in(identity.email, 'pass')
@@ -41,7 +41,7 @@ describe 'email verification' do
 
       visit verify_registration_path(user.guid)
       user.reload
-      user.verified?.should be_true
+      user.identities.rentified.first.verified?.should be_true
     end
 
   end

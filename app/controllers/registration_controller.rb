@@ -30,8 +30,7 @@ class RegistrationController < ApplicationController
   def verify
     user = User.where(guid: params[:id]).first!
     identity = user.identities.rentified.first!
-    identity.email_verified = true
-    identity.save!
+    identity.verify!
     render :nothing => true 
   end
 
