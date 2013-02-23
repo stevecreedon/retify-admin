@@ -19,3 +19,4 @@
 /public/property_photo/*
 /public/uploads/*
 .ruby-version
+.rvmrc
