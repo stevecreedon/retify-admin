@@ -2,22 +2,24 @@ RentifyAdmin::Application.routes.draw do
 
   get "sites/index"
 
-  resources :login, :only => [:index]
-  resources :home, :only => [:index]
+  resources :login, only: [:index]
+  resources :home, only: [:index]
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure", to: "sessions#failure"
 
   resource :session do
-    get :new, :path => 'sign_in', :as => "new"
-    get :destroy, :path => 'sign_out', :as => "destroy"
+    get :new, path: 'sign_in', as: "new"
+    get :destroy, path: 'sign_out', as: "destroy"
   end
 
-  resources :registration, :only => [:new, :create] do
+  resources :registration, only: [:new, :create] do
     member do
       get 'verify'
     end
   end
+
+  resources :accounts, only: [:edit, :update]
 
   resources :sites
   resources :properties do
@@ -26,7 +28,7 @@ RentifyAdmin::Application.routes.draw do
     resources :articles,   controller: 'properties/articles'
     resources :directions, controller: 'properties/directions', only: [:index, :new, :create]
   end
-  resources :dashboard,  :only => [:index]
+  resources :dashboard,  only: [:index]
 
   root :to => 'home#index'
 

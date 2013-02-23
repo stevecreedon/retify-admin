@@ -1,74 +1,63 @@
 require 'spec_helper'
 
 describe 'sign-up' do
-
   describe 'from home page' do
 
-   it 'should allow the user to sign up from the home page' do
+    it 'should allow the user to sign up from the home page' do
+      visit root_path
 
-    visit root_path
+      fill_in 'identity[email]', :with => 'some.email@address.co.uk'
+      fill_in 'identity[password]', :with => 'abcxyz'
 
-    fill_in 'identity[email]', :with => 'some.email@address.co.uk'
-    fill_in 'identity[password]', :with => 'abcxyz'
+      click_on 'Create your account'
 
-    click_on 'Create your account'
+      current_path.should == edit_account_path(User.first.id)
 
-    current_path.should == dashboard_index_path
+      Identity.where(email: 'some.email@address.co.uk', provider: 'password').first.should_not be_nil
+    end
 
-    Identity.where(email: 'some.email@address.co.uk', provider: 'password').first.should_not be_nil
- 
-   end
+    it 'should redirect the user to the sign-up page if the sign-up fails' do
+      visit root_path
 
-   it 'should redirect the user to the sign-up page if the sign-up fails' do
+      fill_in 'identity[email]', :with => 'some.email@address.co.uk'
 
-    visit root_path
+      click_on 'Create your account'
 
-    fill_in 'identity[email]', :with => 'some.email@address.co.uk'
+      current_path.should == new_registration_path
 
-    click_on 'Create your account'
+      page.should have_content('sign up failed')
+    end
 
-    current_path.should == new_registration_path
+    it 'should redirect the user to the sign-in page if the email exists' do
+      user = FactoryGirl.create(:user_with_identity)
+      identity = user.identities.rentified.first!
 
-    page.should have_content('sign up failed')
+      visit root_path
 
-   end
+      fill_in 'identity[email]', :with => identity.email
 
-   it 'should redirect the user to the sign-in page if the email exists' do
+      click_on 'Create your account'
 
-    user = FactoryGirl.create(:user_with_identity)
-    identity = user.identities.rentified.first!
+      current_path.should == new_session_path
 
+      find_field('sessions[email]').value.should == identity.email
 
-    visit root_path
-
-    fill_in 'identity[email]', :with => identity.email
-
-    click_on 'Create your account'
-
-    current_path.should == new_session_path
-
-    find_field('sessions[email]').value.should == identity.email
-
-    page.should have_content("#{identity.email} exists")
-
-   end
-
-
+      page.should have_content("#{identity.email} exists")
+    end
   end
 
   describe 'from sign up page' do
-
     it 'should allow the user to sign up' do
-     visit new_registration_path
+      visit new_registration_path
 
-     fill_in 'identity[email]', :with => 'some.email@address.co.uk'
-     fill_in 'identity[password]', :with => 'abcxyz'
+      fill_in 'identity[email]', :with => 'some.email@address.co.uk'
+      fill_in 'identity[password]', :with => 'abcxyz'
 
-     click_on 'Sign up'
+      click_on 'Sign up'
 
-     current_path.should == dashboard_index_path
- 
-     Identity.where(email: 'some.email@address.co.uk', provider: 'password').first.should_not be_nil
+      current_path.should == edit_account_path(User.first.id)
+
+      Identity.where(email: 'some.email@address.co.uk', provider: 'password').first.should_not be_nil
    end
 
    it 'should return the user to the sign up page when something fails' do
@@ -82,34 +71,25 @@ describe 'sign-up' do
      current_path.should == new_registration_path
 
      find_field('identity[email]').value.should == 'some.email@address.co.uk'
- 
    end
-
 
    it 'should redirect the user to the sign-in page if the email exists' do
+     user = FactoryGirl.create(:user_with_identity)
+     identity = user.identities.rentified.first!
 
-    user = FactoryGirl.create(:user_with_identity)
-    identity = user.identities.rentified.first!
 
+     visit new_registration_path
 
-    visit new_registration_path
+     fill_in 'identity[email]', :with => identity.email
 
-    fill_in 'identity[email]', :with => identity.email
+     click_on 'Sign up'
 
-    click_on 'Sign up'
+     current_path.should == new_session_path
 
-    current_path.should == new_session_path
+     find_field('sessions[email]').value.should == identity.email
 
-    find_field('sessions[email]').value.should == identity.email
-
-    page.should have_content("#{identity.email} exists")
-
+     page.should have_content("#{identity.email} exists")
    end
-
-
-  
-
   end
-
 end
 

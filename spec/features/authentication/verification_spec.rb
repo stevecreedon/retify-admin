@@ -5,13 +5,11 @@ describe 'email verification' do
   context 'nag notification' do
     it 'should show allow a new user to log in but show a nag screen' do
 
-      visit root_path
+      user = FactoryGirl.create(:user_with_identity)
+      sign_in(user.identities.rentified.first.email, 'pass')
 
-      fill_in(:identity_email, :with => 'test@test.co.ab')
-      fill_in(:identity_password, :with => 'abcdefgh')
-      click_button('Create your account')
+      visit dashboard_index_path
 
-      page.current_path.should == dashboard_index_path
       page.should have_content('please verify your email address')
 
     end

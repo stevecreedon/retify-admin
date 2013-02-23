@@ -1,0 +1,73 @@
+<div id='page-1'>
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <h1 class='main-title'>Some final details before your account is set up</h1>
+        <div class='account-form'>
+          <%= form_for @user, url: account_path(@user.id), html: {class: 'form-horizontal'} do |f| %>
+            <fieldset>
+              <div class="control-group <%= 'error' if @user.has_error?(:name) %>">
+                <%= f.label :name, 'Name', class: 'control-label' %>
+                <div class="controls">
+                  <%= f.text_field :name, class: 'input-xlarge' %>
+                  <%= @user.error_message(:name) %>
+                </div>
+              </div>
+              <div class="control-group <%= 'error' if @user.has_error?(:phone) %>">
+                <%= f.label :phone, 'Phone', class: 'control-label' %>
+                <div class="controls">
+                  <%= f.text_field :phone, class: 'input-xlarge' %>
+                  <%= @user.error_message(:phone) %>
+                </div>
+              </div>
+              <fieldset>
+                <legend>Address</legend>
+                <%= f.fields_for @user.address do |address_form| %>
+                  <% address = @user.address.decorate %>
+                  <div class="control-group <%= 'error' if address.has_error?(:address) %>">
+                    <%= address_form.label :address, 'Street', class: 'control-label' %>
+                    <div class="controls">
+                      <%= address_form.text_field :address, class: 'input-xlarge' %>
+                      <%= address.error_message(:address) %>
+                    </div>
+                  </div>
+                  <div class="control-group <%= 'error' if address.has_error?(:state) %>">
+                    <%= address_form.label :state, 'State', class: 'control-label' %>
+                    <div class="controls">
+                      <%= address_form.text_field :state, class: 'input-xlarge' %>
+                      <%= address.error_message(:state) %>
+                    </div>
+                  </div>
+                  <div class="control-group <%= 'error' if address.has_error?(:city) %>">
+                    <%= address_form.label :city, 'City', class: 'control-label' %>
+                    <div class="controls">
+                      <%= address_form.text_field :city, class: 'input-xlarge' %>
+                      <%= address.error_message(:city) %>
+                    </div>
+                  </div>
+                  <div class="control-group <%= 'error' if address.has_error?(:country) %>">
+                    <%= address_form.label :country, 'Country', class: 'control-label' %>
+                    <div class="controls">
+                      <%= address_form.text_field :country, class: 'input-xlarge' %>
+                      <%= address.error_message(:country) %>
+                    </div>
+                  </div>
+                  <div class="control-group <%= 'error' if address.has_error?(:post_code) %>">
+                    <%= address_form.label :post_code, 'Post code', class: 'control-label' %>
+                    <div class="controls">
+                      <%= address_form.text_field :post_code, class: 'input-xlarge' %>
+                      <%= address.error_message(:post_code) %>
+                    </div>
+                  </div>
+                <% end %>
+              </fieldset>
+            </fieldset>
+            <div class="form-actions">
+              <%= f.submit 'I\'m done', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

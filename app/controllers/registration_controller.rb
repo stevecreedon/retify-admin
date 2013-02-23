@@ -20,11 +20,11 @@ class RegistrationController < ApplicationController
 
     if user.save
       session[:user_id] = user.id
-      redirect_to dashboard_index_path, notice: "welcome to micro hotels"
+      redirect_to edit_account_path(user.id), notice: "welcome to micro hotels"
     else
       flash[:email] = params[:identity].try(:[], :email)
       redirect_to new_registration_path, alert: "sign up failed #{user.errors.full_messages.join(" ")}"
-    end  
+    end
   end
 
   def verify
