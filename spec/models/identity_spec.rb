@@ -9,6 +9,7 @@ describe Identity do
       it 'should send a verification email on creation for a password provider' do
         user = build_user         
         mail_delivery do
+          user.identities.first.valid?
           user.save!
         end.should be_true
       end
@@ -17,30 +18,36 @@ describe Identity do
 
        it 'should not be valid if the password is nil' do
         identity = Identity.new(:password => nil, :provider => 'password')
+        identity.updating_password = true
         identity.valid?
         identity.errors[:password].should == ["no password provided"]
        end
 
        it 'should not be valid if the password is an empty string' do
         identity = Identity.new(:password => '   ', :provider => 'password')
+        identity.updating_password = true
         identity.valid?
         identity.errors[:password].should == ["no password provided"]
        end
 
        it 'should not be valid if the password contains non-alphanumrics' do
         identity = Identity.new(:password => 'xzy:123', :provider => 'password')
+        identity.updating_password = true
         identity.valid?
         identity.errors[:password].should include("password must contain only characters or numbers")
        end
 
        it 'should not be valid if the password is less than 6 characters' do
         identity = Identity.new(:password => 'xzy1', :provider => 'password')
+        identity.updating_password = true
         identity.valid?
         identity.errors[:password].should include("password must be at least 6 characters long")
        end
 
        it 'should not be valid if the password does not match confirm' do
-        identity = Identity.new(:password => 'xzy123', :confirm => '123xyz', :provider => 'password')
+        identity = Identity.new(:password => 'xzy123', :provider => 'password')
+        identity.updating_password = true
+        identity.confirm = '123xyz'
         identity.valid?
         identity.errors[:password].should include("password and confirm password do not match")
        end
@@ -65,8 +72,7 @@ describe Identity do
       it 'should not verify password for a non-password provider' do
  
         identity = Identity.new(:provider => 'twaddle')
-        Identity.private_instance_methods.should include(:validate_password)
-        identity.should_receive(:validate_password).never         
+        Identity.private_instance_methods.should_not include(:validate_password)
         identity.valid?    
       end
 

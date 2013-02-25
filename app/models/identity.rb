@@ -3,18 +3,18 @@ class Identity < ActiveRecord::Base
 
   has_secure_password
 
-  attr_accessor :confirm
-  attr_accessible :password, :provider, :name, :email, :confirm
+  attr_accessor :confirm, :updating_password
+  attr_accessible :provider, :name, :email, :password, :confirm
 
   validates :provider, :presence => true
   validates :password_digest, :presence => true
-  validate :validate_password, :if => Proc.new{|identity| identity.rentified?}
-
+  validates_with PasswordValidator, :if => lambda{|model| model.updating_password} 
+ 
   belongs_to :user
 
   scope :rentified, lambda{where(:provider => "password")}
 
-  after_create Proc.new{|identity| identity.require_verification! if identity.rentified?}
+  after_create Proc.new{|model| model.require_verification! if model.rentified?}
 
   state_machine do
     state :new # first one is initial state
@@ -34,29 +34,7 @@ class Identity < ActiveRecord::Base
     provider == 'password'
   end
 
-  private
-
-  def validate_password
-
-    if password.blank?
-      errors.add(:password, 'no password provided')
-      return  
-    end
- 
-    unless password =~ /^[A-Za-z0-9]*$/
-      errors.add(:password, 'password must contain only characters or numbers')
-    end
-
-    if password.size < 6
-      errors.add(:password, 'password must be at least 6 characters long')
-    end
-
-    if password != confirm
-      errors.add(:password, 'password and confirm password do not match')
-    end
-
-  end
-
+  
   def send_verification_email
      mail = Verifier.verify(self.user)
      mail.deliver 
