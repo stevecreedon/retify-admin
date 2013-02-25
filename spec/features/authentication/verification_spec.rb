@@ -6,7 +6,7 @@ describe 'email verification' do
     it 'should show allow a new user to log in but show a nag screen' do
 
       user = FactoryGirl.create(:user_with_identity)
-      sign_in(user.identities.rentified.first.email, 'pass')
+      sign_in(user.identities.rentified.first.email)
 
       visit dashboard_index_path
 
@@ -22,7 +22,7 @@ describe 'email verification' do
       identity.verify!
       identity.save!
 
-      sign_in(identity.email, 'pass')
+      sign_in(identity.email, 'passwd')
 
       visit root_path
 

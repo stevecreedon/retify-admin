@@ -11,7 +11,7 @@ describe 'Sites' do
   context 'user authenticated', :js => true do
     let(:user) { FactoryGirl.create(:user_with_identity) }
     before do
-      sign_in(user.identities.first.email, 'pass')
+      sign_in(user.identities.first.email, 'passwd')
     end
 
     it 'adds new site' do

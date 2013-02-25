@@ -12,7 +12,7 @@ describe 'Properties' do
     let(:user)    { FactoryGirl.create(:user_with_identity) }
     let(:address) { FactoryGirl.create(:address) }
     before do
-      sign_in(user.identities.first.email, 'pass')
+      sign_in(user.identities.first.email, 'passwd')
     end
 
     it 'adds new property' do

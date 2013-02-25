@@ -14,7 +14,7 @@ describe 'Property calendars' do
   context 'user authenticated', :js => true do
     before do
       property # create property
-      sign_in(user.identities.first.email, 'pass')
+      sign_in(user.identities.first.email, 'passwd')
     end
 
     it 'adds new calendar' do

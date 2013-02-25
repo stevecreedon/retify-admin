@@ -5,7 +5,7 @@ describe User do
   context 'guid' do
 
     it 'should create a guid on model creation' do
-       identity = Identity.new(:email => 'joe@joe.co', :password => 'dsfdsdfs', :provider => 'password')
+       identity = Identity.new(:email => 'joe@joe.co', :password => 'passwd', :provider => 'password')
        user = User.new
        user.identities << identity
        user.save!

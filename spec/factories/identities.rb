@@ -7,10 +7,9 @@ FactoryGirl.define do
   end
 
   factory :identity do
-    name     { user.name }
     email    { generate(:email) }
-    password 'pass'
+    password 'passwd'
     provider 'password'
-    user
+    confirm 'passwd'
   end
 end

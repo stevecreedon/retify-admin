@@ -1,7 +1,7 @@
 # coding: utf-8
 module MyHelpers
   module AuthenticationHelpers
-    def sign_in(email, password = 'pass')
+    def sign_in(email, password = 'passwd')
       visit new_session_path
 
       within '.sign-form' do

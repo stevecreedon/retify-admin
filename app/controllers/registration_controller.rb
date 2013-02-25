@@ -15,8 +15,10 @@ class RegistrationController < ApplicationController
       return 
     end
 
-    user = User.new
-    user.identities.build(params[:identity].merge(:provider => 'password'))
+    user = User.new 
+    identity = Identity.new(params[:identity].merge(:provider => 'password'))
+    
+    user.identities << identity
 
     if user.save
       session[:user_id] = user.id

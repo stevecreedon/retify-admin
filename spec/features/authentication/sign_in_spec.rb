@@ -31,7 +31,7 @@ describe 'sign-in' do
        current_path.should == new_session_path
 
        find_field('sessions[email]').value.should == identity.email
-       fill_in 'sessions[password]', :with => 'pass'
+       fill_in 'sessions[password]', :with => 'passwd'
 
        click_on 'Sign in'
 
@@ -47,7 +47,7 @@ describe 'sign-in' do
      visit new_session_path
      
      fill_in 'sessions[email]', :with => identity.email
-     fill_in 'sessions[password]', :with => 'pass'
+     fill_in 'sessions[password]', :with => 'passwd'
   
      click_on 'Sign in'
      

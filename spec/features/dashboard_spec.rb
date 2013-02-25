@@ -13,7 +13,7 @@ describe 'Dashboard' do
     let(:user)    { FactoryGirl.create(:user_with_identity) }
 
     it 'shows the dashboard content' do
-      sign_in(user.identities.first.email, 'pass')
+      sign_in(user.identities.first.email, 'passwd')
 
       visit dashboard_index_path
 
