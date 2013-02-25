@@ -3,10 +3,12 @@ class Identity < ActiveRecord::Base
 
   has_secure_password
 
-  attr_accessible :password, :provider, :name, :email
+  attr_accessor :confirm
+  attr_accessible :password, :provider, :name, :email, :confirm
 
   validates :provider, :presence => true
-  validates :email, :presence => true
+  validates :password_digest, :presence => true
+  validate :validate_password, :if => Proc.new{|identity| identity.rentified?}
 
   belongs_to :user
 
@@ -33,6 +35,27 @@ class Identity < ActiveRecord::Base
   end
 
   private
+
+  def validate_password
+
+    if password.blank?
+      errors.add(:password, 'no password provided')
+      return  
+    end
+ 
+    unless password =~ /^[A-Za-z0-9]*$/
+      errors.add(:password, 'password must contain only characters or numbers')
+    end
+
+    if password.size < 6
+      errors.add(:password, 'password must be at least 6 characters long')
+    end
+
+    if password != confirm
+      errors.add(:password, 'password and confirm password do not match')
+    end
+
+  end
 
   def send_verification_email
      mail = Verifier.verify(self.user)
