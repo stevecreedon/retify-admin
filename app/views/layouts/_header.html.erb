@@ -249,6 +249,9 @@
           </a>
           <ul class="dropdown-menu">
             <li><a href="#"><i class="icon-user"></i> Profile</a></li>
+            <% if current_user.rentified? %>
+             <li><a href="<%= edit_password_path %>"><i class="icon-user"></i> Change password</a></li>
+            <% end %>
             <li><a href="<%= destroy_session_path %>"><i class="icon-off"></i> Logout</a></li>
           </ul>
         </li>
