@@ -2,46 +2,61 @@ require 'spec_helper'
 
 describe 'change password' do
 
-  let(:user){FactoryGirl.create(:user_with_identity)}
-  let(:identity){ user.identities.rentified.first!}
+  context 'rentified users' do
 
-  it 'should allow the user to change their password' do
+     let(:user){FactoryGirl.create(:user_with_identity)}
+     let(:identity){ user.identities.rentified.first!}
 
-    sign_in(user.email)
-    
-    visit edit_password_path
+      it 'should allow the user to change their password', :js => true do
 
-    fill_in :password, with: 'abcxzy'
-    fill_in :confirm, with: 'abcxzy'
+        sign_in(user.email)
+        
+        visit dashboard_index_path
 
-    click_on 'change my password'
+        click_link("user-dropdown")
 
-    current_path.should == dashboard_index_path
+        click_link("Change password")
 
-    page.should have_content('happy days - password changed')    
+        fill_in 'identity[password]', with: 'abcxzy'
+        fill_in 'identity[confirm]', with: 'abcxzy'
 
-    sign_out
+        click_on 'change my password'
 
-    sign_in(user.email, 'abcxzy')
+        current_path.should == dashboard_index_path
 
-    current_path.should == dashboard_index_path
+        page.should have_content('happy days - password changed')    
 
-  end
+        sign_out
 
-  it 'should return the user to the change password page if the password/confirmation are not valid' do
+        sign_in(user.email, 'abcxzy')
 
-    sign_in(user.email)
-    
-    visit edit_password_path
+        current_path.should == dashboard_index_path
 
-    fill_in :password, with: 'abcxzy'
-    fill_in :confirm, with: '123789'
+      end
 
-    click_on 'change my password'
+      it 'should return the user to the change password page if the password/confirmation are not valid' do
 
-    current_path.should == edit_password_path
-    page.should have_content('password and confirm password do not match')
- 
-  end
+          sign_in(user.email)
+        
+          visit edit_password_path
 
+          fill_in 'identity[password]', with: 'abcxzy'
+          fill_in 'identity[confirm]', with: '123789'
+
+          click_on 'change my password'
+
+          current_path.should == edit_password_path
+          page.should have_content('password and confirm password do not match')
+       
+      end
+
+
+    end
+
+    context 'non-password user' do
+      
+       pending 'should not allow a non-password provider to change password'
+
+    end
+   
 end
