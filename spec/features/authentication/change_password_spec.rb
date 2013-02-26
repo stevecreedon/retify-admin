@@ -17,8 +17,8 @@ describe 'change password' do
 
         click_link("Change password")
 
-        fill_in 'identity[password]', with: 'abcxzy'
-        fill_in 'identity[confirm]', with: 'abcxzy'
+        fill_in :password, with: 'abcxzy'
+        fill_in :confirm, with: 'abcxzy'
 
         click_on 'change my password'
 
@@ -40,8 +40,8 @@ describe 'change password' do
         
           visit edit_password_path
 
-          fill_in 'identity[password]', with: 'abcxzy'
-          fill_in 'identity[confirm]', with: '123789'
+          fill_in :password, with: 'abcxzy'
+          fill_in :confirm, with: '123789'
 
           click_on 'change my password'
 
