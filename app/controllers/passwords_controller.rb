@@ -7,10 +7,10 @@ class PasswordsController < ApplicationController
   def update
   
     identity = current_user.identities.rentified.first || not_found
-
-    identity.updating_password = true
+    identity.extend(PasswordIdentity)
+    identity.confirm = params[:confirm]
     
-    if identity.update_attributes(params[:identity])
+    if identity.update_attributes(password: params[:password])
       flash[:notice] = 'happy days - password changed'
       redirect_to dashboard_index_path
     else

@@ -10,6 +10,5 @@ FactoryGirl.define do
     email    { generate(:email) }
     password 'passwd'
     provider 'password'
-    confirm 'passwd'
   end
 end

@@ -3,12 +3,11 @@ class Identity < ActiveRecord::Base
 
   has_secure_password
 
-  attr_accessor :confirm, :updating_password
-  attr_accessible :provider, :name, :email, :password, :confirm
+  attr_accessible :provider, :name, :email, :password
 
   validates :provider, :presence => true
   validates :password_digest, :presence => true
-  validates_with PasswordValidator, :if => lambda{|model| model.updating_password} 
+  validates_with PasswordValidator, :if => lambda{|model| model.is_a?(PasswordIdentity)} 
  
   belongs_to :user
 

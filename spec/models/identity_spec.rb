@@ -18,35 +18,35 @@ describe Identity do
 
        it 'should not be valid if the password is nil' do
         identity = Identity.new(:password => nil, :provider => 'password')
-        identity.updating_password = true
+        identity.extend(PasswordIdentity)
         identity.valid?
         identity.errors[:password].should == ["no password provided"]
        end
 
        it 'should not be valid if the password is an empty string' do
         identity = Identity.new(:password => '   ', :provider => 'password')
-        identity.updating_password = true
+        identity.extend(PasswordIdentity)
         identity.valid?
         identity.errors[:password].should == ["no password provided"]
        end
 
        it 'should not be valid if the password contains non-alphanumrics' do
         identity = Identity.new(:password => 'xzy:123', :provider => 'password')
-        identity.updating_password = true
+        identity.extend(PasswordIdentity)
         identity.valid?
         identity.errors[:password].should include("password must contain only characters or numbers")
        end
 
        it 'should not be valid if the password is less than 6 characters' do
         identity = Identity.new(:password => 'xzy1', :provider => 'password')
-        identity.updating_password = true
+        identity.extend(PasswordIdentity)
         identity.valid?
         identity.errors[:password].should include("password must be at least 6 characters long")
        end
 
        it 'should not be valid if the password does not match confirm' do
         identity = Identity.new(:password => 'xzy123', :provider => 'password')
-        identity.updating_password = true
+        identity.extend(PasswordIdentity)
         identity.confirm = '123xyz'
         identity.valid?
         identity.errors[:password].should include("password and confirm password do not match")
