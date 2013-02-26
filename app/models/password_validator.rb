@@ -5,20 +5,20 @@ class PasswordValidator < ActiveModel::Validator
     raise "cannot validate password for non-password provider" unless record.rentified?
 
     if record.password.blank?
-      record.errors.add(:password, 'no password provided')
+      record.errors.add(:password, 'not provided')
       return  
     end
  
     unless record.password =~ /^[A-Za-z0-9]*$/
-      record.errors.add(:password, 'password must contain only characters or numbers')
+      record.errors.add(:password, 'must contain only characters or numbers')
     end
 
     if record.password.size < 6
-      record.errors.add(:password, 'password must be at least 6 characters long')
+      record.errors.add(:password, 'must be at least 6 characters long')
     end
 
     if record.password != record.confirm
-      record.errors.add(:password, 'password and confirm password do not match')
+      record.errors.add(:password, 'and Password Confirmation do not match')
     end
 
   end

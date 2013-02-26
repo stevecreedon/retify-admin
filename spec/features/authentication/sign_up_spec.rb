@@ -13,6 +13,8 @@ describe 'sign-up' do
 
       current_path.should == edit_account_path(User.first.id)
 
+      page.should have_content("welcome to loveBnB, we hope you'll come back often")
+
       Identity.where(email: 'some.email@address.co.uk', provider: 'password').first.should_not be_nil
     end
 
@@ -20,12 +22,13 @@ describe 'sign-up' do
       visit root_path
 
       fill_in 'identity[email]', :with => 'some.email@address.co.uk'
+      fill_in 'identity[password]', :with => 'abc'
 
       click_on 'Create your account'
 
       current_path.should == new_registration_path
 
-      page.should have_content('sign up failed')
+      page.should have_content('Password must be at least 6 characters long')
     end
 
     it 'should redirect the user to the sign-in page if the email exists' do
@@ -42,7 +45,7 @@ describe 'sign-up' do
 
       find_field('sessions[email]').value.should == identity.email
 
-      page.should have_content("#{identity.email} exists")
+      page.should have_content("you've already signed-up, please login here")
     end
   end
 
@@ -88,7 +91,7 @@ describe 'sign-up' do
 
      find_field('sessions[email]').value.should == identity.email
 
-     page.should have_content("#{identity.email} exists")
+     page.should have_content("you've already signed-up, please login here")
    end
   end
 end

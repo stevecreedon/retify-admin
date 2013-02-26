@@ -17,6 +17,8 @@ describe 'sign-in' do
 
        current_path.should == new_session_path
 
+       page.should have_content("you've already signed-up, please login here")
+
      end
 
      it 'should, on redirect, include the existing users email so that they only repeat the password' do
@@ -53,6 +55,8 @@ describe 'sign-in' do
      
      current_path.should == dashboard_index_path
 
+     page.should have_content("Happy days - you've come back")
+
     end
 
     it 'should return a bad sign-in back to the sign-in page' do
@@ -65,6 +69,8 @@ describe 'sign-in' do
       click_on 'Sign in'
      
       current_path.should == new_session_path
+
+      page.should have_content("Sorry, sign-in failed for this username & password")
            
     end
 

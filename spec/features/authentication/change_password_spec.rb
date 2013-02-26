@@ -46,7 +46,7 @@ describe 'change password' do
           click_on 'change my password'
 
           current_path.should == edit_password_path
-          page.should have_content('password and confirm password do not match')
+          page.should have_content('Password and Password Confirmation do not match')
        
       end
 

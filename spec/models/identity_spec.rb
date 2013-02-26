@@ -20,28 +20,28 @@ describe Identity do
         identity = Identity.new(:password => nil, :provider => 'password')
         identity.extend(PasswordIdentity)
         identity.valid?
-        identity.errors[:password].should == ["no password provided"]
+        identity.errors[:password].should == ["not provided"]
        end
 
        it 'should not be valid if the password is an empty string' do
         identity = Identity.new(:password => '   ', :provider => 'password')
         identity.extend(PasswordIdentity)
         identity.valid?
-        identity.errors[:password].should == ["no password provided"]
+        identity.errors[:password].should == ["not provided"]
        end
 
        it 'should not be valid if the password contains non-alphanumrics' do
         identity = Identity.new(:password => 'xzy:123', :provider => 'password')
         identity.extend(PasswordIdentity)
         identity.valid?
-        identity.errors[:password].should include("password must contain only characters or numbers")
+        identity.errors[:password].should include("must contain only characters or numbers")
        end
 
        it 'should not be valid if the password is less than 6 characters' do
         identity = Identity.new(:password => 'xzy1', :provider => 'password')
         identity.extend(PasswordIdentity)
         identity.valid?
-        identity.errors[:password].should include("password must be at least 6 characters long")
+        identity.errors[:password].should include("must be at least 6 characters long")
        end
 
        it 'should not be valid if the password does not match confirm' do
@@ -49,7 +49,7 @@ describe Identity do
         identity.extend(PasswordIdentity)
         identity.confirm = '123xyz'
         identity.valid?
-        identity.errors[:password].should include("password and confirm password do not match")
+        identity.errors[:password].should include("and Password Confirmation do not match")
        end
       
       end
