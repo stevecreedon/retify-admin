@@ -16,7 +16,8 @@ class RegistrationController < ApplicationController
       return 
     end
 
-    user = User.new 
+    user = User.new
+
     identity = Identity.new(params[:identity].merge(:provider => 'password'))
     identity.extend(PasswordIdentity)
     identity.confirm = params[:identity].try(:[], :password) 
@@ -32,7 +33,8 @@ class RegistrationController < ApplicationController
   end
 
   def verify
-    user = User.where(guid: params[:id]).first!
+    token = IdentityToken.where(guid: params[:id]).first!
+    user = token.user
     identity = user.identities.rentified.first!
     identity.verify!
     render :nothing => true 

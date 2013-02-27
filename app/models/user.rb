@@ -3,19 +3,18 @@ class User < ActiveRecord::Base
   has_many :sites
   has_many :identities
 
+  has_many :identity_tokens
+
   belongs_to :address
 
   accepts_nested_attributes_for :address
-
-  before_create {|model| model.guid = SecureRandom.urlsafe_base64}
-
+  
   attr_accessible :name, :phone
 
   validates :identities, :presence => true
   validates :name,  :presence => true, unless: 'new_record?'
   validates :phone, :presence => true, unless: 'new_record?'
-
-
+  
   def self.from_omniauth(auth)
     #note we don't use name in this lookup. Suspect uid is a combination of oauth[name] and password 
     identity = Identity.where(provider: auth["provider"], password_digest: auth["uid"]).first
@@ -44,6 +43,15 @@ class User < ActiveRecord::Base
 
   def email
     identities.rentified.first.try(:email)
+  end
+
+  def email_validation_token!
+    identity_tokens.validate_email.delete_all
+    identity_tokens.create!(:purpose => 'validate_email')
+  end
+
+  def email_validation_token
+    identity_tokens.validate_email.first!
   end
   
  end

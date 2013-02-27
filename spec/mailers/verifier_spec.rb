@@ -14,7 +14,13 @@ describe Verifier do
   end
 
   it 'should have a link to the registration_controller#verify action' do
-    mail.body.should have_content(verify_registration_path(user.guid))
+    mail.body.should have_content(verify_registration_path(user.identity_tokens.validate_email.first.guid))
+  end
+
+  it 'should generate an identity token for email verification' do
+    user.identity_tokens.delete_all
+    Verifier.verify(user)
+    user.identity_tokens.first.purpose.should == 'validate_email'
   end
 
 end

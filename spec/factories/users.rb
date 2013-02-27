@@ -5,7 +5,7 @@ FactoryGirl.define do
     name     "User name"
     phone    "0987654321"
     address
-
+    
     factory :user_with_identity do
       ignore do
         identity_count 1

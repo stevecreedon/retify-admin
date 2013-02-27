@@ -37,7 +37,7 @@ describe 'email verification' do
     it 'should verify the user with the supplied guid' do
       user = FactoryGirl.create(:user_with_identity)
 
-      visit verify_registration_path(user.guid)
+      visit verify_registration_path(user.email_validation_token.guid)
       user.reload
       user.identities.rentified.first.verified?.should be_true
     end

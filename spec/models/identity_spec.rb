@@ -9,7 +9,6 @@ describe Identity do
       it 'should send a verification email on creation for a password provider' do
         user = build_user         
         mail_delivery do
-          user.identities.first.valid?
           user.save!
         end.should be_true
       end
