@@ -39,6 +39,7 @@ gem 'jquery-ui-rails'
 
 
 group :test, :development do
+  gem 'timecop'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
