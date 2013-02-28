@@ -2,6 +2,6 @@ class UserDecorator < ApplicationDecorator
   delegate_all
 
   def nag?
-    rentified? && identities.rentified.first.verifying?
+    identity = password_identity.try(:verifying?)
   end
 end

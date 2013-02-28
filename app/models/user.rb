@@ -37,12 +37,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def rentified?
-   identities.rentified.count > 0;
+  def password_identity
+    identities.where(provider: PasswordIdentity::PROVIDER).first
   end
 
   def email
-    identities.rentified.first.try(:email)
+    password_identity.try(:email)
   end
 
   def email_validation_token!

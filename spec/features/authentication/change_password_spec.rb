@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe 'change password' do
 
-  context 'rentified users' do
+  context 'password identity users' do
 
      let(:user){FactoryGirl.create(:user_with_identity)}
-     let(:identity){ user.identities.rentified.first!}
+     let(:identity){ user.password_identity}
 
       it 'should allow the user to change their password', :js => true do
 

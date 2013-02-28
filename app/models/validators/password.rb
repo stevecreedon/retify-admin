@@ -1,8 +1,7 @@
-class PasswordValidator < ActiveModel::Validator 
+module Validators
+ class Password < ActiveModel::Validator 
      
    def validate(record)
-
-    raise "cannot validate password for non-password provider" unless record.rentified?
 
     if record.password.blank?
       record.errors.add(:password, 'not provided')
@@ -22,5 +21,6 @@ class PasswordValidator < ActiveModel::Validator
     end
 
   end
-  
+
+ end
 end

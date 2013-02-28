@@ -33,7 +33,7 @@ describe 'sign-up' do
 
     it 'should redirect the user to the sign-in page if the email exists' do
       user = FactoryGirl.create(:user_with_identity)
-      identity = user.identities.rentified.first!
+      identity = user.password_identity
 
       visit root_path
 
@@ -78,7 +78,7 @@ describe 'sign-up' do
 
    it 'should redirect the user to the sign-in page if the email exists' do
      user = FactoryGirl.create(:user_with_identity)
-     identity = user.identities.rentified.first!
+     identity = user.password_identity
 
 
      visit new_registration_path

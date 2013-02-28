@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'sign-in' do
 
   let(:user){FactoryGirl.create(:user_with_identity)}
-  let(:identity){ user.identities.rentified.first!}
+  let(:identity){ user.password_identity}
 
   describe 'existing user trying to sign-in from home page' do
 

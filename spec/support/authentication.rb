@@ -15,7 +15,7 @@ def build_user(options={})
   user_opts = options[:user] || {}
   identity_opts = options[:identity] || {}
   user = FactoryGirl.build(:user, user_opts)
-  identity = FactoryGirl.build(:identity, identity_opts)
+  identity = FactoryGirl.build(:password_identity, identity_opts)
   user.identities << identity
   user
 end

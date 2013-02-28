@@ -2,8 +2,13 @@ require 'spec_helper'
 
 describe PasswordsController do
 
-  it 'should raise a 404 if the current user has no rentified identity' do
-    sign_in create_user(identity: {provider: 'twaddle'})
+  it 'should raise a 404 if the current user has no password identity' do
+  
+    user = FactoryGirl.build(:user)
+    user.identities << MockIdentity.new
+    user.save!
+    
+    sign_in user
     
     lambda do 
     	get :edit

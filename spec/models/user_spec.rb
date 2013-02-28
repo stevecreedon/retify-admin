@@ -2,18 +2,21 @@ require 'spec_helper'
 
 describe User do
   
-  context 'rentified?' do
+  context 'password identity' do
 
-    let(:user){FactoryGirl.create(:user_with_identity)}
+    let(:user){FactoryGirl.build(:user)}
 
-    it 'should be true if the user has a rentified identity' do
-      user.rentified?.should be_true
+    it 'should return an identity if the user has a password identity' do
+      identity = FactoryGirl.build(:password_identity)
+      user.identities << identity
+      user.save!
+      user.password_identity.should == identity
     end
 
     it 'should not be true if the identity is not password' do
-      user.identities.first.provider = 'twaddle'
-      user.identities.first.save!
-      user.rentified?.should be_false
+      user.identities << MockIdentity.new
+      user.save!
+      user.password_identity.should be_nil
     end  
   end
 

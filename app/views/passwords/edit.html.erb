@@ -2,12 +2,12 @@
 <%= form_tag password_path, :method => :put  do %>
 
   <div>
-    <%= label_tag :password %>
-    <%= text_field_tag :password %>
+    <%= label_tag 'identity[password]', :password  %>
+    <%= text_field_tag 'identity[password]' %>
   </div>
   <div>
-    <%= label_tag :confirm %> 
-    <%= text_field_tag :confirm %>
+    <%= label_tag 'identity[confirm]', :confirm  %> 
+    <%= text_field_tag 'identity[confirm]' %>
   </div>
   <div>
    <%= submit_tag 'change my password' %>

@@ -1,16 +1,15 @@
 class PasswordsController < ApplicationController
 
   def edit
-    current_user.identities.rentified.first || not_found
+    current_user.password_identity || not_found
   end
 
   def update
   
-    identity = current_user.identities.rentified.first || not_found
-    identity.extend(PasswordIdentity)
-    identity.confirm = params[:confirm]
-    
-    if identity.update_attributes(password: params[:password])
+    identity = current_user.password_identity
+    identity.updating_password = true   
+ 
+    if identity.update_attributes(params[:identity])
       flash[:notice] = 'happy days - password changed'
       redirect_to dashboard_index_path
     else

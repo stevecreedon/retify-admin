@@ -9,7 +9,7 @@ class RegistrationController < ApplicationController
 
   def create
 
-    if Identity.where(email: params[:identity][:email], provider: "password").count > 0
+    if PasswordIdentity.where(email: params[:identity][:email], provider: "password").count > 0
       redirect_to(new_session_path, alert: "#{params[:identity][:email]} exists")
       flash[:email] = params[:identity].try(:[], :email)
       flash[:alert] = "you've already signed-up, please login here"
@@ -18,9 +18,10 @@ class RegistrationController < ApplicationController
 
     user = User.new
 
-    identity = Identity.new(params[:identity].merge(:provider => 'password'))
-    identity.extend(PasswordIdentity)
-    identity.confirm = params[:identity].try(:[], :password) 
+    identity = PasswordIdentity.new(params[:identity])
+    identity.updating_password = true
+    identity.confirm = identity.password #we don't confirm password on sign-up..
+
     user.identities << identity
 
     if user.save
@@ -35,7 +36,7 @@ class RegistrationController < ApplicationController
   def verify
     token = IdentityToken.where(guid: params[:id]).first!
     user = token.user
-    identity = user.identities.rentified.first!
+    identity = user.password_identity
     identity.verify!
     render :nothing => true 
   end
