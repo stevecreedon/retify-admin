@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :sites
   has_many :identities
 
-  has_many :identity_tokens
+  has_one :validate_email_token, :class_name => Tokens::ValidateEmail, :dependent => :destroy
 
   belongs_to :address
 
@@ -44,14 +44,5 @@ class User < ActiveRecord::Base
   def email
     password_identity.try(:email)
   end
-
-  def email_validation_token!
-    identity_tokens.validate_email.delete_all
-    identity_tokens.create!(:purpose => 'validate_email')
-  end
-
-  def email_validation_token
-    identity_tokens.validate_email.first!
-  end
-  
- end
+ 
+end

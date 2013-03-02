@@ -3,7 +3,7 @@ class Verifier < ActionMailer::Base
 
   def verify(user)
     @user = user
-    @url = verify_registration_path(user.email_validation_token!.guid) 
+    @url = verify_registration_path(user.create_validate_email_token.guid) 
     mail(:to => user.email, :subject => "Lovebnb - Verify your email address now")
   end
 

@@ -24,23 +24,14 @@ describe User do
   context 'identity tokens' do
 
     let(:user){FactoryGirl.create(:user_with_identity)}
-
-    it 'should create a validate email identity token' do
-	user.email_validation_token!.should == user.identity_tokens.last	
-    end
-
+    
     it 'should delete any existing email identity tokens' do
-        token1 = user.email_validation_token!
-        token2 = user.email_validation_token!
-        user.identity_tokens.count.should == 1
-        user.identity_tokens.first.should == token2
+        token1 = user.create_validate_email_token
+        token2 = user.create_validate_email_token
+        user.validate_email_token.should == token2
+        token1.destroyed?.should be_true
     end
 
-    it 'should return the existing email verification identity token.' do
-       token = user.email_validation_token!
-       user.email_validation_token.should == token
-    end 
-
   end
 
-  end
+end

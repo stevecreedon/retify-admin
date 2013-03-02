@@ -34,7 +34,7 @@ class RegistrationController < ApplicationController
   end
 
   def verify
-    token = IdentityToken.where(guid: params[:id]).first!
+    token = Tokens::ValidateEmail.where(guid: params[:id]).first!
     user = token.user
     identity = user.password_identity
     identity.verify!
