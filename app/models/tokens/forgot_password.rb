@@ -1,7 +1,9 @@
 module Tokens
   class ForgotPassword < Tokens::Base
     
-    before_create :set_valid_until 
+    before_create :set_valid_until
+
+    scope :valid, lambda{|guid| Tokens::ForgotPassword.where("guid = ? AND valid_until > ?", guid, Time.now)} 
 
     private
 

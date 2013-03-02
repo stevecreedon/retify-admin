@@ -25,6 +25,23 @@ describe Tokens do
      end
     end
 
+    it 'should return a token when the guid matches and valid_until has not been exceeded' do
+       token = Tokens::ForgotPassword.create!
+       
+       Timecop.travel(Time.now + 23.hours) do
+         Tokens::ForgotPassword.valid(token.guid).first.should == token  
+       end
+    end
+
+    it 'should not return a token when the guid matches but valid_until has been exceeded' do
+       token = Tokens::ForgotPassword.create!
+       
+       Timecop.travel(Time.now + 25.hours) do
+         Tokens::ForgotPassword.valid(token.guid).first.should be_nil 
+       end
+    end
+
+
 
   end
 end
