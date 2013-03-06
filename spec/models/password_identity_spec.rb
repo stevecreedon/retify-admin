@@ -3,7 +3,8 @@ require 'spec_helper'
 describe PasswordIdentity do
  
       it 'should send a verification email on creation for a password provider' do
-        user = build_user         
+        user = FactoryGirl.build(:user)
+        user.identities << FactoryGirl.build(:password_identity)
         mail_delivery do
           user.save!
         end.should be_true

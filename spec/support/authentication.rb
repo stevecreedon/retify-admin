@@ -11,18 +11,4 @@ def sign_out
   session.delete(:user_id)
 end
 
-def build_user(options={})
-  user_opts = options[:user] || {}
-  identity_opts = options[:identity] || {}
-  user = FactoryGirl.build(:user, user_opts)
-  identity = FactoryGirl.build(:password_identity, identity_opts)
-  user.identities << identity
-  user
-end
-
-def create_user(opts={})
-  user = build_user(opts)
-  user.save!
-  user
-end
 
