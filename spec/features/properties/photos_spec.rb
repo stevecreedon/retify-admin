@@ -52,10 +52,10 @@ describe 'Property photos' do
 
       find('.masonry-thumb a').click
 
-      page.should have_link('Destroy', visible: true)
+      page.should have_link('Delete', visible: true)
 
       within '#dynamic-content' do
-        click_link('Destroy')
+        click_link('Delete')
       end
 
       page.should have_selector('#fileupload', visible: true)
