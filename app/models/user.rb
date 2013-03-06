@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :identities
 
   has_one :validate_email_token, :class_name => Tokens::ValidateEmail, :dependent => :destroy
+  has_one :forgot_password_token, :class_name => Tokens::ForgotPassword, :dependent => :destroy
+
 
   belongs_to :address
 

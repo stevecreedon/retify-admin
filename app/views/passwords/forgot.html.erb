@@ -1,0 +1,11 @@
+<h1>Request a new password</h1>
+<%= form_tag requested_password_path  do %>
+
+  <div>
+    <%= label_tag :email  %>
+    <%= text_field_tag :email %>
+  </div>
+  <div>
+   <%= submit_tag 'change my password' %>
+  </div>
+<% end %>
