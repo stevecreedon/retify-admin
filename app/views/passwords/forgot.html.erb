@@ -1,11 +1,23 @@
-<h1>Request a new password</h1>
-<%= form_tag requested_password_path  do %>
+<div id='page-1'>
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <h1 class='main-title'>Forgot Password.</h1>
+        <div class='sign-form'>
 
-  <div>
-    <%= label_tag :email  %>
-    <%= text_field_tag :email %>
+	<%= form_tag requested_password_path  do %>
+
+	  <div>
+	    <%= label_tag :email  %>
+	    <%= text_field_tag :email %>
+	  </div>
+	  <div>
+	   <%= submit_tag 'change my password' %>
+	  </div>
+	<% end %>
+
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-   <%= submit_tag 'change my password' %>
-  </div>
-<% end %>
+</div>
