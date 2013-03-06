@@ -120,9 +120,9 @@ ActiveRecord::Schema.define(:version => 20130301172816) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "state"
     t.integer  "address_id"
     t.string   "phone"
+    t.string   "state"
   end
 
 end

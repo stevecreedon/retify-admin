@@ -1,4 +1,6 @@
 class PasswordIdentity < Identity
+  include ActiveModel::Transitions
+
   has_secure_password
 
   attr_accessor :confirm, :updating_password
@@ -7,7 +9,7 @@ class PasswordIdentity < Identity
   PROVIDER = 'password' 
 
   after_create Proc.new{|model| model.require_verification!}
-  
+
   validates_with Validators::Password, :if => Proc.new{|model| model.updating_password}
 
   state_machine do
@@ -24,11 +26,10 @@ class PasswordIdentity < Identity
     end
   end
 
-  private
-  
+private
+
   def send_verification_email
-     mail = Verifier.verify(self.user)
-     mail.deliver 
+    Verifier.verify(self.user).deliver
   end
 
 end
