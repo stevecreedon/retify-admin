@@ -9,6 +9,9 @@
     <%= label_tag 'identity[confirm]', :confirm  %> 
     <%= text_field_tag 'identity[confirm]' %>
   </div>
+  <% if params[:tid] %>
+   <%= hidden_field_tag :tid, params[:tid] %>
+  <% end %>
   <div>
    <%= submit_tag 'change my password' %>
   </div>

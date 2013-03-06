@@ -24,6 +24,8 @@ gem 'draper'
 
 gem "transitions", :require => ["transitions", "active_model/transitions"]
 
+gem 'google-api-client'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

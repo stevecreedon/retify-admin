@@ -30,8 +30,14 @@ RentifyAdmin::Application.routes.draw do
   end
   resources :dashboard,  only: [:index]
   
-  resource :password, only: [:edit, :update]
-  
+  resource :password, only: [:edit, :update] do
+    member do
+      get 'forgot'
+      post 'requested'
+      get 'sent'
+    end
+  end
+
   root :to => 'home#index'
 
 end

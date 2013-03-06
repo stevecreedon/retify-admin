@@ -1,0 +1,2 @@
+<h2>Request new password</h2>
+<p>Change your password by folowing this link which is valid until <%= @user.forgot_password_token.valid_until.strftime('%c') %> address by clicking this link. <%= @url %></p> 
