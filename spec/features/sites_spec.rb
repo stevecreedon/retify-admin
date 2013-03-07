@@ -9,7 +9,7 @@ describe 'Sites' do
     end
   end
   context 'user authenticated', :js => true do
-    let(:user) { FactoryGirl.create(:user_with_identity) }
+    let(:user) { FactoryGirl.create(:user_with_identity)}
     before do
       sign_in(user.identities.first.email, 'passwd')
     end
@@ -19,7 +19,7 @@ describe 'Sites' do
         click_link('Sites')
       end
 
-      page.should have_content('Create your Micro-Hotel website!')
+      page.should have_content('Create your Micro-Hotel Website')
 
       fill_in('Title',        :with => 'Site title' )
       fill_in('Site name',    :with => 'mysite')

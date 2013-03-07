@@ -33,7 +33,6 @@ describe 'Properties' do
 
       click_button('Save changes')
 
-      page.should have_content('Your property details')
       page.should have_content('Property title')
       page.should have_content('Property description')
       page.should have_content('1 Line of Address')
@@ -52,15 +51,12 @@ describe 'Properties' do
         click_link('Properties')
       end
 
-      page.should have_content('Your property details')
-
       click_link('Edit')
 
       fill_in('Title',        :with => 'Property title changed' )
 
       click_button('Save changes')
 
-      page.should have_content('Your property details')
       page.should have_content('Property title changed')
 
     end
