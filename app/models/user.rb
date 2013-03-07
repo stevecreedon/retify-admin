@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  state      :string(255)
+#  address_id :integer
+#  phone      :string(255)
+#
+
 class User < ActiveRecord::Base
   has_many :properties
   has_many :sites

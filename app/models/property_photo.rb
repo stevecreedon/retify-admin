@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: property_photos
+#
+#  id          :integer          not null, primary key
+#  image       :string(255)
+#  property_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class PropertyPhoto < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   attr_accessible :image, :property

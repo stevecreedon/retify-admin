@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: sites
+#
+#  id         :integer          not null, primary key
+#  title      :string(255)
+#  subdomain  :string(255)
+#  domain     :string(255)
+#  style      :string(255)
+#  email      :string(255)
+#  phone      :string(255)
+#  address_id :integer
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Site < ActiveRecord::Base
   attr_accessible :domain, :subdomain, :style, :title, :address, :user, :email, :phone
 
