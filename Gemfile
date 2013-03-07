@@ -56,6 +56,7 @@ group :test, :development do
 
   gem 'capistrano'
   gem 'capistrano-tools', :git => 'git://github.com/fragallia/capistrano-tools.git', :require => false
+  gem 'annotate'
 end
 
 # To use ActiveModel has_secure_password
