@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate!
   before_filter :check_account_for_user
+  before_filter :set_notifications
 
   helper_method :current_user, :form_helper, :notifications
 
@@ -17,6 +18,12 @@ class ApplicationController < ActionController::Base
   end
 
 protected
+
+  def set_notifications
+    if current_user && current_user.password_identity.try(:verifying?)
+      notifications << "please verify your email address"
+    end
+  end
 
   def form_helper
     @form_helper ||= FormHelper.new
