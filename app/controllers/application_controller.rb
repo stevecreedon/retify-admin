@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :check_account_for_user
   before_filter :set_notifications
 
-  helper_method :current_user, :form_helper, :notifications
+  helper_method :current_user, :notifications
 
   layout Proc.new { |controller| request.xhr? ? 'remote' : 'application' }
 
@@ -23,10 +23,6 @@ protected
     if current_user && current_user.password_identity.try(:verifying?)
       notifications << "please verify your email address"
     end
-  end
-
-  def form_helper
-    @form_helper ||= FormHelper.new
   end
 
   def authenticate!
