@@ -3,7 +3,7 @@
     <div class="control-group <%= 'error' if @site.has_error?(:title) %>">
       <%= f.label :title, 'Title', class: 'control-label' %>
       <div class="controls">
-        <%= f.text_field :title, class: 'input-xlarge' %>
+        <%= f.text_field :title, class: 'input-xlarge' %> <a href="#" class="btn btn-small btn-danger btn-help">?</a>
         <%= @site.error_message(:title) %>
       </div>
     </div>
@@ -11,8 +11,8 @@
       <%= f.label :subdomain, 'Site name', class: 'control-label' %>
       <div class="controls">
         <div class="input-append">
-          <%= f.text_field :subdomain, class: 'input-medium' %>
-          <span class="add-on">.<%= configatron.domain %> </span>
+          <%= f.text_field :subdomain, class: 'input-medium' %> 
+          <span class="add-on">.<%= configatron.domain %> </span> <a href="#" class="btn btn-small btn-danger btn-help">?</a>
         </div>
         <%= @site.error_message(:subdomain) %>
         <p class='help-block'>Choose your micro-hotel name!</p>
@@ -54,3 +54,30 @@
     </div>
   </fieldset>
 <% end %>
+
+<div id="help" style="display: none;">
+  <div id="help_site_title">
+    <div class="what">
+      Site title is lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium dolor nunc, non consequat elit. Sed accumsan vulputate massa sit amet sodales. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer volutpat sagittis risus sed malesuada. Nulla faucibus sapien eu lacus blandit ac imperdiet justo viverra. Pellentesque pulvinar porttitor nulla fermentum commodo. Nulla convallis lacinia massa in porta. Cras pharetra convallis elit sit amet euismod. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In ut consectetur est. Etiam feugiat risus vel massa porttitor feugiat. Aenean id dolor ante.
+    </div>
+    <div class="why">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium dolor nunc, non consequat elit. Sed accumsan vulputate massa sit amet sodales. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer volutpat sagittis risus sed malesuada. Nulla faucibus sapien eu lacus blandit ac imperdiet justo viverra. Pellentesque pulvinar porttitor nulla fermentum commodo. Nulla convallis lacinia massa in porta. Cras pharetra convallis elit sit amet euismod. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In ut consectetur est. Etiam feugiat risus vel massa porttitor feugiat. Aenean id dolor ante.
+    </div>
+    <div class="example">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium dolor nunc, non consequat elit. Sed accumsan vulputate massa sit amet sodales. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer volutpat sagittis risus sed malesuada. Nulla faucibus sapien eu lacus blandit ac imperdiet justo viverra. Pellentesque pulvinar porttitor nulla fermentum commodo. Nulla convallis lacinia massa in porta. Cras pharetra convallis elit sit amet euismod. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In ut consectetur est. Etiam feugiat risus vel massa porttitor feugiat. Aenean id dolor ante.
+    </div>
+
+     <div id="help_site_subdomain">
+    <div class="what">
+      Site title is lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium dolor nunc, non consequat elit. Sed accumsan vulputate massa sit amet sodales. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer volutpat sagittis risus sed malesuada. Nulla faucibus sapien eu lacus blandit ac imperdiet justo viverra. Pellentesque pulvinar porttitor nulla fermentum commodo. Nulla convallis lacinia massa in porta. Cras pharetra convallis elit sit amet euismod. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In ut consectetur est. Etiam feugiat risus vel massa porttitor feugiat. Aenean id dolor ante.
+    </div>
+    <div class="why">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium dolor nunc, non consequat elit. Sed accumsan vulputate massa sit amet sodales. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer volutpat sagittis risus sed malesuada. Nulla faucibus sapien eu lacus blandit ac imperdiet justo viverra. Pellentesque pulvinar porttitor nulla fermentum commodo. Nulla convallis lacinia massa in porta. Cras pharetra convallis elit sit amet euismod. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In ut consectetur est. Etiam feugiat risus vel massa porttitor feugiat. Aenean id dolor ante.
+    </div>
+    <div class="example">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium dolor nunc, non consequat elit. Sed accumsan vulputate massa sit amet sodales. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer volutpat sagittis risus sed malesuada. Nulla faucibus sapien eu lacus blandit ac imperdiet justo viverra. Pellentesque pulvinar porttitor nulla fermentum commodo. Nulla convallis lacinia massa in porta. Cras pharetra convallis elit sit amet euismod. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In ut consectetur est. Etiam feugiat risus vel massa porttitor feugiat. Aenean id dolor ante.
+    </div>
+
+  </div>
+</div>
+
