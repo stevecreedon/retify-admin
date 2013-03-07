@@ -1,10 +1,8 @@
 <%= render 'menu' %>
 <div class="row-fluid sortable">
-  <div class="box span12">
-    <div class="box-header" data-original-title>
-      <h2><i class="icon-edit"></i><span class="break"></span>Your property details</h2>
-    </div>
-    <div class="box-content">
+   <%= render :layout => 'widgets/box', :locals => {h2: 'Edit your property!'} do %>
+         
+   <div class="box-content">
       <form class='form-horizontal'>
         <fieldset>
           <div class="control-group">
@@ -67,5 +65,5 @@
         </div>
       </form>
     </div>
-  </div><!--/span-->
+  <% end %><!--/span-->
 </div><!--/row-->
