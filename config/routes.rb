@@ -29,6 +29,7 @@ RentifyAdmin::Application.routes.draw do
     resources :directions, controller: 'properties/directions', only: [:index, :new, :create]
   end
   resources :dashboard,  only: [:index]
+  resources :tutorial,   only: [:index]
   
   resource :password, only: [:edit, :update] do
     member do

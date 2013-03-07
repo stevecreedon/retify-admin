@@ -5,6 +5,10 @@ describe 'sign-in' do
   let(:user){FactoryGirl.create(:user_with_identity)}
   let(:identity){ user.password_identity}
 
+  before do
+    FactoryGirl.create(:site,     user: user)
+    FactoryGirl.create(:property, user: user)
+  end
   describe 'existing user trying to sign-in from home page' do
 
      it 'should redirect an existing user to the sign-in page where they try and sign-up by mistake' do

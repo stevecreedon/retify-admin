@@ -26,7 +26,7 @@ protected
   end
 
   def authenticate!
-    redirect_to new_session_path unless session[:user_id]
+    redirect_to new_session_path unless current_user
   end
 
   def check_account_for_user

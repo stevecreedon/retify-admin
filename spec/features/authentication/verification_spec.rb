@@ -26,7 +26,6 @@ describe 'email verification' do
 
       visit root_path
 
-      page.current_path.should == dashboard_index_path
       page.should_not have_content('please verify your email address')
 
     end
