@@ -1,7 +1,7 @@
 <%= form_for @site, html: { data: { ajax: true }, class: 'form-horizontal' } do |f| %>
   <fieldset>
      
-    <% fh = HtmlHelper::FormHelper.new(self, f) %>
+    <% fh = love_form_helper(f) %>
 
     <%= fh.control_group(:title) %>
 
