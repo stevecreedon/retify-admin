@@ -1,57 +1,25 @@
 <%= form_for @site, html: { data: { ajax: true }, class: 'form-horizontal' } do |f| %>
   <fieldset>
-    <div class="control-group <%= 'error' if @site.has_error?(:title) %>">
-      <%= f.label :title, 'Title', class: 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :title, class: 'input-xlarge' %> <a href="#" class="btn btn-small btn-danger btn-help">?</a>
-        <%= @site.error_message(:title) %>
-      </div>
-    </div>
-    <div class="control-group <%= 'error' if @site.has_error?(:subdomain) %>">
-      <%= f.label :subdomain, 'Site name', class: 'control-label' %>
-      <div class="controls">
-        <div class="input-append">
-          <%= f.text_field :subdomain, class: 'input-medium' %> 
-          <span class="add-on">.<%= configatron.domain %> </span> <a href="#" class="btn btn-small btn-danger btn-help">?</a>
-        </div>
-        <%= @site.error_message(:subdomain) %>
-        <p class='help-block'>Choose your micro-hotel name!</p>
-      </div>
-    </div>
-    <div class="control-group <%= 'error' if @site.has_error?(:domain) %>">
-      <%= f.label :domain, 'Domain name', class: 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :domain, class: 'input-xlarge' %>
-        <%= @site.error_message(:domain) %>
-        <p class='help-block'>You can enter your personal domain name. [Need help how to point domain to our servers]</p>
-      </div>
-    </div>
-    <div class="control-group <%= 'error' if @site.has_error?(:email) %>">
-      <%= f.label :email, 'Contact email', class: 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :email, class: 'input-xlarge' %>
-        <%= @site.error_message(:email) %>
-        <p class='help-block'>Contact email to use on your micro-hotel site.</p>
-      </div>
-    </div>
-    <div class="control-group <%= 'error' if @site.has_error?(:phone) %>">
-      <%= f.label :phone, 'Phone number', class: 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :phone, class: 'input-xlarge' %>
-        <%= @site.error_message(:phone) %>
-        <p class='help-block'>Contact phone to use on your micro-hotel site.</p>
-      </div>
-    </div>
-    <div class="control-group <%= 'error' if @site.has_error?(:style) %>">
-      <%= f.label :style, 'Micro-Hotel site style', class: 'control-label' %>
-      <div class="controls">
-        <span class="input-xlarge uneditable-input">style_01</span>
-      </div>
-    </div>
+     
+    <% fh = HtmlHelper::FormHelper.new(self, f) %>
+
+    <%= fh.control_group(:title) %>
+
+    <%= fh.control_group(:subdomain, :help_text => 'Choose your micro-hotel name!', :add_on => configatron.domain, :input => {class: 'input-medium'}) %>
+
+    <%= fh.control_group(:domain, :help_text => 'You can enter your personal domain name. [Need help how to point domain to our servers]') %>
+
+    <%= fh.control_group(:email, :help_text => 'Contact email to use on your micro-hotel site.') %>
+
+    <%= fh.control_group(:phone, :help_text => 'Contact phone to use on your micro-hotel site.') %>
+
+    <%= fh.control_group(:style, :input => {value: 'style_01'}) %>
+
     <div class="form-actions">
       <%= f.submit 'Save changes', class: 'btn btn-primary' %>
       <%= link_to 'Back', @site.new_record? ? sites_path : site_path(@site), data: { ajax: true}, class: 'btn' %>
     </div>
+  
   </fieldset>
 <% end %>
 

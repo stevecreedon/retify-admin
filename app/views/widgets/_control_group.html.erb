@@ -1,0 +1,20 @@
+<div class="control-group <%= 'error' if model.has_error?(field) %>">
+  <%= form.label field, field.to_s.capitalize, class: 'control-label' %>
+  <div class="controls">
+
+    <%= form.send(input_type, field, input) %>
+    <% if add_on %>
+      <span class="add-on">.<%= add_on %> </span> 
+    <% end %>
+
+    <a href="#" class="btn btn-small btn-danger btn-help">?</a>
+
+    <%= model.error_message(field) %>
+
+    <% if help_text %>
+      <p class='help-block'><%= help_text %></p>
+    <% end %>
+
+  </div>
+</div>
+
