@@ -1,6 +1,6 @@
 $(document).ready(function(){ 
 
-	$(".btn-help").click(function(){
+	$(".btn-help").live("click",function(){
 	     var control = $(this).siblings("input");
 	     var helpId = "#help_" + control.attr("id");
 	     var helpContainer = $(helpId); 
