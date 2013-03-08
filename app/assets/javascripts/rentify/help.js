@@ -1,9 +1,8 @@
 $(document).ready(function(){ 
 
 	$(".btn-help").live("click",function(){
-	     var control = $(this).siblings("input");
-	     var helpId = "#help_" + control.attr("id");
-	     var helpContainer = $(helpId); 
+             var control = $(this).siblings("input, select");
+	     var helpContainer = $(this).siblings(".help_container"); 
 	     var helpText = new Array();
 
 	     helpText.push("<h1 style='text-align: left;'>help with " + control.attr("id").replace(/_/," ") + "</h1>");
