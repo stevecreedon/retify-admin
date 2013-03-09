@@ -1,19 +1,8 @@
 <%= form_for [@property, @calendar], html: { data: { ajax: true }, class: 'form-horizontal' } do |f| %>
+  <% fh = love_form_helper(f) %>
   <fieldset>
-    <div class="control-group <%= 'error' if @calendar.has_error?(:provider) %>">
-      <%= f.label :provider, 'Provider', class: 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :provider, class: 'input-xlarge' %>
-        <%= @calendar.error_message(:provider) %>
-      </div>
-    </div>
-    <div class="control-group <%= 'error' if @calendar.has_error?(:path) %>">
-      <%= f.label :path, 'Path', class: 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :path, class: 'input-xlarge', rows: 8 %>
-        <%= @calendar.error_message(:path) %>
-      </div>
-    </div>
+    <%= fh.control_group(:provider) %>
+    <%= fh.control_group(:path) %>
   </fieldset>
   <div class="form-actions">
     <%= f.submit 'Save changes', class: 'btn btn-primary' %>
