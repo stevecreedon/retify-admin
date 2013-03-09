@@ -2,11 +2,11 @@
   <fieldset>
     <% fh = love_form_helper(f, class: 'input-xxlarge') %>
 
-    <%= fh.control_group(:group, :select => {options: @article.group_list}) %>
+    <%= fh.control_group(:group, :select, :select => {options: @article.group_list}) %>
     
     <%= fh.control_group(:title) %>
 
-    <%= fh.control_group(:description, :input_type => :text_area) %>
+    <%= fh.control_group(:description, :text_area) %>
     
   </fieldset>
   <div class="form-actions">
