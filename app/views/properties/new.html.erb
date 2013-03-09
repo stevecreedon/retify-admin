@@ -1,7 +1,5 @@
-<div class="row-fluid sortable">
-  <%= render :layout => 'widgets/box', :locals => {h2: 'Create your property!'} do %>
-      <%= render 'properties/form' %>
-  <% end %>
-</div>
+<%= form_box('Create your property!') do %>
+  <%= render 'properties/form' %>
+<% end %>
 
 

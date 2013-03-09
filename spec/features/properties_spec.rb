@@ -21,10 +21,10 @@ describe 'Properties' do
       end
 
       page.should have_content('Create your property')
-
+      
       fill_in('Title',                     :with => 'Property title' )
       fill_in('Description',               :with => 'Property description')
-      fill_in('Address',                   :with => '1 Line of Address')
+      fill_in('property_address_address',                   :with => '1 Line of Address')
       fill_in('property_address_address2', :with => '2 Line of Address')
       fill_in('City',                      :with => 'Property City')
       fill_in('State',                     :with => 'Property State')
