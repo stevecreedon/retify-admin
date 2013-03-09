@@ -13,10 +13,14 @@ module HtmlHelper
     end
 
     def control_group(field, opts={})
-     opts = {input_type: :text_field, :label =>  field.to_s, help_text: nil, value: nil, input: {}, add_on: nil, help: nil}.merge(opts)
+     opts = {input_type: :text_field, :label => label(field) , help_text: nil, value: nil, input: {}, add_on: nil, help: nil}.merge(opts)
      opts[:help] = help_partial(field) if help_exists?(field)
      opts[:input].merge(class: 'input-xlarge') unless opts[:input][:class]
      @controller.render :template => 'widgets/_control_group', :locals => opts.merge(:field => field, :form => @form, :model => @model)
+    end
+
+    def label(field)
+      field.to_s.capitalize.gsub("_"," ")
     end
 
     def help_subfolder

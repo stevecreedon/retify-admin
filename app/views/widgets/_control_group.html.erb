@@ -1,5 +1,5 @@
 <div class="control-group <%= 'error' if model.has_error?(field) %>">
-  <%= form.label field, label.capitalize, class: 'control-label' %>
+  <%= form.label field, label, class: 'control-label' %>
   <div class="controls">
 
     <%= form.send(input_type, field, input) %>
