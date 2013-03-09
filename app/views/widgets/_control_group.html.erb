@@ -2,7 +2,12 @@
   <%= form.label field, label, class: 'control-label' %>
   <div class="controls">
 
-    <%= form.send(input_type, field, input) %>
+    <% if select.empty? %>
+      <%= form.send(input_type, field, input.merge(select)) %>
+    <% else %>
+      <%= form.select(field, select.delete(:options) || [], select) %>
+    <% end %>
+
     <% if add_on %>
       <span class="add-on">.<%= add_on %> </span> 
     <% end %>

@@ -1,21 +1,22 @@
 module HtmlHelper
 
-  def love_form_helper(form)
-    HtmlHelper::FormHelper.new(self, form) 
+  def love_form_helper(form, opts={})
+    HtmlHelper::FormHelper.new(self, form, opts) 
   end
 
   class FormHelper
 
-    def initialize(controller, form)
+    def initialize(controller, form, opts={})
       @form = form
       @model = form.object
       @controller = controller
+      @opts = {class: 'input-xlarge'}.merge(opts)
     end
 
     def control_group(field, opts={})
-     opts = {input_type: :text_field, :label => label(field) , help_text: nil, value: nil, input: {}, add_on: nil, help: nil}.merge(opts)
+     opts = {input_type: :text_field, :label => label(field) , help_text: nil, value: nil, input: {}, select:{}, add_on: nil, help: nil}.merge(opts)
      opts[:help] = help_partial(field) if help_exists?(field)
-     opts[:input].merge(class: 'input-xlarge') unless opts[:input][:class]
+     opts[:input][:class] = @opts[:class] unless opts[:input][:class]
      @controller.render :template => 'widgets/_control_group', :locals => opts.merge(:field => field, :form => @form, :model => @model)
     end
 
