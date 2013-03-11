@@ -14,8 +14,8 @@ module HtmlHelper
     end
 
    
-    def control_group(field, *args)
-     opts = {input_type: :text_field, :label => label(field) , help_text: nil, value: nil, input: {}, select:{}, add_on: nil, help: nil}
+    def control_group(*args)
+     opts = {input_type: :text_field,  help_text: nil, value: nil, input: {}, select:{}, add_on: nil, help: nil}
      main = []    
  
      #extract the part of our args that is a symbol e.g. :text_field or :text_area
@@ -24,8 +24,12 @@ module HtmlHelper
      end
      
      #if we have some of these symbol args then merge them into the main opts
-     unless main.empty?
-       zipped = [:input_type].zip(main) 
+     case main.size
+     when 1 then
+       zipped = [:field].zip(main) 
+       opts.merge!(Hash[zipped])
+     when 2 then
+       zipped = [:input_type, :field].zip(main) 
        opts.merge!(Hash[zipped])
      end
 
@@ -34,10 +38,10 @@ module HtmlHelper
        opts.merge!(arg)
      end
 
-
-     opts[:help] = help_partial(field) if help_exists?(field)
+     opts[:label] = label(opts[:field]) unless opts[:label]
+     opts[:help] = help_partial(opts[:field]) if help_exists?(opts[:field])
      opts[:input][:class] = @opts[:class] unless opts[:input][:class]
-     @controller.render :template => 'widgets/_control_group', :locals => opts.merge(:field => field, :form => @form, :model => @model)
+     @controller.render :template => 'widgets/_control_group', :locals => opts.merge(:form => @form, :model => @model)
     end
 
     def label(field)
