@@ -13,16 +13,28 @@ module HtmlHelper
       @opts = {class: 'input-xlarge'}.merge(opts)
     end
 
+   
     def control_group(field, *args)
      opts = {input_type: :text_field, :label => label(field) , help_text: nil, value: nil, input: {}, select:{}, add_on: nil, help: nil}
-     arg = args.slice!(0)
+     main = []    
+ 
+     #extract the part of our args that is a symbol e.g. :text_field or :text_area
+     while((arg = args.slice!(0)).is_a?(Symbol))
+       main << arg
+     end
      
-     if arg.is_a?(Symbol)
-       opts[:input_type] = arg
-       opts.merge!(args.first) unless args.empty?
-     elsif arg.is_a?(Hash)
+     #if we have some of these symbol args then merge them into the main opts
+     unless main.empty?
+       zipped = [:input_type].zip(main) 
+       opts.merge!(Hash[zipped])
+     end
+
+     #if we still have a hash then merge it into our options
+     if arg.is_a?(Hash)
        opts.merge!(arg)
      end
+
+
      opts[:help] = help_partial(field) if help_exists?(field)
      opts[:input][:class] = @opts[:class] unless opts[:input][:class]
      @controller.render :template => 'widgets/_control_group', :locals => opts.merge(:field => field, :form => @form, :model => @model)
