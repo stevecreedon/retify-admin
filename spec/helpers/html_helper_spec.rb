@@ -32,6 +32,14 @@ describe HtmlHelper do
     end
   end
 
+  it 'should add an add-on span' do
+    form_for(model) do |f|
+      lfh = love_form_helper(f)
+      lfh.control_group(:name, :add_on => 'some add on').html.should == CG_ADD_ON.html
+    end
+  end
+
+
 
 CG_NAME = <<CG_NAME
 <div class="control-group ">
@@ -60,6 +68,16 @@ CG_HELP_TEXT = <<CG_TEXT
          </div>
        </div>
 CG_TEXT
+
+CG_ADD_ON = <<CG_ADD_ON
+<div class="control-group ">
+         <label class="control-label" for="property_name">Name</label>
+         <div class="controls">
+             <input class="input-xlarge" id="property_name" name="property[name]" size="30" type="text" value="steve" /><span class="add-on">.some add on </span>
+         </div>
+       </div>
+CG_ADD_ON
+
 
   
 
