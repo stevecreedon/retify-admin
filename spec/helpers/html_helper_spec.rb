@@ -25,6 +25,13 @@ describe HtmlHelper do
     end
   end
 
+  it 'should add help text' do
+    form_for(model) do |f|
+      lfh = love_form_helper(f)
+      lfh.control_group(:name, :help_text => 'some help').html.should == CG_HELP_TEXT.html
+    end
+  end
+
 
 CG_NAME = <<CG_NAME
 <div class="control-group ">
@@ -43,6 +50,16 @@ CG_PASSWORD = <<CG_PASSWORD
          </div>
        </div>
 CG_PASSWORD
+
+CG_HELP_TEXT = <<CG_TEXT
+<div class="control-group ">
+         <label class="control-label" for="property_name">Name</label>
+         <div class="controls">
+             <input class="input-xlarge" id="property_name" name="property[name]" size="30" type="text" value="steve" />
+             <p class="help-block">some help</p>
+         </div>
+       </div>
+CG_TEXT
 
   
 
