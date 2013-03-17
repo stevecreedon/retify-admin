@@ -1,10 +1,10 @@
 module HtmlHelper
 
   def love_form_helper(form, opts={})
-    HtmlHelper::FormHelper.new(self, form, opts) 
+    HtmlHelper::LoveFormHelper.new(self, form, opts) 
   end
 
-  class FormHelper
+  class LoveFormHelper
 
     def initialize(controller, form, opts={})
       @form = form
