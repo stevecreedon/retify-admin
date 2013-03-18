@@ -53,7 +53,13 @@ module HtmlHelper
     end
 
     def help_exists?(field)
-      File.exists?(help_template(field))
+      partial_path = help_template(field)
+
+      @controller.view_paths.each do |path|
+         return true if File.exists?(File.join(path, partial_path))
+      end
+
+      false
     end
 
     def help_partial(field)
@@ -61,7 +67,7 @@ module HtmlHelper
     end
 
     def help_template(field)
-      File.join(Rails.root,"app", "views", "help", help_subfolder, "_#{field}.html.erb")
+      File.join("help", help_subfolder, "_#{field}.html.erb")
     end
 
   end
