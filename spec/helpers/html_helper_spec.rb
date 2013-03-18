@@ -11,12 +11,21 @@ describe HtmlHelper do
     end
   end
 
-  it 'should return an input htmlcontrol group "property_name"' do
+ 
+  it 'should return an input type text htmlcontrol group "property_name"' do
     form_for(model) do |f|
       lfh = helper.love_form_helper(f)
       lfh.control_group(:name).html.should == CG_NAME.html
     end
   end
+
+  it 'should add the data-stuff attribute to the input tag' do
+     form_for(model) do |f|
+      lfh = helper.love_form_helper(f)
+      lfh.control_group(:name, :input => {"data-stuff" => 'abc123'}).html.should == CG_INPUT_DATA_STUFF.html
+    end
+  end
+
 
   it 'should return a password htmlcontrol group "property_name"' do
     form_for(model) do |f|
@@ -71,6 +80,16 @@ CG_NAME = <<CG_NAME
          </div>
        </div>
 CG_NAME
+
+CG_INPUT_DATA_STUFF = <<CG_INPUT_DATA_STUFF
+<div class="control-group ">
+         <label class="control-label" for="property_name">Name</label>
+         <div class="controls">
+             <input data-stuff="abc123" class="input-xlarge" id="property_name" name="property[name]" size="30" type="text" value="steve" />
+         </div>
+       </div>
+CG_INPUT_DATA_STUFF
+
 
 CG_PASSWORD = <<CG_PASSWORD
 <div class="control-group ">
