@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe HtmlHelper do
 
-  let(:model){PropertyDecorator.new(stub_model(Property, :name => 'steve'))}
+  let(:model){PropertyDecorator.new(stub_model(Property, :name => 'steve', :other => nil))}
   
   it 'should return an instance of LoveFormHelper' do
     form_for(model) do |f|
@@ -16,6 +16,13 @@ describe HtmlHelper do
     form_for(model) do |f|
       lfh = helper.love_form_helper(f)
       lfh.control_group(:name).html.should == CG_NAME.html
+    end
+  end
+
+  it 'should return an input type text htmlcontrol with the supplied value"' do
+    form_for(model) do |f|
+      lfh = helper.love_form_helper(f)
+      lfh.control_group(:other, :input => {value: 'hrabal'}).html.should == CG_VALUE.html
     end
   end
 
@@ -80,6 +87,16 @@ CG_NAME = <<CG_NAME
          </div>
        </div>
 CG_NAME
+
+CG_VALUE = <<CG_VALUE
+<div class="control-group ">
+         <label class="control-label" for="property_other">Other</label>
+         <div class="controls">
+             <input class="input-xlarge" id="property_other" name="property[other]" size="30" type="text" value="hrabal" />
+         </div>
+       </div>
+CG_VALUE
+
 
 CG_INPUT_DATA_STUFF = <<CG_INPUT_DATA_STUFF
 <div class="control-group ">
