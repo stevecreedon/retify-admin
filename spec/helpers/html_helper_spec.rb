@@ -80,7 +80,7 @@ describe HtmlHelper do
   it 'should render a select with the options provided and the correct name selected' do
     form_for(model) do |f|
       lfh = helper.love_form_helper(f)
-      lfh.control_group(:select, :name, select: {options: ['joe','steve','isay']}).html.should == CG_SELECT.html
+      lfh.control_group(:select, :name, select: {options: ['joe','steve','isay']}).html.should == CG_SELECTED.html
     end
   end
 
@@ -180,5 +180,18 @@ CG_SELECT = <<CG_SELECT
      </div>
 </div>
 CG_SELECT
+
+CG_SELECTED = <<CG_SELECTED
+<div class="control-group ">
+     <label class="control-label" for="property_name">Name</label>
+     <div class="controls">
+         <select id="property_name" name="property[name]">
+           <option value="joe">joe</option>
+           <option value="steve" selected="selected">steve</option>
+           <option value="isay">isay</option>
+         </select>
+     </div>
+</div>
+CG_SELECTED
 
 end
