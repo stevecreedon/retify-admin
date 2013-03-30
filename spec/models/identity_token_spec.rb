@@ -21,14 +21,14 @@ describe Tokens do
     it 'should set the valid_until date 24 hours from creation when the purpose is change password' do
      Timecop.freeze do
        token = Tokens::ForgotPassword.create!
-       token.valid_until.should == Time.now + 24.hours
+       token.valid_until.should == Time.gm(*Time.now) + 24.hours 
      end
     end
 
     it 'should return a token when the guid matches and valid_until has not been exceeded' do
        token = Tokens::ForgotPassword.create!
        
-       Timecop.travel(Time.now + 23.hours) do
+       Timecop.travel(Time.gm(*Time.now) + 23.hours) do
          Tokens::ForgotPassword.valid(token.guid).first.should == token  
        end
     end
@@ -36,7 +36,7 @@ describe Tokens do
     it 'should not return a token when the guid matches but valid_until has been exceeded' do
        token = Tokens::ForgotPassword.create!
        
-       Timecop.travel(Time.now + 25.hours) do
+       Timecop.travel(Time.gm(*Time.now) + 25.hours) do
          Tokens::ForgotPassword.valid(token.guid).first.should be_nil 
        end
     end
