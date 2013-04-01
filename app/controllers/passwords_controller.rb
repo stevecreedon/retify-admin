@@ -37,7 +37,7 @@ class PasswordsController < ApplicationController
 
     if identity
       mail = ChangePassword.request_new(identity.user)
-      mail.deliver!
+      mail.deliver
       flash[:email] = identity.email 
       redirect_to sent_password_path
     else
