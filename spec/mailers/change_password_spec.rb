@@ -22,7 +22,7 @@ describe ChangePassword do
   end
 
   it 'should have a link to the registration_controller#verify action' do
-    mail.body.should have_content(edit_password_path(user.forgot_password_token.guid))
+    mail.body.should have_content(edit_password_path(tid: user.forgot_password_token.guid))
   end
 
   it 'should generate an identity token for email verification' do

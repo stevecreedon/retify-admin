@@ -7,6 +7,8 @@ class PasswordsController < ApplicationController
 
   def edit
     @user || current_user.password_identity || not_found
+
+    render user_or_token == 'application' ? :edit_user : :edit_token
   end
 
   def update
