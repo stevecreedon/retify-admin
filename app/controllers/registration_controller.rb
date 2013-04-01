@@ -38,7 +38,8 @@ class RegistrationController < ApplicationController
     user = token.user
     identity = user.password_identity
     identity.verify!
-    render :nothing => true 
+
+    redirect_to dashboard_index_path, notice: 'your email is verified now'
   end
 
 end
