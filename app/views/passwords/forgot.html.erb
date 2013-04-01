@@ -1,23 +1,22 @@
-<div id='page-1'>
+<section id='sign-page'>
   <div class="container">
     <div class="row">
       <div class="span12">
-        <h1 class='main-title'>Forgot Password.</h1>
+        <h1>Forgot Password.</h1>
         <div class='sign-form'>
-
-	<%= form_tag requested_password_path  do %>
-
-	  <div>
-	    <%= label_tag :email  %>
-	    <%= text_field_tag :email %>
-	  </div>
-	  <div>
-	   <%= submit_tag 'change my password' %>
-	  </div>
-	<% end %>
-
+          <%= form_tag requested_password_path, class: 'form-horizontal' do %>
+            <div class="control-group">
+              <%= label_tag :email, "Email", class: 'control-label' %>
+              <div class="controls">
+                <%= email_field_tag :email, nil, class: "input-large", placeholder: "Email" %>
+              </div>
+            </div>
+            <div class="form-actions">
+              <%= submit_tag 'Change my password', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>

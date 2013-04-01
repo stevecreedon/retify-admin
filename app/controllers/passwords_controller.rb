@@ -34,7 +34,7 @@ class PasswordsController < ApplicationController
 
   def requested
     identity = PasswordIdentity.where(email: params[:email]).first
-    
+
     if identity
       mail = ChangePassword.request_new(identity.user)
       mail.deliver!

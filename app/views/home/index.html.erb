@@ -1,126 +1,112 @@
-<div id='page-1'>
-  <div class='container'>
+<section id='start-page-top'>
+  <div class="wrap">
+    <h1>Use LoveBNB to manage and market your Holiday Rental.</h1>
+    <%= form_for(@identity, {url: registration_index_path, html: {class: 'form-inline signup_form', autocomplete: 'off'}}) do |f| %>
+      <%= f.email_field :email, class: "input-large", autocomplete: "off", placeholder: "Email" %>
+      <%= f.password_field :password, class: "input-large", autocomplete: "off", placeholder: "Password" %>
+      <%= f.submit 'Get started', class: 'btn btn-success btn-large' %>
+    <% end %>
+    <%= image_tag 'scroll-down-arrow.png', id: 'scroll-down-arrow', alt: 'Scroll down to find out more ...' %>
+  </div>
+</section>
+<section id='easy-steps-page'>
+  <div class="container">
+    <h2>Set up your Holiday Rental website in just a few easy steps</h1>
     <div class="row">
-      <div class="span12">
-        <h1 class='main-title'>Use LoveBNB to manage and market your Holiday Rental.</h1>
-        <div class='home-sign-up-form'>
-          <%= form_for(@identity, {url: registration_index_path, html: {class: 'form-inline'}}) do |f| %>
-            <%= f.email_field :email, class: "input-large", autocomplete: "off", placeholder: "Email" %>
-            <%= f.password_field :password, class: "input-large", autocomplete: "off", placeholder: "Password" %>
-            <%= f.submit 'Create your account', class: 'btn' %>
-          <% end %>
-        </div>
+      <div class="span6">
+        <img src="//dmb7ixdwya1nh.cloudfront.net/media/img/start-page/feature-tax-settings.png?22" alt="Tax settings">
+        <br>
+        Select and customize your template.
+      </div>
+      <div class="span6">
+        <img src="//dmb7ixdwya1nh.cloudfront.net/media/img/start-page/feature-credit-cards.png?22" alt="Credit card logos">
+        <br>
+        Upload your property details.
+      </div>
+    </div>
+    <div class='row'>
+      <div class="span6">
+        <img src="//dmb7ixdwya1nh.cloudfront.net/media/img/start-page/feature-shipping.png?22" alt="Shipping options">
+        <br>
+        Configure your website details.
+      </div>
+      <div class="span6">
+        <img src="//dmb7ixdwya1nh.cloudfront.net/media/img/start-page/feature-shipping.png?22" alt="Shipping options">
+        <br>
+        Start accepting orders worldwide.
       </div>
     </div>
   </div>
-</div>
-<div id='page-2'>
-  <div class='container'>
-    <div class="row">
-      <div class="span12">
-        <h1 class='main-title'>Set up your Holiday Rental website in just a few easy steps</h1>
-        <div class='tabbable  tabs-left'>
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab1" data-toggle="tab">Select and customize your template</a></li>
-            <li><a href="#tab2" data-toggle="tab">Upload your property details</a></li>
-            <li><a href="#tab3" data-toggle="tab">Configure your website details</a></li>
-            <li><a href="#tab4" data-toggle="tab">Start accepting orders worldwide</a></li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" id="tab1">
-              <p>Select and customize your template image and text</p>
-            </div>
-            <div class="tab-pane" id="tab2">
-              <p>Upload your property details image and text</p>
-            </div>
-            <div class="tab-pane" id="tab3">
-              <p>Configure your website details</p>
-            </div>
-            <div class="tab-pane" id="tab4">
-              <p>Start accepting orders worldwide</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+</section>
+<section id='features-page'>
+  <div class="container">
+    <h2>All the features you need to run your Holiday Rental business</h2>
+    <p> LoveBNB takes the hassle out of managing and marketing online holiday rentals </p>
+    <ul class="row unstyled">
+      <li class="span6">
+        <i class="icon-star"></i>
+        Online availability calendar.
+      </li>
+      <li class="span6">
+        <i class="icon-star"></i>
+        Website platform.
+      </li>
+      <li class="span6">
+        <i class="icon-star"></i>
+        Online Enquiries and bookings.
+      </li>
+      <li class="span6">
+        <i class="icon-star"></i>
+        Channel manager.
+      </li>
+    </ul>
   </div>
-</div>
-<div id='page-3'>
-  <div class='container'>
-    <div class="row">
-      <div class="span12">
-        <h1 class='main-title'>All the features you need to run your Holiday Rental business</h1>
-        <p> LoveBNB takes the hassle out of managing and marketing online holiday rentals </p>
-        <div class="row">
-          <div class='span6'>
-            <h2>Online availability calendar</h2>
-          </div>
-          <div class='span6'>
-            <h2>Website platform</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class='span6'>
-            <h2>Online Enquiries and bookings</h2>
-          </div>
-          <div class='span6'>
-            <h2>Channel manager</h2>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class='span12'>
-            <h2>Responsivly designed and build to work on all web browsing devices</h2>
-          </div>
-        </div>
-      </div>
-    </div>
+</section>
+<section id='responsive-page' class='top-ruler'>
+  <div class="container">
+    <h2>Responsivly designed and build to work on all web browsing devices</h2>
+    <img src="//dmb7ixdwya1nh.cloudfront.net/media/img/start-page/feature-shipping.png?22" alt="Shipping options">
   </div>
-</div>
-<div id='page-4'>
-  <div class='container'>
-    <div class="row">
-      <div class="span12">
-        <h1 class='main-title'>Try LoveBNB for 30 days free, without a credit card</h1>
-        <p> After your trial ends, pick a plan that best fits you needs </p>
-        <table class='table'>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Most popular</th>
-              <th></th>
-              <th></th>
-            </tr>
-            <tr>
-              <th>Solo</th>
-              <th>Basic</th>
-              <th>Profesional</th>
-              <th>More?</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>£ 9/month</td>
-              <td>£ 18/month</td>
-              <td>£ 36/month</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>1 property</td>
-              <td>2 - 5 properties</td>
-              <td>6 - 19 properties</td>
-              <td>20+ properties</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>Contact Us</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+</section>
+<section id='price-plans-page' class='top-ruler'>
+  <div class="container">
+    <h2>Try LoveBNB for 30 days free, without a credit card</h2>
+    <p> After your trial ends, pick a plan that best fits you needs </p>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Most popular</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>Solo</th>
+          <th>Basic</th>
+          <th>Profesional</th>
+          <th>More?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>£ 9/month</td>
+          <td>£ 18/month</td>
+          <td>£ 36/month</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>1 property</td>
+          <td>2 - 5 properties</td>
+          <td>6 - 19 properties</td>
+          <td>20+ properties</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Contact Us</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</div>
-
+</section>

@@ -27,6 +27,19 @@
     <%= render partial: 'layouts/flash', locals: { flash: flash } %>
     <%= yield %>
     <footer>
+      <div class="container">
+        <nav>
+          <ul class='nav nav-pills'>
+            <li class="item_about "> <a href="/about"> About us </a> </li>
+            <li class="item_blog "> <a href="http://blog.tictail.com/"> Blog </a> </li>
+            <li class="item_press "> <a href="/press"> Press </a> </li>
+            <li class="item_help "> <a href="http://help.tictail.com/"> Help </a> </li>
+            <li class="item_docs "> <a href="/docs"> Documentation </a> </li>
+            <li class="item_legal_terms "> <a href="/legal/terms-of-service"> Terms of Service </a> </li>
+            <li class="item_legal_privacy "> <a href="/legal/privacy-policy"> Privacy Policy </a> </li>
+          </ul>
+        </nav>
+      </div>
       <p>&copy; LoveBNB 2012</p>
     </footer>
   </body>

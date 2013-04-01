@@ -73,7 +73,7 @@ describe 'change password' do
       fill_in :email, :with => user.password_identity.email
 
       mail_delivery do
-        click_on 'change my password'
+        click_on 'Change my password'
       end.should be_true
 
       page.current_path.should == sent_password_path
@@ -104,7 +104,7 @@ describe 'change password' do
       fill_in :email, :with => "bad@password.co.uk"
 
       mail_delivery do
-        click_on 'change my password'
+        click_on 'Change my password'
       end.should_not be_true
 
       page.current_path.should == forgot_password_path
@@ -120,7 +120,7 @@ describe 'change password' do
       fill_in :email, :with => user.password_identity.email
 
       mail_delivery do
-        click_on 'change my password'
+        click_on 'Change my password'
       end.should be_true
 
       page.current_path.should == sent_password_path
