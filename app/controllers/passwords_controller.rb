@@ -7,6 +7,8 @@ class PasswordsController < ApplicationController
 
   def edit
     @user || current_user.password_identity || not_found
+
+    render user_or_token == 'application' ? :edit_user : :edit_token
   end
 
   def update
@@ -34,10 +36,10 @@ class PasswordsController < ApplicationController
 
   def requested
     identity = PasswordIdentity.where(email: params[:email]).first
-    
+
     if identity
       mail = ChangePassword.request_new(identity.user)
-      mail.deliver!
+      mail.deliver
       flash[:email] = identity.email 
       redirect_to sent_password_path
     else

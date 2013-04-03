@@ -23,9 +23,9 @@ describe 'change password' do
       click_link("Change password")
 
       fill_in 'identity[password]', with: 'abcxzy'
-      fill_in :confirm, with: 'abcxzy'
+      fill_in 'identity[confirm]', with: 'abcxzy'
 
-      click_on 'change my password'
+      click_on 'Change my password'
 
       current_path.should == dashboard_index_path
 
@@ -46,9 +46,9 @@ describe 'change password' do
         visit edit_password_path
 
         fill_in 'identity[password]', with: 'abcxzy'
-        fill_in :confirm, with: '123789'
+        fill_in 'identity[confirm]', with: '123789'
 
-        click_on 'change my password'
+        click_on 'Change my password'
 
         current_path.should == edit_password_path
         page.should have_content('Password and Password Confirmation do not match')
@@ -73,7 +73,7 @@ describe 'change password' do
       fill_in :email, :with => user.password_identity.email
 
       mail_delivery do
-        click_on 'change my password'
+        click_on 'Change my password'
       end.should be_true
 
       page.current_path.should == sent_password_path
@@ -82,9 +82,9 @@ describe 'change password' do
       visit edit_password_path(:tid => user.forgot_password_token.guid)
       
       fill_in 'identity[password]', with: 'anewpassword'
-      fill_in :confirm, with: 'anewpassword'
+      fill_in 'identity[confirm]', with: 'anewpassword'
 
-      click_on 'change my password' 
+      click_on 'Change my password' 
 
       visit new_session_path
    
@@ -104,7 +104,7 @@ describe 'change password' do
       fill_in :email, :with => "bad@password.co.uk"
 
       mail_delivery do
-        click_on 'change my password'
+        click_on 'Change my password'
       end.should_not be_true
 
       page.current_path.should == forgot_password_path
@@ -120,7 +120,7 @@ describe 'change password' do
       fill_in :email, :with => user.password_identity.email
 
       mail_delivery do
-        click_on 'change my password'
+        click_on 'Change my password'
       end.should be_true
 
       page.current_path.should == sent_password_path
@@ -129,9 +129,9 @@ describe 'change password' do
       visit edit_password_path(:tid => user.forgot_password_token.guid)
       
       fill_in 'identity[password]', with: 'anewpassword'
-      fill_in :confirm, with: 'anewpasswordddd'
+      fill_in 'identity[confirm]', with: 'anewpasswordddd'
 
-      click_on 'change my password' 
+      click_on 'Change my password' 
      
       current_path.should == edit_password_path
       page.should have_content("Password and Password Confirmation do not match")

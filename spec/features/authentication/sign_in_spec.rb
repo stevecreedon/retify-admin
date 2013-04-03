@@ -17,7 +17,7 @@ describe 'sign-in' do
        
        fill_in 'identity[email]', :with => identity.email
            
-       click_on 'Create your account'
+       click_on 'Get started'
 
        current_path.should == new_session_path
 
@@ -32,7 +32,7 @@ describe 'sign-in' do
        fill_in 'identity[email]', :with => identity.email
        fill_in 'identity[password]', :with => 'does not matter'
      
-       click_on 'Create your account'
+       click_on 'Get started'
 
        current_path.should == new_session_path
 

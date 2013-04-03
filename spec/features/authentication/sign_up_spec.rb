@@ -9,7 +9,7 @@ describe 'sign-up' do
       fill_in 'identity[email]', :with => 'some.email@address.co.uk'
       fill_in 'identity[password]', :with => 'abcxyz'
 
-      click_on 'Create your account'
+      click_on 'Get started'
 
       current_path.should == edit_account_path(User.first.id)
 
@@ -24,7 +24,7 @@ describe 'sign-up' do
       fill_in 'identity[email]', :with => 'some.email@address.co.uk'
       fill_in 'identity[password]', :with => 'abc'
 
-      click_on 'Create your account'
+      click_on 'Get started'
 
       current_path.should == new_registration_path
 
@@ -39,7 +39,7 @@ describe 'sign-up' do
 
       fill_in 'identity[email]', :with => identity.email
 
-      click_on 'Create your account'
+      click_on 'Get started'
 
       current_path.should == new_session_path
 
