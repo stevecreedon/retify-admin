@@ -41,7 +41,7 @@ describe PasswordsController do
 	   it 'should redirect to the forgot password page if no valid token is found' do
 	    user = FactoryGirl.create(:user_with_identity)
 	    token = user.create_forgot_password_token!
-	    Timecop.travel(Time.now + 25.hours) do
+	    Timecop.travel(Time.gm(*Time.now) + 25.hours) do
 	     get :edit, tid: token.guid
 	     response.should redirect_to forgot_password_path 
 	    end
