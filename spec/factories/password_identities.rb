@@ -6,7 +6,7 @@ FactoryGirl.define do
   end
 
   factory :password_identity do
-    email    { generate(:email) }
+    info    { { email: generate(:email)} }
     password 'passwd'
     confirm 'passwd'
   end 

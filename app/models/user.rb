@@ -14,7 +14,8 @@
 class User < ActiveRecord::Base
   has_many :properties
   has_many :sites
-  has_many :identities
+  has_one :password_identity, :dependent => :destroy, :validate => true
+  has_one :google_identity, :dependent => :destroy, :validate => true 
 
   has_one :forgot_password_token, :class_name => Tokens::ForgotPassword, :dependent => :destroy
 
@@ -41,12 +42,14 @@ class User < ActiveRecord::Base
 
   def self.create_with_omniauth(auth)
     User.create! do | user |
-      user.identities << Identity.create_from_auth(auth)
+      user.add_identity_from_auth(auth)
     end
   end
 
-  def password_identity
-    identities.where(provider: PasswordIdentity::PROVIDER).first
+  def add_identity_from_auth(auth)
+    identity = Identity.create_from_auth(auth)
+    self.password_identity = identity if identity.is_a?(PasswordIdentity)
+    self.google_identity = identity if identity.is_a?(GoogleIdentity)
   end
 
   def email

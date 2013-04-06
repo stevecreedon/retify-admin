@@ -4,9 +4,7 @@ describe PasswordsController do
 
   it 'should raise a 404 if the current user has no password identity' do
   
-    user = FactoryGirl.build(:user)
-    user.identities << MockIdentity.new
-    user.save!
+    user = FactoryGirl.create(:user)
     
     sign_in user
     

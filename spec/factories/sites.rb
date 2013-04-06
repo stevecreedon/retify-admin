@@ -14,7 +14,7 @@ FactoryGirl.define do
     subdomain { generate(:subdomain) }
     domain    { generate(:domain) }
     phone     '0987654321'
-    email     { user.identities.first.email }
+    email     { user.password_identity.email }
     style     "style_01"
     user      { FactoryGirl.create(:user_with_identity) }
   end

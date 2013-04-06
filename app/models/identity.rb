@@ -16,15 +16,19 @@
 
 class Identity < ActiveRecord::Base
 
+  serialize :info, Hash
+  serialize :extra, Hash
+  serialize :credentials, Hash
+
   belongs_to :user
   
-  scope :find_from_auth, lambda{|auth| where(provider: auth["provider"], password_digest: auth["uid"]) }
+  scope :find_from_auth, lambda{|auth| where(provider: auth[:provider], password_digest: auth[:uid]) }
 
   before_validation Proc.new{|model| model.provider = self.class::PROVIDER}
 
   def self.create_from_auth(auth)
     
-    case auth["provider"]
+    case auth[:provider]
     when 'password'
       klazz = PasswordIdentity
     when 'google_auth2'

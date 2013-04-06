@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     if current_user
       redirect_to dashboard_index_path
     else
-      @identity = Identity.new
+      @identity = PasswordIdentity.new
     end
   end
 end

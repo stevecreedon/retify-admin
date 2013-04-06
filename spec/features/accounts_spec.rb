@@ -13,7 +13,7 @@ describe 'accounts' do
     context 'user from sign up page' do
       let(:user)    { FactoryGirl.create(:user_with_identity, address: nil, phone: nil) }
       before do
-        sign_in(user.identities.first.email)
+        sign_in(user.password_identity.email)
       end
       it 'redirects from any page to account creation page' do
         visit dashboard_index_path

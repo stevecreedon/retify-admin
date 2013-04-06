@@ -5,18 +5,11 @@ describe User do
   context 'password identity' do
 
     let(:user){FactoryGirl.build(:user)}
-
-    it 'should return an identity if the user has a password identity' do
-      identity = FactoryGirl.build(:password_identity)
-      user.identities << identity
-      user.save!
-      user.password_identity.should == identity
-    end
-
-    it 'should not be true if the identity is not password' do
-      user.identities << MockIdentity.new
-      user.save!
-      user.password_identity.should be_nil
+   
+    it 'should add the identity based on the provider' do
+      user.add_identity_from_auth(:provider => 'password', :uid => "12345678", :info => {:email => 'abc@123.zz', :name => "blahh"})
+      user.password_identity.should_not be_nil
+      user.password_identity.password_digest.should == "12345678"
     end  
   end
  

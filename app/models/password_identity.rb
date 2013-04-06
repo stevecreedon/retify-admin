@@ -26,8 +26,10 @@ class PasswordIdentity < Identity
 
   PROVIDER = 'password' 
 
+  before_validation :denormalize_email
   after_create Proc.new{|model| model.require_verification!}
 
+  validates :email, :presence => true
   validates_with Validators::Password, :if => Proc.new{|model| model.updating_password}
 
   state_machine do
@@ -43,13 +45,12 @@ class PasswordIdentity < Identity
       transitions :to => :verified, :from => [:new, :verifying]
     end
   end
-
+  
   def self.create_from_auth(auth)
-    PasswordIdentity.create do |identity|
-      identity.provider =  auth["provider"],
-      identity.password_digest = auth["uid"],
-      identity.name = auth["info"]["name"], #this can be email for some providers like omniauth-password
-      identity.email = auth["info"]["email"] #email not required in oauth spec. Twitter, for example, doesn't provide email
+    PasswordIdentity.create! do |identity|
+      identity.provider =  auth[:provider],
+      identity.password_digest = auth[:uid],
+      identity.info = auth[:info]
     end
   end
 
@@ -58,6 +59,18 @@ private
 
   def send_verification_email
     Verifier.verify(self).deliver
+  end
+
+  def denormalize_email
+   raise "boom" unless self.info 
+    if new_record? && self.info[:email].blank?
+      self.info[:email] = self.email
+    end 
+            
+    if self.info[:email]
+      self.email = self.info[:email]
+    end
+
   end
 
 end

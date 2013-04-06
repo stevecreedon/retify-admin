@@ -4,7 +4,7 @@ class Verifier < ActionMailer::Base
   def verify(identity)
     @identity = identity
     @url = verify_registration_url(identity.create_validate_email_token.guid) 
-    mail(:to => identity.email, :subject => "Lovebnb - Verify your email address now")
+    mail(:to => identity.info[:email], :subject => "Lovebnb - Verify your email address now")
   end
 
 end

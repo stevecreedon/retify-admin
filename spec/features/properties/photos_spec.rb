@@ -14,7 +14,7 @@ describe 'Property photos' do
   context 'user authenticated', :js => true do
     before do
       property # create property
-      sign_in(user.identities.first.email, 'passwd')
+      sign_in(user.password_identity.email, 'passwd')
     end
 
     it 'adds new photo' do

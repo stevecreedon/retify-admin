@@ -1,13 +1,20 @@
-require 'spec_helper'
+ require 'spec_helper'
 
 describe PasswordIdentity do
  
       it 'should send a verification email on creation for a password provider' do
         user = FactoryGirl.build(:user)
-        user.identities << FactoryGirl.build(:password_identity)
+        user.password_identity = FactoryGirl.build(:password_identity)
         mail_delivery do
           user.save!
         end.should be_true
+      end
+
+      it 'should set a denormalized email from info email on save' do
+         user = FactoryGirl.create(:user_with_identity)
+         user.password_identity.info[:email] = 'abc123@xyz.cv.nh'
+         user.password_identity.save!
+         user.password_identity.email.should == 'abc123@xyz.cv.nh' 
       end
 
       context 'password limits' do

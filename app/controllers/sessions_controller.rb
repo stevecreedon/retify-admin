@@ -7,8 +7,11 @@ class SessionsController < ApplicationController
   end
 
   def create
+    auth = request.env["omniauth.auth"].symbolize_keys
+    auth[:info].symbolize_keys! if auth[:info]
+    auth[:extra].symbolize_keys! if auth[:extra]
+    auth[:credentials].symbolize_keys if auth[:credentials]
     
-    auth = request.env["omniauth.auth"]
     identity = Identity.find_from_auth(auth).first
     
     if identity
@@ -16,7 +19,7 @@ class SessionsController < ApplicationController
     else
       
       if current_user
-        current_user.identities << Identity.new_from_auth(auth)
+        current_user.add_identity_from_auth(auth)
       else
         user = User.create_with_omniauth(auth)
         session[:user_id] = user.id
