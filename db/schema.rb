@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301172816) do
+ActiveRecord::Schema.define(:version => 20130406082048) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address"
@@ -75,10 +75,11 @@ ActiveRecord::Schema.define(:version => 20130301172816) do
   create_table "identity_tokens", :force => true do |t|
     t.integer  "user_id"
     t.string   "guid"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.datetime "valid_until"
     t.string   "type"
+    t.integer  "password_identity_id"
   end
 
   create_table "properties", :force => true do |t|
@@ -120,9 +121,9 @@ ActiveRecord::Schema.define(:version => 20130301172816) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "state"
     t.integer  "address_id"
     t.string   "phone"
-    t.string   "state"
   end
 
 end

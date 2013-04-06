@@ -19,19 +19,5 @@ describe User do
       user.password_identity.should be_nil
     end  
   end
-
-
-  context 'identity tokens' do
-
-    let(:user){FactoryGirl.create(:user_with_identity)}
-    
-    it 'should delete any existing email identity tokens' do
-        token1 = user.create_validate_email_token
-        token2 = user.create_validate_email_token
-        user.validate_email_token.should == token2
-        token1.destroyed?.should be_true
-    end
-
-  end
-
+ 
 end

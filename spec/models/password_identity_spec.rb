@@ -47,4 +47,17 @@ describe PasswordIdentity do
         identity.errors[:password].should include("and Password Confirmation do not match")
        end
     end
+
+   context 'identity tokens' do
+    
+    it 'should delete any existing email identity tokens' do
+      identity = PasswordIdentity.new(:password => 'xzy123')
+      token1 = identity.create_validate_email_token
+      token2 = identity.create_validate_email_token
+      identity.validate_email_token.should == token2
+      token1.destroyed?.should be_true
+    end
+
+  end
+
 end

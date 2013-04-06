@@ -15,7 +15,25 @@
 #
 
 class Identity < ActiveRecord::Base
+
   belongs_to :user
+  
+  scope :find_from_auth, lambda{|auth| where(provider: auth["provider"], password_digest: auth["uid"]) }
 
   before_validation Proc.new{|model| model.provider = self.class::PROVIDER}
+
+  def self.create_from_auth(auth)
+    
+    case auth["provider"]
+    when 'password'
+      klazz = PasswordIdentity
+    when 'google_auth2'
+      klazz = GoogleIdentity
+    else
+      raise "unkown auth provider #{auth["provider"]}"
+    end
+
+    klazz.create_from_auth(auth)
+
+  end
 end

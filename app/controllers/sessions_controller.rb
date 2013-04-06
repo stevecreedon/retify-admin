@@ -7,9 +7,23 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.from_omniauth(request.env["omniauth.auth"])
     
-    session[:user_id] = user.id
+    auth = request.env["omniauth.auth"]
+    identity = Identity.find_from_auth(auth).first
+    
+    if identity
+      session[:user_id] = identity.user.id
+    else
+      
+      if current_user
+        current_user.identities << Identity.new_from_auth(auth)
+      else
+        user = User.create_with_omniauth(auth)
+        session[:user_id] = user.id
+      end      
+ 
+    end
+
     redirect_to dashboard_index_path, alert: "Happy days - you've come back"
   end
 

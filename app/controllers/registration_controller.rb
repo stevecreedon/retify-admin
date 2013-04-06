@@ -35,9 +35,7 @@ class RegistrationController < ApplicationController
 
   def verify
     token = Tokens::ValidateEmail.where(guid: params[:id]).first!
-    user = token.user
-    identity = user.password_identity
-    identity.verify!
+    token.password_identity.verify!
 
     redirect_to dashboard_index_path, notice: 'your email is verified now'
   end

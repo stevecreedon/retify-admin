@@ -22,6 +22,8 @@ class PasswordIdentity < Identity
   attr_accessor :confirm, :updating_password
   attr_accessible :password, :confirm, :email 
 
+  has_one :validate_email_token, :class_name => Tokens::ValidateEmail, :dependent => :destroy
+
   PROVIDER = 'password' 
 
   after_create Proc.new{|model| model.require_verification!}
@@ -42,10 +44,20 @@ class PasswordIdentity < Identity
     end
   end
 
+  def self.create_from_auth(auth)
+    PasswordIdentity.create do |identity|
+      identity.provider =  auth["provider"],
+      identity.password_digest = auth["uid"],
+      identity.name = auth["info"]["name"], #this can be email for some providers like omniauth-password
+      identity.email = auth["info"]["email"] #email not required in oauth spec. Twitter, for example, doesn't provide email
+    end
+  end
+
+
 private
 
   def send_verification_email
-    Verifier.verify(self.user).deliver
+    Verifier.verify(self).deliver
   end
 
 end
