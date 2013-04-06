@@ -1,5 +1,9 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :password, :user_model => Identity
+  provider :google_oauth2, '974193977054.apps.googleusercontent.com', 'fQgpZ3O1IrN8QLerv0fz8Hfa',{
+             :scope => "userinfo.email,userinfo.profile,plus.me,http://gdata.youtube.com,https://www.googleapis.com/auth/analytics.readonly",
+             :approval_prompt => "auto"
+           }
 end
 
 OmniAuth.config.on_failure do |env|

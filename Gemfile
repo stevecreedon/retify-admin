@@ -21,6 +21,8 @@ gem 'draper'
 
 gem "transitions", :require => ["transitions", "active_model/transitions"]
 
+gem "omniauth-google-oauth2"
+
 gem 'google-api-client'
 
 # Gems used only for assets and not required
