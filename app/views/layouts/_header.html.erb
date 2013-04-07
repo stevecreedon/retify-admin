@@ -31,7 +31,7 @@
                 <li><a href="<%= edit_password_path %>"><i class="icon-user"></i> Change password</a></li>
               <% end %>
               <% if current_user.google_identity.nil? %>
-                <li>Add Google Tools</li>
+                <li><a href="/auth/google_oauth2"><i class="icon-share"></i> Connect to Google</a></li>
               <% end %>
               <li><a href="<%= destroy_session_path %>"><i class="icon-off"></i> Logout</a></li>
             </ul>

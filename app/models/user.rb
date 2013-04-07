@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
     identity = Identity.create_from_auth(auth)
     self.password_identity = identity if identity.is_a?(PasswordIdentity)
     self.google_identity = identity if identity.is_a?(GoogleIdentity)
+    identity
   end
 
   def email
