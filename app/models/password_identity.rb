@@ -46,15 +46,6 @@ class PasswordIdentity < Identity
     end
   end
   
-  def self.create_from_auth(auth)
-    PasswordIdentity.create! do |identity|
-      identity.provider =  auth[:provider],
-      identity.password_digest = auth[:uid],
-      identity.info = auth[:info]
-    end
-  end
-
-
 private
 
   def send_verification_email
@@ -62,14 +53,8 @@ private
   end
 
   def denormalize_email
-   raise "boom" unless self.info 
-    if new_record? && self.info[:email].blank?
-      self.info[:email] = self.email
-    end 
             
-    if self.info[:email]
-      self.email = self.info[:email]
-    end
+    self.email = self.info.try(:[], "email")
 
   end
 

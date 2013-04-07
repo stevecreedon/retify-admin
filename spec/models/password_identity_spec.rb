@@ -12,7 +12,7 @@ describe PasswordIdentity do
 
       it 'should set a denormalized email from info email on save' do
          user = FactoryGirl.create(:user_with_identity)
-         user.password_identity.info[:email] = 'abc123@xyz.cv.nh'
+         user.password_identity.info["email"] = 'abc123@xyz.cv.nh'
          user.password_identity.save!
          user.password_identity.email.should == 'abc123@xyz.cv.nh' 
       end

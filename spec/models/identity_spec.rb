@@ -18,7 +18,7 @@ describe Identity do
 
       it 'should return a password identity class' do
 
-        identity = Identity.create_from_auth(:provider => "password", :uid => "abcdefghi", :info => {:email => 'steve@testxyz.com', :name => "stevey steve"})
+        identity = Identity.create_from_auth("provider" => "password", "uid" => "abcdefghi", "info" => {"email" => 'steve@testxyz.com', "name" => "stevey steve"})
         identity.should be_a(PasswordIdentity)
 
       end

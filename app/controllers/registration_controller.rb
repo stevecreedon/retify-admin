@@ -21,6 +21,7 @@ class RegistrationController < ApplicationController
     user.build_password_identity(params[:password_identity])
     user.password_identity.updating_password = true
     user.password_identity.confirm = user.password_identity.password #we don't confirm password on sign-up so just make them the same..
+    user.password_identity.info = {"email" => params[:password_identity].try(:[],"email")}
 
     if user.save
       session[:user_id] = user.id

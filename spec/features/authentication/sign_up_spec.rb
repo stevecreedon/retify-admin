@@ -57,7 +57,7 @@ describe 'sign-up' do
       fill_in 'password_identity[password]', :with => 'abcxyz'
 
       click_on 'Sign up'
-
+      
       current_path.should == edit_account_path(User.first.id)
 
       Identity.where(email: 'some.email@address.co.uk', provider: 'password').first.should_not be_nil
