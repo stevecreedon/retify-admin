@@ -30,7 +30,7 @@ protected
   end
 
   def check_account_for_user
-    if current_user && !(current_user.phone && current_user.address)
+    if current_user.try(:account_incomplete?)
       redirect_to edit_account_path(current_user.id)
     end
   end

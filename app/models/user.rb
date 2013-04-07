@@ -56,5 +56,9 @@ class User < ActiveRecord::Base
   def email
     password_identity.try(:email)
   end
+
+  def account_incomplete?
+    self.phone.blank? && self.address.blank?
+  end
  
 end
