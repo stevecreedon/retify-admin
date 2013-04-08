@@ -2,8 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="span12">
+        <h3>
+          Wait a moment, <a class="btn btn-primary btn-large btn-interactive-help" href="#">I've already set up a LoveBnB account !</a>
+          <%= render :partial => 'help/account/already_signed_up' %>
+        </h3>
+        <p>&nbsp;</p>
         <h1>Some final details before your account is set up</h1>
-        <div class='account-form'>
+          <div class='account-form'>
           <%= form_for @user, url: account_path(@user.id), html: {class: 'form-horizontal'} do |f| %>
             <fieldset>
               <div class="control-group <%= 'error' if @user.has_error?(:name) %>">
@@ -71,3 +76,6 @@
     </div>
   </div>
 </section>
+
+
+ 
