@@ -158,7 +158,7 @@ CG_HELP = <<CG_HELP
      <label class="control-label" for="property_name">Name</label>
      <div class="controls">
          <input class="input-xlarge" id="property_name" name="property[name]" size="30" type="text" value="steve" />
-         <a href="#" class="btn btn-small btn-danger btn-help">?</a>
+         <a href="#" class="btn btn-small btn-danger btn-control-help">?</a>
          <div class="help_container">
            <div class="what">What</div>
            <div class="why">Why</div>
