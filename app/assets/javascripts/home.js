@@ -16,4 +16,5 @@
 //= require jquery.noty
 //= require twitter/bootstrap
 //= require bootstrap
+//= require rentify/help
 //= require_self
