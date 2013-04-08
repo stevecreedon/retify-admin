@@ -1,5 +1,5 @@
 class RegistrationController < ApplicationController
-  skip_before_filter :authenticate!
+  skip_before_filter :authenticate!, :check_account_for_user
 
   layout 'home'
 
@@ -37,6 +37,12 @@ class RegistrationController < ApplicationController
     token.password_identity.verify!
 
     redirect_to dashboard_index_path, notice: 'your email is verified now'
+  end
+
+  def destroy
+    raise "cannot destroy a good account" unless current_user.account_incomplete?
+    current_user.destroy
+    redirect_to root_path
   end
 
 end
