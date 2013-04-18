@@ -1,0 +1,20 @@
+<form class='form-horizontal' name='form' ng-controller='FeedsPropertyNewController'>
+  <fieldset>
+    <field value='model.title' required> Title: </field>
+    <field value='model.description' required type='textarea' rows='3'> Description: </field>
+    <fieldset>
+      <legend>Address</legend>
+      <field value='model.address.address' required> Street: </field>
+      <field value='model.address.city' required> City: </field>
+      <field value='model.address.country' required> Country: </field>
+      <field value='model.address.post_code' required> Post code: </field>
+    </fieldset>
+  </fieldset>
+  <div class="form-actions">
+    <a ng-click="save()" class='btn btn-success'>Save</a>
+    <a ng-click="cancel()" class='btn btn-inverse'>Cancel</a>
+  </div>
+  <ul ng-show="server_errors">
+    <li ng-repeat='message in server_errors'>{{message}}</li>
+  </ul>
+</form>

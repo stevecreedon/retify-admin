@@ -36,7 +36,7 @@ describe 'accounts' do
 
         click_button('I\'m done')
 
-        page.current_path.should == tutorial_index_path
+        page.current_path.should == dashboard_index_path
 
         user.reload
         user.phone.should      == '0987654321'

@@ -1,0 +1,18 @@
+<div class="row-fluid">
+  <div class="span10 offset1">
+    <section class='accordion' id='feeds'>
+      <div class='accordion-group' ng-repeat='feed in feeds'>
+        <div class='accordion-heading'>
+          <a href='#item-{{feed.id}}' class='accordion-toggle' data-toggle='collapse' data-parent='#feeds'>
+            <i class="{{feed.icon}} icon-white"></i> {{feed.title}}
+          </a>
+        </div>
+        <div id='item-{{feed.id}}' class='accordion-body collapse'>
+          <div class="accordion-inner">
+            <ng-include src="feed.template"></ng-include>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

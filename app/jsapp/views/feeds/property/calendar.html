@@ -1,0 +1,13 @@
+<form novalidate class='form-horizontal' name='form' ng-controller='FeedsPropertyCalendarNewController'>
+  <fieldset>
+    <field value='model.provider' required> Provider: </field>
+    <field value='model.path' required> Path: </field>
+  </fieldset>
+  <div class="form-actions">
+    <a ng-click="save()" class='btn btn-success'>Save</a>
+    <a ng-click="cancel()" class='btn btn-inverse'>Cancel</a>
+  </div>
+  <ul ng-show="server_errors">
+    <li ng-repeat='message in server_errors'>{{message}}</li>
+  </ul>
+</form>

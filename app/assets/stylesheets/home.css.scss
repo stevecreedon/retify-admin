@@ -13,7 +13,29 @@
  *= require_self
  */
 
+// Variables
+$navbarCollapseWidth: 767px;
+$navbarBackgroundHighlight: #1773b1;
+$navbarText: #fff;
+$navbarLinkColor: #fff;
+$navbarBrandColor: #fbc001;
+$navbarHeight: 60px;
+
+@import "bootstrap";
+@import "bootstrap-responsive";
+
 html { height: 100%; }
+body {
+  height: 100%;
+  color: #333;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 19px;
+  font-style: normal;
+  font-weight: 400;
+  background-color: #f3f2f1;
+}
+
 section {
   text-align: center;
   position: relative;
@@ -153,9 +175,11 @@ footer {
 }
 
 .sign-form, .account-form {
-  padding: 25px 10px 1px 10px; background: #fff; .opacity(90);
+  padding: 25px 10px 1px 10px;
+  background: #fff;
+  @include opacity(90);
   margin: 0 auto;
-  .border-radius(7px)
+  @include border-radius(7px);
 }
 
 
@@ -171,32 +195,4 @@ footer {
 @media (max-width: 767px) {
 }
 
-@import "twitter/bootstrap/bootstrap";
-@import "twitter/bootstrap/responsive";
-
-// Set the correct sprite paths
-@iconSpritePath: "/assets/twitter/bootstrap/glyphicons-halflings.png";
-@iconWhiteSpritePath: "/assets/twitter/bootstrap/glyphicons-halflings-white.png";
-
-// Glyphicons
-@import "twitter/bootstrap/sprites.less";
-
-// Variables
-@navbarCollapseWidth: 767px;
-@navbarBackgroundHighlight: #1773b1;
-@navbarText: #fff;
-@navbarLinkColor: #fff;
-@navbarBrandColor: #fbc001;
-@navbarHeight: 60px;
-
-body {
-  height: 100%;
-  color: #333;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 19px;
-  font-style: normal;
-  font-weight: 400;
-  background-color: #f3f2f1;
-}
 

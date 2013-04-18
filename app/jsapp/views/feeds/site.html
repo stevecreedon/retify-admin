@@ -1,0 +1,24 @@
+<form class='form-horizontal' name='form' ng-controller='FeedsSiteNewController'>
+  <fieldset>
+    <field value='model.subdomain' append='.lovebnb.com' class='input-medium' required> Website domain: </field>
+    <fieldset>
+      <legend>Contact Details for customers</legend>
+      <field type='email' value='model.email' required> Email: </field>
+      <field type='tel' value='model.phone' required> Phone: </field>
+    </fieldset>
+    <fieldset>
+      <legend>Address</legend>
+      <field value='model.address.address' required> Street: </field>
+      <field value='model.address.city' required> City: </field>
+      <field value='model.address.country' required> Country: </field>
+      <field value='model.address.post_code' required> Post code: </field>
+    </fieldset>
+  </fieldset>
+  <div class="form-actions">
+    <a ng-click="save()" class='btn btn-success'>Save</a>
+    <a ng-click="cancel()" class='btn btn-inverse'>Cancel</a>
+  </div>
+  <ul ng-show="server_errors">
+    <li ng-repeat='message in server_errors'>{{message}}</li>
+  </ul>
+</form>

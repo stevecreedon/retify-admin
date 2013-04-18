@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
+gem 'active_model_serializers', :github => 'rails-api/active_model_serializers'
+
 gem 'pg'
 
 gem 'omniauth'
 gem 'omniauth-password'
 
 gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails", :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 gem 'bluecloth'
 
@@ -23,11 +23,16 @@ gem "transitions", :require => ["transitions", "active_model/transitions"]
 
 gem 'google-api-client'
 
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'compass-rails'
+  gem 'modernizr-rails'
+  gem 'bootstrap-sass', '~> 2.3.1.0'
+  gem 'handlebars_assets'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -37,6 +42,7 @@ end
 
 gem 'jquery-rails', '= 2.1.4'
 gem 'jquery-ui-rails'
+gem 'ember-rails'
 
 
 group :test, :development do
@@ -55,6 +61,10 @@ group :test, :development do
   gem 'capistrano-tools', :git => 'git://github.com/fragallia/capistrano-tools.git', :require => false
   gem 'annotate'
   gem 'xml-simple'
+end
+
+group :development do
+  gem 'quiet_assets'
 end
 
 # To use ActiveModel has_secure_password

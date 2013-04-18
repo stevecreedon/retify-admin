@@ -14,6 +14,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.noty
-//= require twitter/bootstrap
 //= require bootstrap
 //= require_self
+
+jQuery ->
+  $("a[rel=popover]").popover()
+  $(".tooltip").tooltip()
+  $("a[rel=tooltip]").tooltip()

@@ -18,7 +18,7 @@
 class Site < ActiveRecord::Base
   attr_accessible :domain, :subdomain, :style, :title, :address, :user, :email, :phone
 
-  belongs_to  :address
+  belongs_to  :address, dependent: :destroy
   belongs_to  :user
 
   validates :user,      presence: true
@@ -34,12 +34,12 @@ class Site < ActiveRecord::Base
   validates :domain,    uniqueness:  true,
                         allow_blank: true
 
-  validate :domain_cannot_contain_our_domain
+  accepts_nested_attributes_for :address
 
 private
 
   def domain_cannot_contain_our_domain
-    if domain.match('kuztus.com')
+    if domain && domain.match('kuztus.com')
       errors.add(:domain, "can't contain our domain name")
     end
   end
