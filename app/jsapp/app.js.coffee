@@ -14,6 +14,9 @@
 #= require angular/angular
 #= require angular/angular-resource
 #= require bootstrap
+#= require jquery.ui.widget
+#= require jquery.iframe-transport
+#= require jquery.fileupload
 
 #= require models
 #= require routes
@@ -22,7 +25,6 @@
 #= require_tree ./helpers
 #= require_tree ./views
 #= require_self
-
 
 # App Module
 

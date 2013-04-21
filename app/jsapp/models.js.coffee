@@ -12,12 +12,36 @@ angular.module('lovebnb.models', ['ngResource'])
       new:
         method: 'GET', isArray: false, url: '/api/properties/new'
   )
+  .factory('PropertyPhoto', ($resource) ->
+    $resource(
+      '/api/properties/:property_id/photos/:photo_id',
+      { property_id:'@property_id', photo_id:'@photo_id' }
+    )
+  )
   .factory('PropertyCalendar', ($resource) ->
     $resource(
       '/api/properties/:property_id/calendars/:calendar_id',
       { property_id:'@property_id', calendar_id:'@calendar_id' },
       { new:
           method: 'GET', isArray: false, url: '/api/properties/:property_id/calendars/new'
+      }
+    )
+  )
+  .factory('PropertyArticle', ($resource) ->
+    $resource(
+      '/api/properties/:property_id/articles/:article_id',
+      { property_id:'@property_id', article_id:'@article_id' },
+      { new:
+          method: 'GET', isArray: false, url: '/api/properties/:property_id/articles/new'
+      }
+    )
+  )
+  .factory('PropertyDirection', ($resource) ->
+    $resource(
+      '/api/properties/:property_id/directions/:direction_id',
+      { property_id:'@property_id', direction_id:'@direction_id' },
+      { new:
+          method: 'GET', isArray: false, url: '/api/properties/:property_id/directions/new'
       }
     )
   )

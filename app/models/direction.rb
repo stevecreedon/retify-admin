@@ -15,12 +15,13 @@ class Direction < ActiveRecord::Base
 
   belongs_to :property
 
-  TYPES = [
-    'By foot',
-    'By car',
-    'By bus',
-    'By train',
-    'By plane'
-  ]
-  
+  validates :title,       presence: true,
+                          inclusion: { in: [
+                            'By foot',
+                            'By car',
+                            'By bus',
+                            'By train',
+                            'By plane'
+                          ]}
+  validates :description, presence: true
 end

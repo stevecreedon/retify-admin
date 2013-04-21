@@ -50,8 +50,8 @@
 //= require rentify/content
 //= require rentify/sidebar
 //= require rentify/help
-//= require jquery.file.upload/jquery.iframe-transport
-//= require jquery.file.upload/jquery.fileupload
+//= require jquery.iframe-transport
+//= require jquery.fileupload
 //= require_self
 
 $(document).ready(function(){

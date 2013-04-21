@@ -1,17 +1,16 @@
-class Api::Properties::CalendarsController < ApiController
+class Api::Properties::DirectionsController < ApiController
   before_filter :load_property
   before_filter :check_if_property_belongs_to_user
 
   def new
-    render json: Calendar.new
+    render json: Direction.new
   end
 
   def create
-    @calendar = Calendar.new params[:calendar].merge(property: @property)
-    @calendar.enabled = true
+    @direction = Direction.new params[:direction].merge(property_id: @property.id)
 
-    status = @calendar.save ? 200 : 400
-    render json: @calendar, status: status
+    status = @direction.save ? 200 : 400
+    render json: @direction, status: status
   end
 
 private 

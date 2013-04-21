@@ -1,6 +1,9 @@
 <div class="row-fluid">
   <div class="span10 offset1">
-    <section class='accordion' id='feeds'>
+    <section id='feeds-empty' ng-show='feeds.length == 0'>
+      <h2>Dang, you’ve finished all your tasks. All that is left to do is sit back and relax!</h2>
+    </section>
+    <section class='accordion' id='feeds' ng-show='feeds.length > 0'>
       <div class='accordion-group' ng-repeat='feed in feeds'>
         <div class='accordion-heading'>
           <a href='#item-{{feed.id}}' class='accordion-toggle' data-toggle='collapse' data-parent='#feeds'>

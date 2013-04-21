@@ -1,1 +1,17 @@
-Photos
+<div ng-controller='FeedsPropertyPhotoNewController'>
+  <ul class="thumbnails">
+    <li class='span3' ng-repeat='photo in photos'>
+      <a class="thumbnail">
+        <img ng-src='{{photo.image.image.thumb.url}}'>
+      </a>
+    </li>
+  </ul>
+  <div class="form-actions">
+    <span class='btn btn-file'>
+      Upload file
+      <input id="fileupload" type="file" name="files[]" multiple>
+    </span>
+    <a ng-click="done()" class='btn btn-success'>Done</a>
+  </div>
+
+</div>

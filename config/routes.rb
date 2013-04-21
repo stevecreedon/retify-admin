@@ -4,11 +4,14 @@ RentifyAdmin::Application.routes.draw do
   get '/app/*foo', :to => 'app#index'
 
   namespace 'api' do
-    resources :sites,       controller: 'sites',                only: [ :index, :show, :new, :create ]
-    resources :addresses,   controller: 'addresses',            only: [ :show ]
-    resources :feeds,       controller: 'feeds',                only: [ :index, :destroy ]
-    resources :properties,  controller: 'properties',           only: [ :new, :create ] do
-      resources :calendars, controller: 'properties/calendars', only: [ :new, :create ]
+    resources :sites,        controller: 'sites',                 only: [ :index, :show, :new, :create ]
+    resources :addresses,    controller: 'addresses',             only: [ :show ]
+    resources :feeds,        controller: 'feeds',                 only: [ :index, :destroy ]
+    resources :properties,   controller: 'properties',            only: [ :new, :create ] do
+      resources :calendars,  controller: 'properties/calendars',  only: [ :new, :create ]
+      resources :articles,   controller: 'properties/articles',   only: [ :new, :create ]
+      resources :directions, controller: 'properties/directions', only: [ :new, :create ]
+      resources :photos,     controller: 'properties/photos',     only: [ :index, :create ]
     end
   end
 

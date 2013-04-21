@@ -13,12 +13,17 @@ angular.module('lovebnb.field', [])
         inputAttr += " ng-maxlength='{#{attr.maxlength}}'"
       if attr.minlength
         inputAttr += " ng-minlength='{#{attr.minlength}}'"
-      if attr.rows
-        inputAttr += " rows='#{attr.rows}'"
-
 
       if attr.type == 'textarea'
+        if attr.rows
+          inputAttr += " rows='#{attr.rows}'"
+
         input = "<textarea #{inputAttr}></textarea>"
+      else if attr.type == 'select'
+        if attr.options
+          inputAttr += " ng-options='#{attr.options}'"
+
+        input = "<select #{inputAttr}></select>"
       else
         input = "<input type='#{attr.type || 'text'}' #{inputAttr}/>"
 
