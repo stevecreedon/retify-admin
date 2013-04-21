@@ -14,9 +14,9 @@
 class User < ActiveRecord::Base
   has_many :properties
   has_many :sites
-  has_many :identities
+  has_one :password_identity, :dependent => :destroy, :validate => true
+  has_one :google_identity, :dependent => :destroy, :validate => true 
 
-  has_one :validate_email_token, :class_name => Tokens::ValidateEmail, :dependent => :destroy
   has_one :forgot_password_token, :class_name => Tokens::ForgotPassword, :dependent => :destroy
 
 
@@ -26,13 +26,13 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :phone
 
-  validates :identities, :presence => true
+  #validates :identities, :presence => true
   validates :name,  :presence => true, unless: 'new_record?'
   validates :phone, :presence => true, unless: 'new_record?'
 
   def self.from_omniauth(auth)
     #note we don't use name in this lookup. Suspect uid is a combination of oauth[name] and password 
-    identity = Identity.where(provider: auth["provider"], password_digest: auth["uid"]).first
+    identity = Identity.find_from_auth(auth)
     if identity
       return identity.user
     else
@@ -41,23 +41,24 @@ class User < ActiveRecord::Base
   end
 
   def self.create_with_omniauth(auth)
-    identity = Identity.create!({
-      provider:        auth["provider"],
-      password_digest: auth["uid"],
-      name:            auth["info"]["name"], #this can be email for some providers like omniauth-password
-      email:           auth["info"]["email"] #email not required in oauth spec. Twitter, for example, doesn't provide email
-    })
     User.create! do | user |
-      user.identities << identity
+      user.add_identity_from_auth(auth)
     end
   end
 
-  def password_identity
-    identities.where(provider: PasswordIdentity::PROVIDER).first
+  def add_identity_from_auth(auth)
+    identity = Identity.create_from_auth(auth)
+    self.password_identity = identity if identity.is_a?(PasswordIdentity)
+    self.google_identity = identity if identity.is_a?(GoogleIdentity)
+    identity
   end
 
   def email
     password_identity.try(:email)
+  end
+
+  def account_incomplete?
+    self.phone.blank? && self.address.blank?
   end
  
 end

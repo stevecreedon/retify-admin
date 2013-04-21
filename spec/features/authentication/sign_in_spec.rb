@@ -15,7 +15,7 @@ describe 'sign-in' do
 
        visit root_path
        
-       fill_in 'identity[email]', :with => identity.email
+       fill_in 'password_identity[email]', :with => identity.email
            
        click_on 'Get started'
 
@@ -29,8 +29,8 @@ describe 'sign-in' do
 
        visit root_path
        
-       fill_in 'identity[email]', :with => identity.email
-       fill_in 'identity[password]', :with => 'does not matter'
+       fill_in 'password_identity[email]', :with => identity.email
+       fill_in 'password_identity[password]', :with => 'does not matter'
      
        click_on 'Get started'
 

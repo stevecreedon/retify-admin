@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :authenticate!
+  skip_before_filter :authenticate!, :check_account_for_user
 
   layout 'home'
 
@@ -7,9 +7,26 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.from_omniauth(request.env["omniauth.auth"])
+    auth = request.env["omniauth.auth"]
+    #auth[:info].symbolize_keys! if auth[:info]
+    #auth[:extra].symbolize_keys! if auth[:extra]
+    #auth[:credentials].symbolize_keys! if auth[:credentials]
     
-    session[:user_id] = user.id
+    identity = Identity.find_from_auth(auth).first
+    
+    if identity
+      session[:user_id] = identity.user.id
+    else
+      
+      if current_user
+        current_user.add_identity_from_auth(auth)
+      else
+        user = User.create_with_omniauth(auth)
+        session[:user_id] = user.id
+      end      
+ 
+    end
+
     redirect_to dashboard_index_path, alert: "Happy days - you've come back"
   end
 

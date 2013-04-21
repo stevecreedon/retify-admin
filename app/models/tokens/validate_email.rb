@@ -13,6 +13,8 @@
 
 module Tokens
   class ValidateEmail < Tokens::Base
+    belongs_to :password_identity
+
     scope :validate_email, lambda{where(:type => "ValidateEmail")}
   end
 end

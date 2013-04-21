@@ -22,10 +22,14 @@ class PasswordIdentity < Identity
   attr_accessor :confirm, :updating_password
   attr_accessible :password, :confirm, :email 
 
+  has_one :validate_email_token, :class_name => Tokens::ValidateEmail, :dependent => :destroy
+
   PROVIDER = 'password' 
 
+  before_validation :denormalize_email
   after_create Proc.new{|model| model.require_verification!}
 
+  validates :email, :presence => true
   validates_with Validators::Password, :if => Proc.new{|model| model.updating_password}
 
   state_machine do
@@ -41,11 +45,17 @@ class PasswordIdentity < Identity
       transitions :to => :verified, :from => [:new, :verifying]
     end
   end
-
+  
 private
 
   def send_verification_email
-    Verifier.verify(self.user).deliver
+    Verifier.verify(self).deliver
+  end
+
+  def denormalize_email
+            
+    self.email = self.info.try(:[], "email")
+
   end
 
 end

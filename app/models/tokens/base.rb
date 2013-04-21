@@ -13,8 +13,7 @@
 
 module Tokens
   class Base < ActiveRecord::Base
-    belongs_to :user
-
+    
     self.table_name = :identity_tokens
 
     before_create :set_guid

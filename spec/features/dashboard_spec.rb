@@ -12,7 +12,7 @@ describe 'Dashboard' do
   context 'with authentication' do
     let(:user)    { FactoryGirl.create(:user_with_identity) }
     before do
-      sign_in(user.identities.first.email, 'passwd')
+      sign_in(user.password_identity.email, 'passwd')
     end
 
     it 'shows the dashboard content' do

@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require jquery.noty
 //= require bootstrap
+//= require rentify/help
 //= require_self
 
 jQuery ->

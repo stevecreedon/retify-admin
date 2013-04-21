@@ -18,7 +18,7 @@ class SitesController < ApplicationController
 
   def new
     redirect_to action: :index if current_user.sites.count > 0
-    @site = Site.new(email: current_user.identities.first.email).decorate
+    @site = Site.new(email: current_user.email).decorate
   end
 
   def create

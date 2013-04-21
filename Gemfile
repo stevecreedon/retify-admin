@@ -21,6 +21,8 @@ gem 'draper'
 
 gem "transitions", :require => ["transitions", "active_model/transitions"]
 
+gem "omniauth-google-oauth2"
+
 gem 'google-api-client'
 
 
@@ -42,7 +44,6 @@ end
 
 gem 'jquery-rails', '= 2.1.4'
 gem 'jquery-ui-rails'
-gem 'ember-rails'
 
 
 group :test, :development do

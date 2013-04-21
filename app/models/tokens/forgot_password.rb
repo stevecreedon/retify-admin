@@ -13,6 +13,8 @@
 
 module Tokens
   class ForgotPassword < Tokens::Base
+    belongs_to :user
+
 
     before_create :set_valid_until
 

@@ -5,24 +5,24 @@ describe 'sign-up' do
 
     it 'should allow the user to sign up from the home page' do
       visit root_path
-
-      fill_in 'identity[email]', :with => 'some.email@address.co.uk'
-      fill_in 'identity[password]', :with => 'abcxyz'
+      
+      fill_in 'password_identity[email]', :with => 'some.email@address.co.uk'
+      fill_in 'password_identity[password]', :with => 'abcxyz'
 
       click_on 'Get started'
 
       current_path.should == edit_account_path(User.first.id)
 
       page.should have_content("welcome to loveBnB, we hope you'll come back often")
-
-      Identity.where(email: 'some.email@address.co.uk', provider: 'password').first.should_not be_nil
+      
+      PasswordIdentity.where(email: 'some.email@address.co.uk', provider: 'password').first.should_not be_nil
     end
 
     it 'should redirect the user to the sign-up page if the sign-up fails' do
       visit root_path
 
-      fill_in 'identity[email]', :with => 'some.email@address.co.uk'
-      fill_in 'identity[password]', :with => 'abc'
+      fill_in 'password_identity[email]', :with => 'some.email@address.co.uk'
+      fill_in 'password_identity[password]', :with => 'abc'
 
       click_on 'Get started'
 
@@ -37,7 +37,7 @@ describe 'sign-up' do
 
       visit root_path
 
-      fill_in 'identity[email]', :with => identity.email
+      fill_in 'password_identity[email]', :with => identity.email
 
       click_on 'Get started'
 
@@ -53,11 +53,11 @@ describe 'sign-up' do
     it 'should allow the user to sign up' do
       visit new_registration_path
 
-      fill_in 'identity[email]', :with => 'some.email@address.co.uk'
-      fill_in 'identity[password]', :with => 'abcxyz'
+      fill_in 'password_identity[email]', :with => 'some.email@address.co.uk'
+      fill_in 'password_identity[password]', :with => 'abcxyz'
 
       click_on 'Sign up'
-
+      
       current_path.should == edit_account_path(User.first.id)
 
       Identity.where(email: 'some.email@address.co.uk', provider: 'password').first.should_not be_nil
@@ -66,14 +66,14 @@ describe 'sign-up' do
    it 'should return the user to the sign up page when something fails' do
      visit new_registration_path
 
-     fill_in 'identity[email]', :with => 'some.email@address.co.uk'
-     fill_in 'identity[password]', :with => nil
+     fill_in 'password_identity[email]', :with => 'some.email@address.co.uk'
+     fill_in 'password_identity[password]', :with => nil
 
      click_on 'Sign up'
 
      current_path.should == new_registration_path
 
-     find_field('identity[email]').value.should == 'some.email@address.co.uk'
+     find_field('password_identity[email]').value.should == 'some.email@address.co.uk'
    end
 
    it 'should redirect the user to the sign-in page if the email exists' do
@@ -83,7 +83,7 @@ describe 'sign-up' do
 
      visit new_registration_path
 
-     fill_in 'identity[email]', :with => identity.email
+     fill_in 'password_identity[email]', :with => identity.email
 
      click_on 'Sign up'
 

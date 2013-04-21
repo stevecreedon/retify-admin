@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe HtmlHelper do
 
-  let(:model){PropertyDecorator.new(stub_model(Property, :name => 'steve'))}
+  let(:model){PropertyDecorator.new(stub_model(Property, :name => 'steve', :other => nil))}
   
   it 'should return an instance of LoveFormHelper' do
     form_for(model) do |f|
@@ -16,6 +16,13 @@ describe HtmlHelper do
     form_for(model) do |f|
       lfh = helper.love_form_helper(f)
       lfh.control_group(:name).html.should == CG_NAME.html
+    end
+  end
+
+  it 'should return an input type text htmlcontrol with the supplied value"' do
+    form_for(model) do |f|
+      lfh = helper.love_form_helper(f)
+      lfh.control_group(:other, :input => {value: 'hrabal'}).html.should == CG_VALUE.html
     end
   end
 
@@ -70,6 +77,14 @@ describe HtmlHelper do
     end
   end
 
+  it 'should render a select with the options provided and the correct name selected' do
+    form_for(model) do |f|
+      lfh = helper.love_form_helper(f)
+      lfh.control_group(:select, :name, select: {options: ['joe','steve','isay']}).html.should == CG_SELECTED.html
+    end
+  end
+
+
 
 
 CG_NAME = <<CG_NAME
@@ -80,6 +95,16 @@ CG_NAME = <<CG_NAME
          </div>
        </div>
 CG_NAME
+
+CG_VALUE = <<CG_VALUE
+<div class="control-group ">
+         <label class="control-label" for="property_other">Other</label>
+         <div class="controls">
+             <input class="input-xlarge" id="property_other" name="property[other]" size="30" type="text" value="hrabal" />
+         </div>
+       </div>
+CG_VALUE
+
 
 CG_INPUT_DATA_STUFF = <<CG_INPUT_DATA_STUFF
 <div class="control-group ">
@@ -133,7 +158,7 @@ CG_HELP = <<CG_HELP
      <label class="control-label" for="property_name">Name</label>
      <div class="controls">
          <input class="input-xlarge" id="property_name" name="property[name]" size="30" type="text" value="steve" />
-         <a href="#" class="btn btn-small btn-danger btn-help">?</a>
+         <a href="#" class="btn btn-small btn-danger btn-control-help">?</a>
          <div class="help_container">
            <div class="what">What</div>
            <div class="why">Why</div>
@@ -155,5 +180,18 @@ CG_SELECT = <<CG_SELECT
      </div>
 </div>
 CG_SELECT
+
+CG_SELECTED = <<CG_SELECTED
+<div class="control-group ">
+     <label class="control-label" for="property_name">Name</label>
+     <div class="controls">
+         <select id="property_name" name="property[name]">
+           <option value="joe">joe</option>
+           <option value="steve" selected="selected">steve</option>
+           <option value="isay">isay</option>
+         </select>
+     </div>
+</div>
+CG_SELECTED
 
 end

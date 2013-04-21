@@ -14,7 +14,7 @@ describe 'Property articles' do
   context 'user authenticated', :js => true do
     before do
       property # create property
-      sign_in(user.identities.first.email)
+      sign_in(user.password_identity.email)
     end
 
     it 'adds new article' do

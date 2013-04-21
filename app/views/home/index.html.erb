@@ -1,6 +1,11 @@
 <section id='start-page-top'>
   <div class="wrap">
     <h1>Use LoveBNB to manage and market your Holiday Rental.</h1>
+    <div>
+         <p><a href="/auth/google_oauth2" class="btn btn-success btn-large">Sign up using your Google account</a></p>
+         <h3>We recommend signing in with Google - <a href="#">find out why</a></h3>
+    </div>
+    <h1>or</h1>
     <%= form_for(@identity, {url: registration_index_path, html: {class: 'form-inline signup_form', autocomplete: 'off'}}) do |f| %>
       <%= f.email_field :email, class: "input-large", autocomplete: "off", placeholder: "Email" %>
       <%= f.password_field :password, class: "input-large", autocomplete: "off", placeholder: "Password" %>
