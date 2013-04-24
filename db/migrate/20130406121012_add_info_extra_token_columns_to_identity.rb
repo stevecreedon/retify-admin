@@ -6,8 +6,8 @@ class AddInfoExtraTokenColumnsToIdentity < ActiveRecord::Migration
 
     PasswordIdentity.all.each do |pi|
       pi.info = {}
-      pi.info[:email] = pi.email
-      pi.info[:name] = pi.name
+      pi.info['email'] = pi.email
+      pi.info['name'] = pi.name
       pi.save!
     end
 

@@ -25,8 +25,13 @@ class Api::SitesController < ApiController
     @site.user          = current_user
     @site.build_address   params[:site][:address]
  
-    status = @site.save ? 200 : 400
-    render json: @site, status: status
+    if @site.save
+      current_user.feeds.where( feed_type: :create_site ).destroy_all
+
+      render json: @site, status: 200
+    else
+      render json: @site, status: 400
+    end
   end
 
 end

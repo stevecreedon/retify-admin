@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406124044) do
+ActiveRecord::Schema.define(:version => 20130424102508) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address"
@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(:version => 20130406124044) do
     t.integer  "property_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "feeds", :force => true do |t|
+    t.string   "feed_type"
+    t.string   "template"
+    t.string   "title"
+    t.string   "icon"
+    t.integer  "user_id"
+    t.integer  "parent_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "identities", :force => true do |t|
@@ -123,9 +134,9 @@ ActiveRecord::Schema.define(:version => 20130406124044) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "state"
     t.integer  "address_id"
     t.string   "phone"
+    t.string   "state"
   end
 
 end

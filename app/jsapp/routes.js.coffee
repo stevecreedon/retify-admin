@@ -4,6 +4,14 @@ angular.module('lovebnb.routes', [])
       templateUrl: '/assets/views/feeds.html',
       controller: @FeedsController
     )
+    $routeProvider.when('/properties',
+      templateUrl: '/assets/views/properties.html',
+      controller: @PropertiesController
+    )
+    $routeProvider.when('/properties/:id',
+      templateUrl: '/assets/views/property.html',
+      controller: @PropertyController
+    )
     $routeProvider.when('/server_page_not_found',
       templateUrl: '/assets/views/404.html',
       controller: @ErrorsController

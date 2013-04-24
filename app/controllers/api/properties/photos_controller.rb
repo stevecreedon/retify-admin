@@ -12,6 +12,8 @@ class Api::Properties::PhotosController < ApiController
     @photo.property = @property
 
     if @photo.save
+      current_user.feeds.where( feed_type: :create_property_photos ).destroy_all
+
       respond_to do |format|
         format.html {                                         #(html response is for browsers using iframe sollution)
           render json: [@photo.to_jq_upload],

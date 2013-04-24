@@ -14,6 +14,7 @@
 class User < ActiveRecord::Base
   has_many :properties
   has_many :sites
+  has_many :feeds
   has_one :password_identity, :dependent => :destroy, :validate => true
   has_one :google_identity, :dependent => :destroy, :validate => true 
 

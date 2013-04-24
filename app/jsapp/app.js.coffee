@@ -14,6 +14,7 @@
 #= require angular/angular
 #= require angular/angular-resource
 #= require bootstrap
+#= require marked
 #= require jquery.ui.widget
 #= require jquery.iframe-transport
 #= require jquery.fileupload
@@ -31,5 +32,7 @@
 window.Lovebnb = angular.module('lovebnb', [
   'lovebnb.routes',
   'lovebnb.models',
-  'lovebnb.field'
+  'lovebnb.directives.field',
+  'lovebnb.directives.switch',
+  'lovebnb.directives.eat_click'
 ])

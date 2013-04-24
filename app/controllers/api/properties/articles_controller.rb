@@ -9,8 +9,17 @@ class Api::Properties::ArticlesController < ApiController
   def create
     @article = Article.new params[:article].merge(source_id: @property.id, source_type: 'property')
 
-    status = @article.save ? 200 : 400
-    render json: @article, status: status
+    if @article.save
+      if @article.group == 'terms'
+        current_user.feeds.where( feed_type: :create_property_terms_page ).destroy_all
+      elsif @article.group == 'availability'
+        current_user.feeds.where( feed_type: :create_property_availability_page ).destroy_all
+      end
+
+      render json: @article, status: 200
+    else
+      render json: @article, status: 400
+    end
   end
 
 private 

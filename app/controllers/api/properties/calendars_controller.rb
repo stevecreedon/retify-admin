@@ -10,8 +10,13 @@ class Api::Properties::CalendarsController < ApiController
     @calendar = Calendar.new params[:calendar].merge(property: @property)
     @calendar.enabled = true
 
-    status = @calendar.save ? 200 : 400
-    render json: @calendar, status: status
+    if @calendar.save
+      current_user.feeds.where( feed_type: :create_property_calendar ).destroy_all
+
+      render json: @calendar, status: 200
+    else
+      render json: @calendar, status: 400
+    end
   end
 
 private 

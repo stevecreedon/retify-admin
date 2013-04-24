@@ -1,0 +1,35 @@
+<div class="row-fluid" ng-controller='PropertiesController'>
+  <div class="span10 offset1 well">
+    <h1>Properties</h1>
+    <hr>
+    <section id='properties-search'>
+      <div class="input-append">
+        <input type="text" ng-model="query" placeholder='Search for property id, title or description' class="input-xxlarge" />
+        <button class='btn' type="button"><i class='icon-search'></i></button>
+        <button class='btn' type="button">Add Property</button>
+      </div>
+    </section>
+    <hr>
+    <section id='properties-empty' ng-show='properties.length == 0'>
+      <h2>You do not have properties yet. Create one here !!!link to property create page!!!<h2>
+    </section>
+    <section id='properties' ng-show='properties.length > 0'>
+      <table class='table table-striped'>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Last modified</th>
+            <th>Visible</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="property in properties | filter:query">
+            <td class='span7'><a ng-href='#/properties/{{property.id}}'>{{property.title}}</a></td>
+            <td class='span3'>{{property.updated_at}}</td>
+            <td class='span2'>YES</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>

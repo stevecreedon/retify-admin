@@ -1,4 +1,4 @@
-window.ErrorsController = ['$scope', ($scope) ->
-
+window.ErrorsController = ($scope) ->
   return
-]
+
+window.ErrorsController.$inject = ['$scope']

@@ -9,8 +9,13 @@ class Api::Properties::DirectionsController < ApiController
   def create
     @direction = Direction.new params[:direction].merge(property_id: @property.id)
 
-    status = @direction.save ? 200 : 400
-    render json: @direction, status: status
+    if @direction.save
+      current_user.feeds.where( feed_type: :create_property_directions ).destroy_all
+
+      render json: @direction, status: 200
+    else
+      render json: @direction, status: 400
+    end
   end
 
 private 

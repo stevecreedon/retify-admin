@@ -1,4 +1,4 @@
-angular.module('lovebnb.field', [])
+angular.module('lovebnb.directives.field', [])
   .directive 'field', () ->
     transclude: true
     restrict: 'E'

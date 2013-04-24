@@ -27,13 +27,91 @@ $navbarHeight: 35px;
 @import "bootstrap-responsive";
 
 body {
-  color: #333;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 19px;
   font-style: normal;
   font-weight: 400;
+}
+
+body.feeds {
+  color: #333;
   background-color: #1b70b9;
+}
+
+body.properties {
+  color: #6a6a6a;
+  background-color: #1b70b9;
+  #content {
+    padding: 25px 10px 1px 10px;
+    .well {
+      background: #fafdff;
+    }
+  }
+}
+
+.switch {
+  display: inline-block;
+  cursor: pointer;
+  @include gradient-vertical(#51a351, #62c462);
+  border: 1px solid #62c462;
+  @include border-radius(15px);
+  padding: 5px 15px 5px 15px;
+  position: relative;
+  text-align: left;
+  min-width: 80px;
+  color: #ffffff;
+  div {
+    float: left;
+  }
+  button {
+    width: 52%;
+    margin: -1px;
+    position: absolute;
+    @include border-radius(15px);
+    top:0;
+    right: 0%;
+    @include transition(right 0.5s);
+  }
+}
+
+.switch.off {
+  @include gradient-vertical(#bd362f, #ee5f5b);
+  border: 1px solid #ee5f5b;
+  text-align: right;
+  div {
+    float: right;
+  }
+  button {
+    right: 50%;
+    @include transition(right 0.5s);
+  }
+}
+
+#properties-search {
+  text-align: center;
+}
+
+#property-edit {
+  section {
+    padding: 10px;
+    position: relative;
+    .switch {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+  }
+}
+
+#properties-empty {
+  h2 {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 400;
+    color: #bbb;
+    text-align: center;
+  }
 }
 
 #feeds-empty {
@@ -119,4 +197,3 @@ body {
 
 @media (max-width: 767px) {
 }
-

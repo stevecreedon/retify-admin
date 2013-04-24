@@ -1,4 +1,4 @@
-window.FeedsController = ['$scope', '$location', 'Feed', ($scope, $location, Feed) ->
+window.FeedsController = ($scope, $location, Feed) ->
   $scope.update_feeds = ->
     $scope.feeds = Feed.query()
 
@@ -17,5 +17,7 @@ window.FeedsController = ['$scope', '$location', 'Feed', ($scope, $location, Fee
       else
         $location.path('/server_error')
 
+  $scope.set_body_class 'feeds'
   $scope.update_feeds()
-]
+
+window.FeedsController.$inject = ['$scope', '$location', 'Feed']

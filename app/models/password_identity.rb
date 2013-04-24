@@ -20,7 +20,7 @@ class PasswordIdentity < Identity
   has_secure_password
 
   attr_accessor :confirm, :updating_password
-  attr_accessible :password, :confirm, :email 
+  attr_accessible :password, :confirm, :email
 
   has_one :validate_email_token, :class_name => Tokens::ValidateEmail, :dependent => :destroy
 
@@ -53,9 +53,7 @@ private
   end
 
   def denormalize_email
-            
     self.email = self.info.try(:[], "email")
-
   end
 
 end
