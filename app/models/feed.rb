@@ -27,7 +27,7 @@ class Feed < ActiveRecord::Base
       self.template = '/assets/views/feeds/property/photo.html'
       self.title    = 'Add Photo to the property'
     when :create_property_directions
-      self.template = '/assets/views/feeds/property/direction.html'
+      self.template = '/assets/views/feeds/property/directions.html'
       self.title    = 'Add Direction to the property'
     when :create_property_terms_page
       self.template = '/assets/views/feeds/property/pages/terms.html'

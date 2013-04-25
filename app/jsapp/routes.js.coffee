@@ -12,11 +12,11 @@ angular.module('lovebnb.routes', [])
       templateUrl: '/assets/views/property.html',
       controller: @PropertyController
     )
-    $routeProvider.when('/server_page_not_found',
+    $routeProvider.when('/404',
       templateUrl: '/assets/views/404.html',
       controller: @ErrorsController
     )
-    $routeProvider.when('/server_error',
+    $routeProvider.when('/500',
       templateUrl: '/assets/views/500.html',
       controller: @ErrorsController
     )

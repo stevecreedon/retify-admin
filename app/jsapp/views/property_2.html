@@ -1,0 +1,135 @@
+<div class="row-fluid" id='property-edit' ng-controller='PropertyController'>
+  <div class="span10 offset1 well">
+    <form class='form-horizontal' name='form' ng-init='submited = true'>
+      <h2>Edit Property</h2>
+      <hr>
+      <div>
+        <section ng-init='is_title_editable = false'>
+          <div class='row-fluid' ng-show='is_title_editable'>
+            <div class='span10'>
+              <field value='property.title' required> Enter new title: </field>
+            </div>
+          </div>
+          <div class='row-fluid'>
+            <div class='span10'>
+              <h2> {{property.title}} </h2>
+            </div>
+          </div>
+          <switch value='is_title_editable' on='Edit' off='Save' ng-hide='!form.$valid'></switch>
+        </section>
+        <section ng-init='is_address_editable = false'>
+          <div class='row-fluid' ng-show='is_address_editable'>
+            <div class='span10'>
+              <field value='property.address.address' required> Street: </field>
+              <field value='property.address.city' required> City: </field>
+              <field value='property.address.country' required> Country: </field>
+              <field value='property.address.post_code' required> Post code: </field>
+            </div>
+          </div>
+          <div class='row-fluid'>
+            <div class='span10'>
+              {{property.address.address}},
+              {{property.address.city}},
+              {{property.address.country}},
+              {{property.address.post_code}}
+            </div>
+          </div>
+          <switch value='is_address_editable' on='Edit' off='Save' ng-hide='!form.$valid'></switch>
+        </section>
+        <section ng-init='are_photos_editable = false'>
+          <div class='row-fluid'>
+            <div class='span10'>
+              <a class="thumbnail">
+                <img ng-src='{{property.photos[0].image.image.url}}'>
+              </a>
+            </div>
+          </div>
+          <div class='row-fluid'>
+            <div class='span10'>
+              <ul class='unstyled'>
+                <li ng-repeat='photo in property.photos'>
+                  <a class="thumbnail span2">
+                    <img ng-src='{{photo.image.image.thumb.url}}'>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class='row-fluid' ng-show='are_photos_editable'>
+            <div class='span10'>
+              <span class='btn btn-file'>
+                Upload file
+                <input id="fileupload" type="file" name="files[]" multiple>
+              </span>
+            </div>
+          </div>
+          <switch value='are_photos_editable' on='Edit' off='Save' ng-hide='!form.$valid'></switch>
+        </section>
+        <section ng-init='is_description_editable = false'>
+          <div class='row-fluid'>
+            <div class='span10'>
+              <h3>Description</h3>
+            </div>
+          </div>
+          <div class='row-fluid' ng-show='is_description_editable'>
+            <div class='span10'>
+              <field value='property.description' type='textarea' rows='10' class='input-xxlarge' required> Enter new description: </field>
+            </div>
+          </div>
+          <div class='row-fluid'>
+            <div class='span10' ng-bind-html-unsafe='to_md(property.description)'>
+            </div>
+          </div>
+          <switch value='is_description_editable' on='Edit' off='Save' ng-hide='!form.$valid'></switch>
+        </section>
+        <section ng-init='are_directions_editable = false'>
+          <div class='row-fluid'>
+            <div class='span10'>
+              <h3>Directions</h3>
+            </div>
+          </div>
+          <div class='row-fluid' ng-repeat='direction in directions'>
+            <div class='span10'>
+              <field type='textarea' value='direction.description' rows='5' ng-show='are_directions_editable'> Description: </field>
+              <dl class='dl-horizontal'>
+                <dt> {{direction.title}} </dt>
+                <dd> {{direction.description}} </dd>
+              </dl>
+            </div>
+          </div>
+          <switch value='are_directions_editable' on='Edit' off='Save' ng-hide='!form.$valid'></switch>
+        </section>
+        <section>
+          <div class='row-fluid'>
+            <div class='span10'>
+              <h3>Articles</h3>
+            </div>
+          </div>
+          <div class='row-fluid'>
+            <div class='span10'>
+              <dl class='dl-horizontal' ng-repeat='article in property.articles'>
+                <dt>{{article.title}}</dt>
+                <dd>{{article.description}}</dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class='row-fluid'>
+            <div class='span10'>
+              <h3>Calendars</h3>
+            </div>
+          </div>
+          <div class='row-fluid'>
+            <div class='span10'>
+              <dl class='dl-horizontal' ng-repeat='calendar in property.calendars'>
+                <dt>{{calendar.provider}}</dt>
+                <dd>{{calendar.path}}</dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+      </div>
+    </form>
+  </div>
+</div>

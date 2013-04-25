@@ -29,6 +29,13 @@ class Api::Properties::PhotosController < ApiController
     end
   end
 
+  def destroy
+    photo = @property.photos.where(id: params[:id]).first
+
+    status = photo.destroy ? 200 : 400
+    render json: photo, status: status
+  end
+
 private 
 
   def load_property

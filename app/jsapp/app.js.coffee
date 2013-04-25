@@ -19,12 +19,13 @@
 #= require jquery.iframe-transport
 #= require jquery.fileupload
 
-#= require models
-#= require routes
+#= require_tree ./factories
 #= require_tree ./directives
 #= require_tree ./controllers
 #= require_tree ./helpers
 #= require_tree ./views
+#= require models
+#= require routes
 #= require_self
 
 # App Module
@@ -32,6 +33,7 @@
 window.Lovebnb = angular.module('lovebnb', [
   'lovebnb.routes',
   'lovebnb.models',
+  'lovebnb.factories.model',
   'lovebnb.directives.field',
   'lovebnb.directives.switch',
   'lovebnb.directives.eat_click'

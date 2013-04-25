@@ -21,11 +21,11 @@ class Api::PropertiesController < ApiController
     if property.save
       current_user.feeds.where( feed_type: :create_property ).destroy_all
 
-      current_user.feeds.create!( feed_type: :create_property_calendar,          :parent_id => property.id )
-      current_user.feeds.create!( feed_type: :create_property_photos,            :parent_id => property.id )
-      current_user.feeds.create!( feed_type: :create_property_directions,        :parent_id => property.id )
-      current_user.feeds.create!( feed_type: :create_property_terms_page,        :parent_id => property.id )
-      current_user.feeds.create!( feed_type: :create_property_availability_page, :parent_id => property.id )
+      current_user.feeds.create!( feed_type: :create_property_calendar,          parent_id: property.id )
+      current_user.feeds.create!( feed_type: :create_property_photos,            parent_id: property.id )
+      current_user.feeds.create!( feed_type: :create_property_directions,        parent_id: property.id )
+      current_user.feeds.create!( feed_type: :create_property_terms_page,        parent_id: property.id )
+      current_user.feeds.create!( feed_type: :create_property_availability_page, parent_id: property.id )
 
       render json: property, status: 200
     else

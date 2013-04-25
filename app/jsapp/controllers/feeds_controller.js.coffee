@@ -4,7 +4,10 @@ window.FeedsController = ($scope, $location, Feed) ->
 
   $scope.process_saving = (form, model, params) ->
     if form.$valid
-      model.$save params, $scope.update_feeds, $scope.process_error_response
+      if model.id
+        model.$update params, $scope.update_feeds, $scope.process_error_response
+      else
+        model.$save   params, $scope.update_feeds, $scope.process_error_response
       return true
     return false
 
@@ -13,9 +16,9 @@ window.FeedsController = ($scope, $location, Feed) ->
       when 400
         $scope.server_errors = response.data.errors.full_messages
       when 404
-        $location.path('/server_page_not_found')
+        $location.path('/404')
       else
-        $location.path('/server_error')
+        $location.path('/500')
 
   $scope.set_body_class 'feeds'
   $scope.update_feeds()

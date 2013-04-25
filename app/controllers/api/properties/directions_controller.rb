@@ -3,7 +3,13 @@ class Api::Properties::DirectionsController < ApiController
   before_filter :check_if_property_belongs_to_user
 
   def new
-    render json: Direction.new
+    directions = Direction::Titles.map do | title |
+      direction = @property.directions.find { | p | p.title == title }
+
+      direction || Direction.new(title: title)
+    end  
+
+    render json: directions
   end
 
   def create
@@ -15,6 +21,18 @@ class Api::Properties::DirectionsController < ApiController
       render json: @direction, status: 200
     else
       render json: @direction, status: 400
+    end
+  end
+
+  def update
+    direction = @property.directions.where( id: params[:id] ).first
+
+    if direction.update_attributes(params[:direction])
+      current_user.feeds.where( feed_type: :create_property_directions ).destroy_all
+
+      render json: direction, status: 200
+    else
+      render json: direction, status: 400
     end
   end
 

@@ -1,0 +1,35 @@
+<form class='form-horizontal' name='form' ng-controller='PropertyAddressController'>
+  <div class='row-fluid'>
+    <div class='span12'>
+      <h4>Edit > {{property_cached.title}}</h4>
+    </div>
+  </div>
+  <hr>
+  <div class='row-fluid'>
+    <div class='span12'>
+      <field value='property.address.address' required> Street: </field>
+      <field value='property.address.city' required> City: </field>
+      <field value='property.address.country' required> Country: </field>
+      <field value='property.address.post_code' required> Post code: </field>
+    </div>
+  </div>
+  <div class='row-fluid'>
+    <div class='span12 well'>
+      <p> Preview: </p>
+      <hr>
+      {{property.address.address}},
+      {{property.address.city}},
+      {{property.address.country}},
+      {{property.address.post_code}}
+    </div>
+  </div>
+  <div class='row-fluid'>
+    <div class='span12'>
+      <div class="form-actions">
+        <a ng-click="save()" class='btn btn-success'>Save</a>
+        <a ng-click="reset()" class='btn btn-inverse'>Reset</a>
+        <a ng-click="cancel()" class='btn btn-inverse'>Cancel</a>
+      </div>
+    </div>
+  </div>
+</form>
