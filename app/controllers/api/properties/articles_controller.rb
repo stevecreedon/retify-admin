@@ -22,6 +22,22 @@ class Api::Properties::ArticlesController < ApiController
     end
   end
 
+  def update
+    article = @property.articles.where( id: params[:id] ).first
+
+    if article.update_attributes(params[:article])
+      if article.group == 'terms'
+        current_user.feeds.where( feed_type: :create_property_terms_page ).destroy_all
+      elsif article.group == 'availability'
+        current_user.feeds.where( feed_type: :create_property_availability_page ).destroy_all
+      end
+
+      render json: article, status: 200
+    else
+      render json: article, status: 400
+    end
+  end
+
 private 
 
   def load_property

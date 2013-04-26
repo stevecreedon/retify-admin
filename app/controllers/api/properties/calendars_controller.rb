@@ -19,6 +19,18 @@ class Api::Properties::CalendarsController < ApiController
     end
   end
 
+  def update
+    calendar = @property.calendars.where( id: params[:id] ).first
+
+    if calendar.update_attributes(params[:calendar])
+      current_user.feeds.where( feed_type: :create_property_calendar ).destroy_all
+
+      render json: calendar, status: 200
+    else
+      render json: calendar, status: 400
+    end
+  end
+
 private 
 
   def load_property

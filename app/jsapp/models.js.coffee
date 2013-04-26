@@ -30,7 +30,7 @@ angular.module('lovebnb.models', ['ngResource'])
   .factory('PropertyArticle', ($resource) ->
     $resource(
       '/api/properties/:property_id/articles/:article_id',
-      { property_id:'@property_id', article_id:'@id' },
+      { property_id:'@source_id', article_id:'@id' },
       { new:
           method: 'GET', isArray: false, url: '/api/properties/:property_id/articles/new'
       }

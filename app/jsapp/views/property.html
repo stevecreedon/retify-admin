@@ -2,33 +2,36 @@
   <div class='span3 offset1 well'>
     <ul class="nav nav-list">
       <li ng-class='active_menu("property", "home")'>
-        <a href ng-click='show("property", "home")'>Property home</a>
+        <a href ng-click='show("property", "home")'>Property dashboard</a>
       </li>
-      <li class="nav-header">Details</li>
+      <li class="divider"></li>
       <li ng-class='active_menu("property", "title")'>
         <a href ng-click='show("property", "title")'>Title</a>
       </li>
       <li ng-class='active_menu("property", "description")'>
         <a href ng-click='show("property", "description")'>Description</a>
       </li>
-      <li class="divider"></li>
-      <li> <a href ng-click='show("address", "all")'>Address</a> </li>
-      <li> <a href ng-click='show("photos", "all")'>Photos</a> </li>
+      <li ng-class='active_menu("address", "all")'>
+        <a href ng-click='show("address", "all")'>Address</a>
+      </li>
+      <li ng-class='active_menu("photos", "all")'>
+         <a href ng-click='show("photos", "all")'>Photos</a>
+      </li>
       <li class="divider"></li>
       <li class="nav-header">Directions</li>
       <li ng-class='active_menu("directions", direction.title)' ng-repeat='direction in property.directions'>
         <a href ng-click='show("directions", direction.title)'>{{direction.title}}</a>
       </li>
-      <li ng-class='active_menu("direction_add")'>
-        <a href ng-click='show("directions", "add")'>Add direction</a>
+      <li ng-class='active_menu("directions", "new")' ng-hide='property.directions.length > 4'>
+        <a href ng-click='show("directions", "new")'>Add direction</a>
       </li>
       <li class="divider"></li>
       <li class="nav-header">Pages</li>
       <li ng-class='active_menu("pages", page.title)' ng-repeat='page in property.articles'>
         <a href ng-click='show("pages", page.title)'>{{page.title}}</a>
       </li>
-      <li ng-class='active_menu("pages", "add")' ng-hide='property.articles.length > 1'>
-        <a href ng-click='show("pages", "add")'>Add page</a>
+      <li ng-class='active_menu("pages", "new")' ng-hide='property.articles.length > 1'>
+        <a href ng-click='show("pages", "new")'>Add page</a>
       </li>
       <li class="divider"></li>
       <li class="nav-header">Calendars</li>
@@ -36,7 +39,7 @@
         <a href ng-click='show("calendars", calendar.provider)'>{{calendar.provider}}</a>
       </li>
       <li ng-class='active_menu("calendars_new")'>
-        <a href ng-click='show("calendars", "add")'>Add calendar</a>
+        <a href ng-click='show("calendars", "new")'>Add calendar</a>
       </li>
     </ul>
   </div>

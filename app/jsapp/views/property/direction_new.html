@@ -1,0 +1,35 @@
+<form class='form-vertical' name='form' ng-controller='PropertyDirectionNewController'>
+  <div class='row-fluid'>
+    <div class='span12'>
+      <h4>Edit > {{property_cached.title}}</h4>
+    </div>
+  </div>
+  <hr>
+  <div class='row-fluid'>
+    <div class='span12'>
+      <field value='direction.title' type='select' options="group for group in groups" required> Title: </field>
+    </div>
+  </div>
+  <div class='row-fluid'>
+    <div class='span12'>
+      <field value='direction.description' type='textarea' rows='10' class='span12' required> Description: </field>
+    </div>
+  </div>
+  <div class='row-fluid'>
+    <div class='span12 well'>
+      <p> Preview: </p>
+      <hr>
+      <div class='span10' ng-bind-html-unsafe='to_md(direction.description)'>
+      </div>
+    </div>
+  </div>
+  <div class='row-fluid'>
+    <div class='span12'>
+      <div class="form-actions">
+        <a ng-click="save()" class='btn btn-success'>Save</a>
+        <a ng-click="reset()" class='btn btn-inverse'>Reset</a>
+        <a ng-click="cancel()" class='btn btn-inverse'>Cancel</a>
+      </div>
+    </div>
+  </div>
+</form>

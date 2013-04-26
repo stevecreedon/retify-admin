@@ -1,11 +1,11 @@
-window.PropertyController = ($scope, $routeParams, Property) ->
+window.PropertyController = ($scope, $location, $routeParams, Property) ->
   $scope.to_md = (text) ->
     marked.parser(marked.lexer(text)) if text
 
   $scope.property = Property.get property_id: $routeParams.id, ->
     $scope.property_cached = angular.copy $scope.property
 
-  $scope.set_body_class 'properties'
+  $scope.set_body_class   'properties'
 
   $scope.active_type = 'property'
   $scope.active_key  = 'home'
@@ -27,20 +27,33 @@ window.PropertyController = ($scope, $routeParams, Property) ->
           when 'all'         then '/assets/views/property/address.html'
       when 'directions'
         switch key
-          when 'add'
-            '/assets/views/property/direction_add.html'
+          when 'new'         then '/assets/views/property/direction_new.html'
           else
-            $scope.direction_cached = $scope.find_direction_by_title(key)
+            $scope.direction_cached = $scope.find_by( 'title', key, $scope.property_cached.directions)
             $scope.direction        = angular.copy $scope.direction_cached
             '/assets/views/property/direction.html'
+      when 'pages'
+        switch key
+          when 'new'         then '/assets/views/property/page_new.html'
+          else
+            $scope.page_cached = $scope.find_by( 'title', key, $scope.property.articles)
+            $scope.page        = angular.copy $scope.page_cached
+            '/assets/views/property/page.html'
+      when 'calendars'
+        switch key
+          when 'new'         then '/assets/views/property/calendar_new.html'
+          else
+            $scope.calendar_cached = $scope.find_by( 'provider', key, $scope.property.calendars)
+            $scope.calendar        = angular.copy $scope.calendar_cached
+            '/assets/views/property/calendar.html'
 
   $scope.active_menu = (type, key) ->
     'active' if $scope.active_type == type && $scope.active_key == key
 
-  $scope.find_direction_by_title = (title) ->
-    for direction in $scope.property_cached.directions
-      if direction.title == title
-        return direction
+  $scope.find_by = ( field, value, collection) ->
+    for item in collection
+      if item[field] == value
+        return item
 
   # property saving section
 
@@ -57,4 +70,4 @@ window.PropertyController = ($scope, $routeParams, Property) ->
       else
         $location.path('/500')
 
-window.PropertyController.$inject = ['$scope', '$routeParams', 'Property']
+window.PropertyController.$inject = ['$scope', '$location', '$routeParams', 'Property']

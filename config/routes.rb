@@ -8,8 +8,8 @@ RentifyAdmin::Application.routes.draw do
     resources :addresses,    controller: 'addresses',             only: [ :show ]
     resources :feeds,        controller: 'feeds',                 only: [ :index, :destroy ]
     resources :properties,   controller: 'properties',            only: [ :index, :show, :new, :create, :update ] do
-      resources :calendars,  controller: 'properties/calendars',  only: [ :new, :create ]
-      resources :articles,   controller: 'properties/articles',   only: [ :new, :create ]
+      resources :calendars,  controller: 'properties/calendars',  only: [ :new, :create, :update ]
+      resources :articles,   controller: 'properties/articles',   only: [ :new, :create, :update ]
       resources :directions, controller: 'properties/directions', only: [ :new, :create, :update ]
       resources :photos,     controller: 'properties/photos',     only: [ :index, :create, :destroy ]
     end
