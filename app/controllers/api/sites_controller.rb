@@ -34,4 +34,12 @@ class Api::SitesController < ApiController
     end
   end
 
+  def update
+    site = current_user.sites.where( id: params[:id] ).first
+    site.address.attributes = params[:address]
+
+    status = site.update_attributes(params[:site].except(:address, :user)) ? 200 : 400
+    render json: site, status: status
+  end
+
 end

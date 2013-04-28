@@ -1,4 +1,4 @@
-window.FeedsController = ($scope, $location, Feed) ->
+window.FeedsController = ($scope, Feed) ->
   $scope.update_feeds = ->
     $scope.feeds = Feed.query()
 
@@ -11,16 +11,7 @@ window.FeedsController = ($scope, $location, Feed) ->
       return true
     return false
 
-  $scope.process_error_response = (response) ->
-    switch response.status
-      when 400
-        $scope.server_errors = response.data.errors.full_messages
-      when 404
-        $location.path('/404')
-      else
-        $location.path('/500')
-
   $scope.set_body_class 'feeds'
   $scope.update_feeds()
 
-window.FeedsController.$inject = ['$scope', '$location', 'Feed']
+window.FeedsController.$inject = ['$scope', 'Feed']

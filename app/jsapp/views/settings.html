@@ -1,0 +1,35 @@
+<div class="row-fluid">
+  <div class="span10 offset1 well">
+    <h1>Settings</h1>
+    <hr>
+    <form class='form-horizontal' name='form' ng-controller='SettingsController'>
+      <fieldset>
+        <field value='site.subdomain' append='.lovebnb.com' class='input-medium' required> Website domain: </field>
+        <field value='site.domain' prepend='http://' class='input-large'> Custom domain: </field>
+        <fieldset>
+          <legend>Contact Details for customers</legend>
+          <field type='email' value='site.email' required> Email: </field>
+          <field type='tel' value='site.phone' required> Phone: </field>
+        </fieldset>
+        <fieldset>
+          <legend>Address</legend>
+          <field value='site.address.address' required> Street: </field>
+          <field value='site.address.city' required> City: </field>
+          <field value='site.address.country' required> Country: </field>
+          <field value='site.address.post_code' required> Post code: </field>
+        </fieldset>
+        <fieldset>
+          <legend>Google Analytics</legend>
+          <field value='site.google_analytics'> Google Analytics Code: </field>
+        </fieldset>
+      </fieldset>
+      <div class="form-actions">
+        <a ng-click="save()" class='btn btn-success'>Save</a>
+        <a ng-click="cancel()" class='btn btn-inverse'>Cancel</a>
+      </div>
+      <ul ng-show="server_errors">
+        <li ng-repeat='message in server_errors'>{{message}}</li>
+      </ul>
+    </form>
+  </div>
+</div>

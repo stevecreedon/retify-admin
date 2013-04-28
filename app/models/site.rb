@@ -16,7 +16,7 @@
 #
 
 class Site < ActiveRecord::Base
-  attr_accessible :domain, :subdomain, :style, :title, :address, :user, :email, :phone
+  attr_accessible :domain, :subdomain, :style, :title, :address, :user, :email, :phone, :google_analytics
 
   belongs_to  :address, dependent: :destroy
   belongs_to  :user

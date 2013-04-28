@@ -1,4 +1,4 @@
-window.PropertyController = ($scope, $location, $routeParams, Property) ->
+window.PropertyController = ($scope, $routeParams, Property) ->
   $scope.to_md = (text) ->
     marked.parser(marked.lexer(text)) if text
 
@@ -61,13 +61,4 @@ window.PropertyController = ($scope, $location, $routeParams, Property) ->
     $scope.property_cached = angular.copy $scope.property
     $scope.property_cached.$update {}, (->) , $scope.process_error_response
 
-  $scope.process_error_response = (response) ->
-    switch response.status
-      when 400
-        $scope.server_errors = response.data.errors.full_messages
-      when 404
-        $location.path('/404')
-      else
-        $location.path('/500')
-
-window.PropertyController.$inject = ['$scope', '$location', '$routeParams', 'Property']
+window.PropertyController.$inject = ['$scope', '$routeParams', 'Property']

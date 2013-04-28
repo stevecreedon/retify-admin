@@ -27,7 +27,12 @@ angular.module('lovebnb.directives.field', [])
       else
         input = "<input type='#{attr.type || 'text'}' #{inputAttr}/>"
 
-      if attr.append
+      if attr.prepend
+        input = "<div class='input-prepend'>"+
+                  "<span class='add-on'>#{attr.prepend}</span>"+
+                  input +
+                "</div>"
+      else if attr.append
         input = "<div class='input-append'>"+
                   input +
                   "<span class='add-on'>#{attr.append}</span>"+

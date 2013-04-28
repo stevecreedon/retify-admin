@@ -4,6 +4,10 @@ angular.module('lovebnb.routes', [])
       templateUrl: '/assets/views/feeds.html',
       controller: @FeedsController
     )
+    $routeProvider.when('/settings',
+      templateUrl: '/assets/views/settings.html',
+      controller: @SettingsController
+    )
     $routeProvider.when('/properties',
       templateUrl: '/assets/views/properties.html',
       controller: @PropertiesController
