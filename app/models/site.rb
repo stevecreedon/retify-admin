@@ -34,6 +34,8 @@ class Site < ActiveRecord::Base
   validates :domain,    uniqueness:  true,
                         allow_blank: true
 
+  validate :domain_cannot_contain_our_domain
+
   accepts_nested_attributes_for :address
 
 private

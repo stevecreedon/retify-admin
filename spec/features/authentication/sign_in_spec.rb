@@ -41,14 +41,14 @@ describe 'sign-in' do
 
        click_on 'Sign in'
 
-       current_path.should == dashboard_index_path
+       current_path.should == app_path
 
      end 
   end
 
   describe 'existing user sign in through the login page' do
 
-    it 'should redirect a correct sign-in to the dashboard page' do
+    it 'should redirect a correct sign-in to the app page' do
 
      visit new_session_path
      
@@ -57,7 +57,7 @@ describe 'sign-in' do
   
      click_on 'Sign in'
      
-     current_path.should == dashboard_index_path
+     current_path.should == app_path
 
      page.should have_content("Happy days - you've come back")
 

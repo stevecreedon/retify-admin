@@ -8,7 +8,7 @@ describe 'email verification' do
       user = FactoryGirl.create(:user_with_identity)
       sign_in(user.password_identity.email)
 
-      visit dashboard_index_path
+      visit app_path
 
       page.should have_content('please verify your email address')
 

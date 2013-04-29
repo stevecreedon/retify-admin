@@ -15,19 +15,19 @@ describe 'change password' do
     it 'should allow the user to change their password', :js => true do
 
       sign_in(user.email)
-      
-      visit dashboard_index_path
+
+      visit app_path
 
       click_link("user-dropdown")
 
-      click_link("Change password")
+      click_link("Account Settings")
 
-      fill_in 'identity[password]', with: 'abcxzy'
-      fill_in 'identity[confirm]', with: 'abcxzy'
+      fill_in 'field_identity_password', with: 'abcxzy'
+      fill_in 'field_identity_confirm', with: 'abcxzy'
 
       click_on 'Change my password'
 
-      current_path.should == dashboard_index_path
+      current_path.should == app_path
 
       page.should have_content('happy days - password changed')    
 
@@ -35,14 +35,14 @@ describe 'change password' do
 
       sign_in(user.email, 'abcxzy')
 
-      current_path.should == dashboard_index_path
+      current_path.should == app_path
 
     end
 
     it 'should return the user to the change password page if the password/confirmation are not valid' do
 
         sign_in(user.email)
-      
+
         visit edit_password_path
 
         fill_in 'identity[password]', with: 'abcxzy'
@@ -52,14 +52,14 @@ describe 'change password' do
 
         current_path.should == edit_password_path
         page.should have_content('Password and Password Confirmation do not match')
-     
+
     end
 
 
   end
 
   context 'non-password user' do
-    
+
     pending 'should not allow a non-password provider to change password'
 
   end
@@ -80,21 +80,21 @@ describe 'change password' do
       page.should have_content("has been sent to #{user.password_identity.email}")
 
       visit edit_password_path(:tid => user.forgot_password_token.guid)
-      
+
       fill_in 'identity[password]', with: 'anewpassword'
       fill_in 'identity[confirm]', with: 'anewpassword'
 
       click_on 'Change my password' 
 
       visit new_session_path
-   
+
       fill_in 'sessions[email]', :with => user.password_identity.email
       fill_in 'sessions[password]', :with => 'anewpassword'
 
       click_on 'Sign in'
-   
-      current_path.should == dashboard_index_path
-      
+
+      current_path.should == app_path
+
     end
 
     it 'should not send email and return the anonymous user to the forgot password page when bad email' do
@@ -110,7 +110,6 @@ describe 'change password' do
       page.current_path.should == forgot_password_path
       page.should have_content("user with email bad@password.co.uk not found")
 
-             
     end
 
     it 'should return the anonymous user to the password edit page when the password is bad' do
@@ -127,15 +126,14 @@ describe 'change password' do
       page.should have_content("has been sent to #{user.password_identity.email}")
 
       visit edit_password_path(:tid => user.forgot_password_token.guid)
-      
+
       fill_in 'identity[password]', with: 'anewpassword'
       fill_in 'identity[confirm]', with: 'anewpasswordddd'
 
       click_on 'Change my password' 
-     
+
       current_path.should == edit_password_path
       page.should have_content("Password and Password Confirmation do not match")
-              
     end
   end
 end

@@ -16,7 +16,7 @@ describe 'accounts' do
         sign_in(user.password_identity.email)
       end
       it 'redirects from any page to account creation page' do
-        visit dashboard_index_path
+        visit app_path
 
         page.current_path.should == edit_account_path(user.id)
       end
@@ -36,7 +36,7 @@ describe 'accounts' do
 
         click_button('I\'m done')
 
-        page.current_path.should == dashboard_index_path
+        page.current_path.should == app_path
 
         user.reload
         user.phone.should      == '0987654321'
