@@ -25,6 +25,7 @@
   <body>
     <%= render 'layouts/header' %>
     <%= render partial: 'layouts/flash', locals: { flash: flash } %>
+    <%= render 'layouts/noscript' %>
     <%= yield %>
     <footer>
       <div class="container">

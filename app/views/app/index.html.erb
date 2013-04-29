@@ -1,48 +1,43 @@
-  <header>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="brand" href="/">LoveBNB</a>
-          <ul class="nav pull-right">
-            <li class="dropdown"> 
-              <a href='#' id='user-dropdown' class='dropdown-toggle' data-toggle='dropdown'>
-                {{currentUser.name}} <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href='#/account_settings'> <i class="icon-user"></i> Account Settings</a>
-                </li>
-                <li>
-                  <a href='/session/sign_out'> <i class="icon-off"></i> Logout</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li><a href='#'>Home</a></li>
-              <li><a href='#/properties'>Properties</a>
-              <li><a href='#/settings'>Settings</a>
+<header>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="brand" href="/">LoveBNB</a>
+        <ul class="nav pull-right">
+          <li class="dropdown"> 
+            <a href='#' id='user-dropdown' class='dropdown-toggle' data-toggle='dropdown'>
+              {{currentUser.name}} <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href='#/account_settings'> <i class="icon-user"></i> Account Settings</a>
+              </li>
+              <li>
+                <a href='/session/sign_out'> <i class="icon-off"></i> Logout</a>
               </li>
             </ul>
-          </div>
+          </li>
+        </ul>
+        <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><a href='#'>Home</a></li>
+            <li><a href='#/properties'>Properties</a>
+            <li><a href='#/settings'>Settings</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 <% if current_user %>
   <meta name="current-user" content="<%= UserSerializer.new(current_user).to_json(root: false) %>" />
   <div id='content' ng-view></div>
 <% end %>
-<noscript>
-  <h1>This application will not work without JavaScripts enabled!!!</h1>
-</noscript>
-  <footer>
-
-  </footer>
+<footer></footer>
 
