@@ -1,4 +1,4 @@
-class PasswordIdentitySerializer < ActiveModel::Serializer
+class GoogleIdentitySerializer < ActiveModel::Serializer
   attributes :id, :email, :info, :state, :provider
 
   def attributes

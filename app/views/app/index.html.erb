@@ -6,9 +6,12 @@
         <ul class="nav pull-right">
           <li class="dropdown"> 
             <a href='#' id='user-dropdown' class='dropdown-toggle' data-toggle='dropdown'>
-              {{currentUser.name}} <span class="caret"></span>
+              {{current_user.name}} <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
+              <li ng-hide='current_user.google_identity'>
+                <a href="/auth/google_oauth2"><i class="icon-share"></i> Connect to Google</a>
+              </li>
               <li>
                 <a href='#/account_settings'> <i class="icon-user"></i> Account Settings</a>
               </li>

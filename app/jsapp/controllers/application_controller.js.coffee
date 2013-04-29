@@ -1,7 +1,7 @@
 window.ApplicationController = ($scope, $location) ->
   attributes = $('meta[name="current-user"]').attr('content')
   if attributes
-    $scope.currentUser = JSON.parse(attributes)
+    $scope.current_user = JSON.parse(attributes)
   else
     window.location = '/session/sign_in'
 
