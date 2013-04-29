@@ -6,6 +6,7 @@ RentifyAdmin::Application.routes.draw do
   namespace 'api' do
     resources :sites,        controller: 'sites',                 only: [ :index, :show, :new, :create, :update ]
     resources :addresses,    controller: 'addresses',             only: [ :show ]
+    resources :identities,   controller: 'identities',            only: [ :create ]
     resources :feeds,        controller: 'feeds',                 only: [ :index, :destroy ]
     resources :properties,   controller: 'properties',            only: [ :index, :show, :new, :create, :update ] do
       resources :calendars,  controller: 'properties/calendars',  only: [ :new, :create, :update ]
@@ -14,8 +15,6 @@ RentifyAdmin::Application.routes.draw do
       resources :photos,     controller: 'properties/photos',     only: [ :index, :create, :destroy ]
     end
   end
-
-  get "sites/index"
 
   resources :login, only: [:index]
   resources :home, only: [:index]
@@ -36,15 +35,6 @@ RentifyAdmin::Application.routes.draw do
 
   resources :accounts, only: [:edit, :update]
 
-  resources :sites
-  resources :properties do
-    resources :calendars,  controller: 'properties/calendars'
-    resources :photos,     controller: 'properties/photos'
-    resources :articles,   controller: 'properties/articles'
-    resources :directions, controller: 'properties/directions', only: [:index, :new, :create]
-  end
-  resources :dashboard,  only: [:index]
-  
   resource :password, only: [:edit, :update] do
     member do
       get 'forgot'

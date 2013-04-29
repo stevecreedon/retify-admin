@@ -10,7 +10,6 @@
  *
  *= require jquery.noty
  *= require noty_theme_default
- *= require help
  *= require_self
  */
 
@@ -35,6 +34,10 @@ body {
   font-style: normal;
   font-weight: 400;
   background-color: #f3f2f1;
+}
+
+.help_container{
+  display: none;
 }
 
 section {

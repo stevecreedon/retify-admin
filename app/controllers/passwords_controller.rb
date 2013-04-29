@@ -3,23 +3,18 @@ class PasswordsController < ApplicationController
 
   before_filter :authenticate_or_token!, :except => [:forgot, :requested, :sent]
 
-  layout :user_or_token
-
   def edit
     @user || current_user.password_identity || not_found
-
-    render user_or_token == 'application' ? :edit_user : :edit_token
   end
 
   def update
-  
     identity = user.password_identity
     identity.updating_password = true   
- 
+
     if identity.update_attributes(params[:identity])
       flash[:notice] = 'happy days - password changed'
       if current_user
-        redirect_to dashboard_index_path
+        redirect_to app_path
       else
         redirect_to new_session_path
       end
@@ -66,13 +61,4 @@ class PasswordsController < ApplicationController
       authenticate!
     end
   end
-
-  def user_or_token
-    if current_user
-      'application'
-    else
-      'home'
-    end
-  end
-
 end

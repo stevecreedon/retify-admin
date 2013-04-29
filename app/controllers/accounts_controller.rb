@@ -1,8 +1,6 @@
 class AccountsController < ApplicationController
   skip_before_filter :check_account_for_user
 
-  layout 'home', only: [:edit, :update]
-
   def edit
     @user = current_user.decorate
     @user.address = Address.new
@@ -15,7 +13,7 @@ class AccountsController < ApplicationController
       current_user.feeds.create!( feed_type: :create_site )
       current_user.feeds.create!( feed_type: :create_property )
 
-      redirect_to(dashboard_index_path, notice: 'Account was successfully created.')
+      redirect_to(app_path, notice: 'Account was successfully created.')
     else
       @user = current_user.decorate
       render :action => "edit"

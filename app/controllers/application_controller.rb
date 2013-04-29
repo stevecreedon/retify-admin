@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :notifications
 
-  layout Proc.new { |controller| request.xhr? ? 'remote' : 'dashboard' }
+  layout Proc.new { |controller| request.xhr? ? 'remote' : 'application' }
 
   def current_user
     @current_user ||= User.where(id: session[:user_id]).first

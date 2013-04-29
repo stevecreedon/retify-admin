@@ -46,7 +46,10 @@ angular.module('lovebnb.models', ['ngResource'])
     )
   )
   .factory('Address', ($resource) ->
-    $resource '/api/addresses/:address_id', { address_id:'@id' }
+    $resource '/api/addresses/:address_id', { address_id: '@id' }
+  )
+  .factory('Identity', ($resource) ->
+    $resource '/api/identities/:identity_id', { identity_id: '@id' }
   )
 
 

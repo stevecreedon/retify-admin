@@ -1,0 +1,13 @@
+<div class="row-fluid">
+  <div class="span10 offset1 well">
+    <h1>Update your password</h1>
+    <hr>
+    <form name='form' class="form-horizontal" ng-controller='AccountSettingsController'>
+      <field value='identity.password' type='password' placeholder='Password' required> Password: </field>
+      <field value='identity.confirm' type='password' placeholder='Confirm' required> Confirm: </field>
+      <div class="form-actions">
+        <a href ng-click="save()" class='btn btn-primary'>Change my password</a>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,8 +1,6 @@
 class RegistrationController < ApplicationController
   skip_before_filter :authenticate!, :check_account_for_user
 
-  layout 'home'
-
   def new
     @identity = PasswordIdentity.new
   end
@@ -34,9 +32,9 @@ class RegistrationController < ApplicationController
 
   def verify
     token = Tokens::ValidateEmail.where(guid: params[:id]).first!
-    token.password_identity.verify!
+    token.password_identity.verify! if token.password_identity.state == 'verifying'
 
-    redirect_to dashboard_index_path, notice: 'your email is verified now'
+    redirect_to app_path, notice: 'your email is verified now'
   end
 
   def destroy

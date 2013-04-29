@@ -47,7 +47,7 @@ RentifyAdmin::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile += %w( app.js app.css dashboard.css dashboard.js home.css home.js file-uploads.js )
+  config.assets.precompile += %w( app.js app.css )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false

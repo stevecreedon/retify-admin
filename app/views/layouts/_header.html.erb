@@ -2,39 +2,26 @@
   <div class="navbar-inner">
     <div class="container-fluid">
       <a class="brand" href="/">LoveBNB</a>
-      <ul class="nav pull-right">
-        <li class="dropdown"> 
-          <%= link_to '#', id: 'user-dropdown', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do %>
-            <%= current_user.name %> <span class="caret"></span>
-          <% end %>
-          <ul class="dropdown-menu">
-            <% if current_user.password_identity %>
-              <li>
-                <%= link_to edit_password_path do %>
-                  <i class="icon-user"></i> Change password
-                <% end %>
-              </li>
-            <% end %>
-            <li>
-              <%= link_to destroy_session_path do %>
-                <i class="icon-off"></i> Logout
-              <% end %>
-            </li>
-          </ul>
-        </li>
-      </ul>
       <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+      <ul class="nav pull-right">
+        <% if current_user %>
+          <li><%= link_to "Logout", destroy_session_path  %></li>
+        <% else %>
+          <li><%= link_to "Login", new_session_path  %></li>
+        <% end %>
+      </ul>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li><%= link_to "Home", dashboard_index_path, data: { ajax: true, menu: true } %></li>
-          <li><%= link_to "Sites", sites_path, data: { ajax: true, menu: true } %></li>
-          <li><%= link_to "Properties", properties_path, data: { ajax: true, menu: true } %></li>
+          <li><%= link_to "Features", "#"  %></li>
+          <li><%= link_to "Examples", "#"  %></li>
+          <li><%= link_to "Pricing", "#"  %></li>
+          <li><%= link_to "Blog", "http://blog.xaza.co.uk"  %></li>
         </ul>
-      </div>
+      </div><!--/.nav-collapse -->
     </div>
   </div>
 </div>
