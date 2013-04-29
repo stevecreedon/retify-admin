@@ -1,5 +1,5 @@
 $(document).ready(function(){ 
-  $(".btn-control-help").live("click",function(){
+  $(".btn-control-help").on("click",function(){
     var control = $(this).siblings("input, select");
     var helpContainer = $(this).siblings(".help_container"); 
     var helpText = new Array();
@@ -13,7 +13,7 @@ $(document).ready(function(){
     noty({text: helpText.join(""), modal: true, timeout: false, notyTemplate: '<div style="text-align: left;" class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>'});
   });
 
-  $(".btn-interactive-help").live("click",function(){
+  $(".btn-interactive-help").on("click",function(){
     var helpContainer = $(this).siblings(".help_container"); 
     console.log(helpContainer) 
     noty({text: helpContainer.html(), modal: true, timeout: false, notyTemplate: '<div style="text-align: left;" class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>'});
