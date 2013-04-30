@@ -18,6 +18,9 @@
 #= require jquery.ui.widget
 #= require jquery.iframe-transport
 #= require jquery.fileupload
+#= require noty/jquery.noty
+#= require noty/layouts/top_center
+#= require noty/themes/default
 
 #= require_tree ./factories
 #= require_tree ./directives

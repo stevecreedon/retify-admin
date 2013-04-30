@@ -25,6 +25,9 @@
         <a ng-click="reset()" class='btn btn-inverse'>Reset</a>
         <a ng-click="cancel()" class='btn btn-inverse'>Cancel</a>
       </div>
+      <ul ng-show="server_errors" ng-hide='direction.errors.full_messages.length == 0'>
+        <li ng-repeat='message in direction.errors.full_messages'>{{message}}</li>
+      </ul>
     </div>
   </div>
 </form>

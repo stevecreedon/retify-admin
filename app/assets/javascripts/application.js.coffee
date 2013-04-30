@@ -11,7 +11,9 @@
 # GO AFTER THE REQUIRES BELOW.
 #
 #= require jquery
-#= require jquery.noty
+#= require noty/jquery.noty
+#= require noty/layouts/top_center
+#= require noty/themes/default
 #= require bootstrap
 #= require lovebnb/help
 #= require_self

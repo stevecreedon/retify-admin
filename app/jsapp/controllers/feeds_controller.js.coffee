@@ -5,9 +5,17 @@ window.FeedsController = ($scope, Feed) ->
   $scope.process_saving = (form, model, params) ->
     if form.$valid
       if model.id
-        model.$update params, $scope.update_feeds, $scope.process_error_response
+        model.$update params, ( ->
+          $scope.update_feeds()
+          $scope.notify
+            text: 'Updated'
+        ), $scope.process_error_response
       else
-        model.$save   params, $scope.update_feeds, $scope.process_error_response
+        model.$save   params, ( ->
+          $scope.update_feeds()
+          $scope.notify
+            text: 'Created'
+        ), $scope.process_error_response
       return true
     return false
 

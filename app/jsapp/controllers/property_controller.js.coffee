@@ -59,6 +59,9 @@ window.PropertyController = ($scope, $routeParams, Property) ->
 
   $scope.save_property = () ->
     $scope.property_cached = angular.copy $scope.property
-    $scope.property_cached.$update {}, (->) , $scope.process_error_response
+    $scope.property_cached.$update {}, (->
+      $scope.notify
+        text: 'Property updated'
+    ) , $scope.process_error_response
 
 window.PropertyController.$inject = ['$scope', '$routeParams', 'Property']

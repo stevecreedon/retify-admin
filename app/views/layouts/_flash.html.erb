@@ -4,8 +4,8 @@
     $("span.flash-notice").each(function(){
       noty({
         text: $(this).html(),
-        layout:'topCenter',
-        animateOpen: { opacity: 'show' },
+        layout: 'topCenter',
+        timeout: 5000,
         type: 'success'
       });
     }).hide();
@@ -17,8 +17,8 @@
     $("span.flash-alert").each(function(){
       noty({
         text: $(this).html(),
-        layout:'topCenter',
-        animateOpen: { opacity: 'show' },
+        layout: 'topCenter',
+        timeout: 5000,
         type: 'error'
       });
     }).hide();
@@ -32,8 +32,8 @@
     $("span.notification").each(function(){
       noty({
         text: $(this).html(),
-        layout:'topCenter',
-        animateOpen: { opacity: 'show' },
+        layout: 'topCenter',
+        timeout: 5000,
         type: 'error'
       });
     }).hide();

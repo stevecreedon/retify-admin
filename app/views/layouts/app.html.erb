@@ -28,6 +28,7 @@
   <!-- end: JavaScript -->
 </head>
 <body ng-controller='ApplicationController' ng-class='body_class'>
+  <%= render partial: 'layouts/flash', locals: { flash: flash } %>
   <%= render 'layouts/noscript' %>
   <%= yield %>
 </body>
