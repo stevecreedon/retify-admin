@@ -14,7 +14,8 @@ window.PropertyDirectionNewController = ($scope, PropertyDirection) ->
 
   $scope.save = () ->
     $scope.submited = true
-    $scope.direction.$save (->
+    $scope.direction.$save ( (resource, headers) ->
+      $scope.direction = resource
       $scope.property_cached.directions.push($scope.direction)
       $scope.property.directions = angular.copy $scope.property_cached.directions
       $scope.show('directions', $scope.direction.title)

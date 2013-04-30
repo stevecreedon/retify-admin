@@ -58,8 +58,9 @@ window.PropertyController = ($scope, $routeParams, Property) ->
   # property saving section
 
   $scope.save_property = () ->
-    $scope.property_cached = angular.copy $scope.property
-    $scope.property_cached.$update {}, (->
+    $scope.property.$update ((model, header)->
+      $scope.property        = angular.copy model
+      $scope.property_cached = angular.copy model
       $scope.notify
         text: 'Property updated'
     ) , $scope.process_error_response

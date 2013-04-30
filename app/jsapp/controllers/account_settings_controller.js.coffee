@@ -7,7 +7,8 @@ window.AccountSettingsController = ($scope, Identity) ->
   $scope.save = () ->
     $scope.submited     = true
     if $scope.form.$valid
-      $scope.identity.$save ( ->
+      $scope.identity.$save ( (response, headers) ->
+        $scope.identity = response
         $scope.submited = false
         $scope.notify
           text: 'happy days - password changed'

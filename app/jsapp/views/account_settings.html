@@ -8,8 +8,8 @@
       <div class="form-actions">
         <a href ng-click="save()" class='btn btn-primary'>Change my password</a>
       </div>
-      <ul ng-show="server_errors" ng-hide='identity.errors.full_messages.length == 0'>
-        <li ng-repeat='message in identity.errors.full_messages'>{{message}}</li>
+      <ul ng-show="server_errors" ng-hide='identity.errors.length == 0'>
+        <li ng-repeat='message in identity.errors'>{{message}}</li>
       </ul>
     </form>
   </div>

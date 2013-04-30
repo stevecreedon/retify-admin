@@ -1,9 +1,9 @@
 window.PropertyPageController = ($scope, PropertyArticle) ->
   $scope.save = () ->
     if $scope.is_changed()
-      new PropertyArticle($scope.page).$update (->
-        $scope.page_cached.title       = $scope.page.title
-        $scope.page_cached.description = $scope.page.description
+      new PropertyArticle($scope.page).$update ( (resource, headers) ->
+        $scope.page        = angular.copy resource
+        $scope.page_cached = angular.copy resource
       ), $scope.process_error_response
 
   $scope.reset = () ->

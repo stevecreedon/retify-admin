@@ -16,8 +16,8 @@ window.ApplicationController = ($scope, $location) ->
   $scope.process_error_response = (response) ->
     switch response.status
       when 400
-        response.config.data.errors.full_messages = response.data.errors.full_messages
-        for error in response.data.errors.full_messages
+        response.config.data.errors = response.data.errors
+        for error in response.data.errors
           $scope.alert({ text: error })
       when 404
         $location.path('/404')
@@ -29,7 +29,7 @@ window.ApplicationController = ($scope, $location) ->
     $scope.noty(angular.extend(opts, options))
 
   $scope.notify = ( options ) ->
-    opts = { type: 'error' }
+    opts = { type: 'success' }
     $scope.noty(angular.extend(opts, options))
 
   $scope.noty = ( options ) ->

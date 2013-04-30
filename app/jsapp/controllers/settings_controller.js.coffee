@@ -9,8 +9,9 @@ window.SettingsController = ($scope, Site) ->
   $scope.save = () ->
     $scope.submited     = true
     if $scope.form.$valid
-      $scope.site.$update (->
-        $scope.site_cached = angular.copy $scope.site
+      $scope.site.$update ( (model, headers)->
+        $scope.site        = angular.copy model
+        $scope.site_cached = angular.copy model
         $scope.notify
           text: 'Settings saved'
       ), $scope.process_error_response

@@ -6,7 +6,8 @@ window.FeedsPropertyDirectionNewController = ($scope, PropertyDirection) ->
     $scope.submited = true
     for model in $scope.directions
       if model.description && model.description.length > 0
-        $scope.process_saving($scope.form, model, { property_id: $scope.feed.parent_id })
+        $scope.model = model
+        $scope.process_saving($scope, { property_id: $scope.feed.parent_id })
 
   $scope.cancel = ->
     $scope.submited = false

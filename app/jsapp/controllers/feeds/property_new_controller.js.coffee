@@ -4,7 +4,7 @@ window.FeedsPropertyNewController = ($scope, Property) ->
 
   $scope.save = () ->
     $scope.submited = true
-    $scope.process_saving($scope.form, $scope.model, {})
+    $scope.process_saving($scope, {})
 
   $scope.cancel = ->
     $scope.submited = false

@@ -27,8 +27,8 @@
         <a ng-click="save()" class='btn btn-success'>Save</a>
         <a ng-click="cancel()" class='btn btn-inverse'>Cancel</a>
       </div> 
-      <ul ng-show="server_errors" ng-hide='site.errors.full_messages.length == 0'>
-        <li ng-repeat='message in site.errors.full_messages'>{{message}}</li>
+      <ul ng-show="server_errors" ng-hide='site.errors.length == 0'>
+        <li ng-repeat='message in site.errors'>{{message}}</li>
       </ul>
     </form>
   </div>

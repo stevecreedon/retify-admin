@@ -16,7 +16,8 @@ window.PropertyPageNewController = ($scope, PropertyArticle) ->
 
   $scope.save = () ->
     $scope.submited = true
-    $scope.page.$save (->
+    $scope.page.$save ( (resource, headers)->
+      $scope.page = resource
       $scope.property_cached.articles.push($scope.page)
       $scope.property.articles = angular.copy $scope.property_cached.articles
       $scope.show('pages', $scope.page.title)

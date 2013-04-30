@@ -31,8 +31,8 @@
         <a ng-click="reset()" class='btn btn-inverse'>Reset</a>
         <a ng-click="cancel()" class='btn btn-inverse'>Cancel</a>
       </div>
-      <ul ng-show="server_errors" ng-hide='page.errors.full_messages.length == 0'>
-        <li ng-repeat='message in page.errors.full_messages'>{{message}}</li>
+      <ul ng-show="server_errors" ng-hide='page.errors.length == 0'>
+        <li ng-repeat='message in page.errors'>{{message}}</li>
       </ul>
     </div>
   </div>

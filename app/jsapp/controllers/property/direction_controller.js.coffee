@@ -1,7 +1,8 @@
 window.PropertyDirectionController = ($scope, PropertyDirection) ->
   $scope.save = () ->
     if $scope.is_changed()
-      new PropertyDirection($scope.direction).$update (->
+      new PropertyDirection($scope.direction).$update ( (resource, header)->
+        $scope.direction = resource
         $scope.direction_cached.description = $scope.direction.description
       ), $scope.process_error_response
 
