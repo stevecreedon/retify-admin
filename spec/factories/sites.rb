@@ -17,5 +17,6 @@ FactoryGirl.define do
     email     { user.password_identity.email }
     style     "style_01"
     user      { FactoryGirl.create(:user_with_identity) }
+    address
   end
 end

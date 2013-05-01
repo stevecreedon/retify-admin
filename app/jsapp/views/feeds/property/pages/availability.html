@@ -4,8 +4,8 @@
     <field value='model.description' type='textarea' required> Description: </field>
   </fieldset>
   <div class="form-actions">
-    <a ng-click="save()" class='btn btn-success'>Save</a>
-    <a ng-click="cancel()" class='btn btn-inverse'>Cancel</a>
+    <a href ng-click="save()" class='btn btn-success'>Save</a>
+    <a href ng-click="cancel()" class='btn btn-inverse'>Cancel</a>
   </div>
   <ul ng-show="server_errors" ng-hide='model.errors.length == 0'>
     <li ng-repeat='message in model.errors'>{{message}}</li>

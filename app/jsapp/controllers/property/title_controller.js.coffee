@@ -1,7 +1,7 @@
 window.PropertyTitleController = ($scope) ->
 
   $scope.save = () ->
-    $scope.save_property() if $scope.is_changed()
+    $scope.save_property(message: 'Property title was saved') if $scope.is_changed()
 
   $scope.reset = () ->
     $scope.property.title = $scope.property_cached.title

@@ -26,9 +26,9 @@
   <div class='row-fluid'>
     <div class='span12'>
       <div class="form-actions">
-        <a ng-click="save()" class='btn btn-success'>Save</a>
-        <a ng-click="reset()" class='btn btn-inverse'>Reset</a>
-        <a ng-click="cancel()" class='btn btn-inverse'>Cancel</a>
+        <a href ng-click="save()" class='btn btn-success'>Save</a>
+        <a href ng-click="reset()" class='btn btn-inverse'>Reset</a>
+        <a href ng-click="cancel()" class='btn btn-inverse'>Cancel</a>
       </div>
       <ul ng-show="server_errors" ng-hide='direction.errors.length == 0'>
         <li ng-repeat='message in direction.errors'>{{message}}</li>
