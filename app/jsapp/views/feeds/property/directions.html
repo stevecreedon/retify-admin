@@ -1,6 +1,6 @@
 <form novalidate class='form-horizontal' name='form' ng-controller='FeedsPropertyDirectionNewController'>
   <fieldset>
-    <field value='direction.description' type='textarea' rows='5' ng-repeat='direction in directions'> {{direction.title}}: </field>
+    <field value='direction.description' index='{{$index}}' type='textarea' rows='5' ng-repeat='direction in directions'> {{direction.title}}: </field>
   </fieldset>
   <div class="form-actions">
     <a href ng-click="save()" class='btn btn-success'>Save</a>

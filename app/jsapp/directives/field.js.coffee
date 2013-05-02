@@ -3,10 +3,11 @@ angular.module('lovebnb.directives.field', [])
     transclude: true
     restrict: 'E'
     compile: (element, attr, controller) ->
-      formId = "field_{{$index}}_" + attr.value.replace(/\./g, '_')
-      formId = "field_" + attr.value.replace(/\./g, '_')
+      formId    = "field_" + attr.value.replace(/\./g, '_')
+      formId   += attr.index if attr.index
+      formName  = "field_" + attr.value.replace(/\./g, '_')
 
-      inputAttr  = "class='#{attr.class || 'input-xlarge'}' ng-model='#{attr.value}' id='#{formId}' name='#{formId}'"
+      inputAttr = "class='#{attr.class || 'input-xlarge'}' ng-model='#{attr.value}' id='#{formId}' name='#{formName}'"
 
       if attr.required != undefined
         inputAttr += " required"
