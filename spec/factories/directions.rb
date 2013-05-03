@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :direction do
-    title       "Direction title"
+    title       'By car'
     description "Direction description"
     property
   end
