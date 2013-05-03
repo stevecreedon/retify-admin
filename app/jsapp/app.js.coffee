@@ -37,6 +37,5 @@ window.Lovebnb = angular.module('lovebnb', [
   'lovebnb.models',
   'lovebnb.factories.model',
   'lovebnb.directives.field',
-  'lovebnb.directives.switch',
   'lovebnb.directives.eat_click'
 ])
