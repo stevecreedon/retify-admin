@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/rails-api/active_model_serializers.git
-  revision: 329a38a7ddee4350f96d657256a5f6a277865291
+  revision: 7a39966e7ea47eb2f58962b6f0060ff3cbef4e65
   specs:
     active_model_serializers (0.7.0)
       activemodel (>= 3.0)
@@ -52,7 +52,7 @@ GEM
       multi_json (>= 1.0.0)
     bcrypt-ruby (3.0.1)
     bluecloth (2.2.0)
-    bootstrap-sass (2.3.1.1)
+    bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
     builder (3.0.4)
     capistrano (2.15.4)
@@ -255,7 +255,7 @@ GEM
       libv8 (~> 3.11.8.12)
       ref
     thor (0.18.1)
-    tilt (1.3.7)
+    tilt (1.4.0)
     timecop (0.6.1)
     transitions (0.1.8)
     treetop (1.4.12)
@@ -283,7 +283,7 @@ DEPENDENCIES
   active_model_serializers!
   annotate
   bluecloth
-  bootstrap-sass (~> 2.3.1.0)
+  bootstrap-sass (= 2.3.1.0)
   capistrano
   capistrano-tools!
   capybara
