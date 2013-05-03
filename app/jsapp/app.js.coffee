@@ -25,7 +25,6 @@
 #= require_tree ./factories
 #= require_tree ./directives
 #= require_tree ./controllers
-#= require_tree ./helpers
 #= require_tree ./views
 #= require models
 #= require routes
