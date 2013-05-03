@@ -4,7 +4,7 @@ window.FeedsPropertyCalendarNewController = ($scope, PropertyCalendar) ->
 
   $scope.save = () ->
     $scope.submited = true
-    $scope.process_saving($scope, { property_id: $scope.feed.parent_id })
+    $scope.process_saving($scope, { property_id: $scope.feed.parent_id }, { message: 'Calendar was saved' } )
 
   $scope.cancel = ->
     $scope.submited = false

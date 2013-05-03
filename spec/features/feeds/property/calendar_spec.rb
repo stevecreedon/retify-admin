@@ -20,6 +20,7 @@ describe 'feed for property calendar' do
       click_on('Save')
 
       page.should_not have_css("a[href='#item-#{feed.id}']")
+      page.should have_content("Calendar was saved")
 
       property.reload
       calendar = property.calendars.first

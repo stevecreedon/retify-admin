@@ -20,6 +20,7 @@ describe 'feed for property tems page' do
       click_on('Save')
 
       page.should_not have_css("a[href='#item-#{feed.id}']")
+      page.should have_content("Terms Page was saved")
 
       property.reload
       article = property.articles.first

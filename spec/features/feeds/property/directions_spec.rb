@@ -20,6 +20,7 @@ describe 'feed for property directions' do
       click_on('Save')
 
       page.should_not have_css("a[href='#item-#{feed.id}']")
+      page.should have_content("Direction were saved")
 
       property.reload
       property.directions.size.should == 2

@@ -19,6 +19,7 @@ describe 'feed for property' do
       click_on('Save')
 
       page.should_not have_css("a[href='#item-#{feed.id}']")
+      page.should have_content("Property was saved")
       page.should have_content("Add Calendar to the property")
       page.should have_content("Add Photo to the property")
       page.should have_content("Add Direction to the property")

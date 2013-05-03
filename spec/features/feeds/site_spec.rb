@@ -18,6 +18,7 @@ describe 'feed for site' do
       click_on('Save')
 
       page.should_not have_css("a[href='#item-#{feed.id}']")
+      page.should have_content("Site was saved")
 
       user.reload
       site = user.sites.first

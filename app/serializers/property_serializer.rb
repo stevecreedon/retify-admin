@@ -14,8 +14,8 @@ class PropertySerializer < ActiveModel::Serializer
   end
 
   def include_associations!
+    include! :address
     unless options[:include_associations] === false
-      include! :address
       include! :directions
       include! :photos
       include! :calendars
