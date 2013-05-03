@@ -15,32 +15,32 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (3.2.11)
-      actionpack (= 3.2.11)
-      mail (~> 2.4.4)
-    actionpack (3.2.11)
-      activemodel (= 3.2.11)
-      activesupport (= 3.2.11)
+    actionmailer (3.2.13)
+      actionpack (= 3.2.13)
+      mail (~> 2.5.3)
+    actionpack (3.2.13)
+      activemodel (= 3.2.13)
+      activesupport (= 3.2.13)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.4)
-      rack (~> 1.4.0)
+      rack (~> 1.4.5)
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    activemodel (3.2.11)
-      activesupport (= 3.2.11)
+    activemodel (3.2.13)
+      activesupport (= 3.2.13)
       builder (~> 3.0.0)
-    activerecord (3.2.11)
-      activemodel (= 3.2.11)
-      activesupport (= 3.2.11)
+    activerecord (3.2.13)
+      activemodel (= 3.2.13)
+      activesupport (= 3.2.13)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activeresource (3.2.11)
-      activemodel (= 3.2.11)
-      activesupport (= 3.2.11)
-    activesupport (3.2.11)
-      i18n (~> 0.6)
+    activeresource (3.2.13)
+      activemodel (= 3.2.13)
+      activesupport (= 3.2.13)
+    activesupport (3.2.13)
+      i18n (= 0.6.1)
       multi_json (~> 1.0)
     addressable (2.3.4)
     annotate (2.5.0)
@@ -121,7 +121,7 @@ GEM
     highline (1.6.18)
     hike (1.2.2)
     httpauth (0.2.0)
-    i18n (0.6.4)
+    i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
@@ -136,7 +136,7 @@ GEM
     launchy (2.3.0)
       addressable (~> 2.3)
     libv8 (3.11.8.17)
-    mail (2.4.4)
+    mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -196,17 +196,17 @@ GEM
     rack_session_access (0.1.1)
       builder (>= 2.0.0)
       rack (>= 1.0.0)
-    rails (3.2.11)
-      actionmailer (= 3.2.11)
-      actionpack (= 3.2.11)
-      activerecord (= 3.2.11)
-      activeresource (= 3.2.11)
-      activesupport (= 3.2.11)
+    rails (3.2.13)
+      actionmailer (= 3.2.13)
+      actionpack (= 3.2.13)
+      activerecord (= 3.2.13)
+      activeresource (= 3.2.13)
+      activesupport (= 3.2.13)
       bundler (~> 1.0)
-      railties (= 3.2.11)
-    railties (3.2.11)
-      actionpack (= 3.2.11)
-      activesupport (= 3.2.11)
+      railties (= 3.2.13)
+    railties (3.2.13)
+      actionpack (= 3.2.13)
+      activesupport (= 3.2.13)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -283,12 +283,12 @@ DEPENDENCIES
   active_model_serializers!
   annotate
   bluecloth
-  bootstrap-sass (= 2.3.1.0)
+  bootstrap-sass
   capistrano
   capistrano-tools!
   capybara
   carrierwave
-  coffee-rails (~> 3.2.1)
+  coffee-rails
   configatron
   database_cleaner
   draper
@@ -307,13 +307,13 @@ DEPENDENCIES
   pry-rails
   quiet_assets
   rack_session_access
-  rails (= 3.2.11)
+  rails
   rspec-rails
-  sass-rails (~> 3.2.3)
+  sass-rails
   selenium-webdriver
   therubyracer
   timecop
   transitions
-  uglifier (>= 1.0.3)
+  uglifier
   unicorn
   xml-simple
