@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :property_photo do
-    image "MyString"
-    property_id 1
+    image     { File.open("#{Rails.root}/spec/static/property_photo.jpg") }
+    property
   end
 end
