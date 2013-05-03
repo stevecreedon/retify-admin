@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'property pages', js: true do
-  let(:user)       { FactoryGirl.create(:user_with_identity) }
+  let(:user)       { FactoryGirl.create(:user_with_verified_identity) }
   let!(:property)  { FactoryGirl.create(:property, user: user) }
   let!(:article)      { FactoryGirl.create(:article, source_id: property.id, source_type: 'property' ) }
 

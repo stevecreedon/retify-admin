@@ -5,7 +5,7 @@ describe Property do
     {
       title:       'Property title',
       description: 'Property description',
-      user:        FactoryGirl.create(:user_with_identity),
+      user:        FactoryGirl.create(:user_with_verified_identity),
       address:     FactoryGirl.create(:address)
     }
   end

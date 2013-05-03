@@ -16,7 +16,7 @@ FactoryGirl.define do
     phone     '0987654321'
     email     { user.password_identity.email }
     style     "style_01"
-    user      { FactoryGirl.create(:user_with_identity) }
+    user      { FactoryGirl.create(:user_with_verified_identity) }
     address
   end
 end

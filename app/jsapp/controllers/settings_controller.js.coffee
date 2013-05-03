@@ -1,7 +1,11 @@
 window.SettingsController = ($scope, Site) ->
   $scope.sites = Site.query ->
-    $scope.site        = angular.copy $scope.sites[0]
-    $scope.site_cached = angular.copy $scope.sites[0]
+    if $scope.sites.length == 0
+      $scope.site        = Site.new ()->
+        $scope.site_cached = angular.copy $scope.sites[0]
+    else
+      $scope.site          = angular.copy $scope.sites[0]
+      $scope.site_cached   = angular.copy $scope.sites[0]
 
   $scope.set_body_class   'properties'
   $scope.submited       = false
@@ -9,12 +13,14 @@ window.SettingsController = ($scope, Site) ->
   $scope.save = () ->
     $scope.submited     = true
     if $scope.form.$valid
-      $scope.site.$update ( (model, headers)->
+      success = (model, headers)->
         $scope.site        = angular.copy model
         $scope.site_cached = angular.copy model
-        $scope.notify
-          text: 'Settings saved'
-      ), $scope.process_error_response
+        $scope.notify text: 'Settings saved'
+      if $scope.site.id
+        $scope.site.$update success, $scope.process_error_response
+      else
+        $scope.site.$save success, $scope.process_error_response
 
   $scope.cancel = ->
     $scope.submited = false

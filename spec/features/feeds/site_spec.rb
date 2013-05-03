@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'feed for site' do
   context 'user from sign up page', js: true do
-    let(:user)    { FactoryGirl.create(:user_with_identity) }
+    let(:user)    { FactoryGirl.create(:user_with_verified_identity) }
     let!(:feed)   { FactoryGirl.create(:feed, feed_type: :create_site, user: user) }
 
     before do
@@ -63,7 +63,7 @@ describe 'feed for site' do
         page.should have_css("a[href='#item-#{feed.id}']")
       end
       it 'shows server erros if there are' do
-        another_user = FactoryGirl.create(:user_with_identity)
+        another_user = FactoryGirl.create(:user_with_verified_identity)
         site         = FactoryGirl.create(:site, subdomain: 'test', user: another_user)
         fill_in('Website domain', with: 'test' )
 

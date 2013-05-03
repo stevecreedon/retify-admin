@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'sign-in' do
 
-  let(:user){FactoryGirl.create(:user_with_identity)}
+  let(:user){FactoryGirl.create(:user_with_verified_identity)}
   let(:identity){ user.password_identity}
 
   before do

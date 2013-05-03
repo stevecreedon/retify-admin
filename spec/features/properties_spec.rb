@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'properties page' do
   context 'user from sign up page', js: true do
-    let(:user)    { FactoryGirl.create(:user_with_identity) }
+    let(:user)    { FactoryGirl.create(:user_with_verified_identity) }
 
     before do
       sign_in(user)

@@ -6,7 +6,7 @@ describe SessionsController do
 
     it 'should log in an existing user where the identity exists' do
 
-      user = FactoryGirl.create(:user_with_identity)
+      user = FactoryGirl.create(:user_with_verified_identity)
       identity = user.password_identity
       
       request.env['omniauth.auth'] =  {'provider' => identity.provider, "uid" => identity.password_digest}

@@ -32,7 +32,7 @@ describe 'sign-up' do
     end
 
     it 'should redirect the user to the sign-in page if the email exists' do
-      user = FactoryGirl.create(:user_with_identity)
+      user = FactoryGirl.create(:user_with_verified_identity)
       identity = user.password_identity
 
       visit root_path
@@ -77,7 +77,7 @@ describe 'sign-up' do
    end
 
    it 'should redirect the user to the sign-in page if the email exists' do
-     user = FactoryGirl.create(:user_with_identity)
+     user = FactoryGirl.create(:user_with_verified_identity)
      identity = user.password_identity
 
 

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'feed for property directions' do
   context 'user from sign up page', js: true do
-    let(:user)     { FactoryGirl.create(:user_with_identity) }
+    let(:user)     { FactoryGirl.create(:user_with_verified_identity) }
     let(:property) { FactoryGirl.create(:property, user: user) }
     let!(:feed)    { FactoryGirl.create(:feed, feed_type: :create_property_directions, user: user, parent_id: property.id) }
 

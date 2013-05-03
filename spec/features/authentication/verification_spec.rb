@@ -16,11 +16,7 @@ describe 'email verification' do
 
     it 'should not show a nag screen to a verified user' do
 
-      user = FactoryGirl.create(:user_with_identity)
-
-      identity = user.password_identity
-      identity.verify!
-      identity.save!
+      user = FactoryGirl.create(:user_with_verified_identity)
 
       sign_in(user)
 

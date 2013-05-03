@@ -1,5 +1,5 @@
 
-def sign_in(user=FactoryGirl.create(:user_with_identity))
+def sign_in(user=FactoryGirl.create(:user_with_verified_identity))
   session[:user_id] = user.id
 end
 

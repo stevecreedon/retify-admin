@@ -21,21 +21,21 @@ describe PasswordsController do
       end
 
       it 'should allow access if the request supplies a valid token' do
-        user = FactoryGirl.create(:user_with_identity)
+        user = FactoryGirl.create(:user_with_verified_identity)
         token = user.create_forgot_password_token!
         get :edit, tid: token.guid
         response.should be_ok 
       end
 
       it 'should render the home template if the request supplies a valid token' do
-        user = FactoryGirl.create(:user_with_identity)
+        user = FactoryGirl.create(:user_with_verified_identity)
         token = user.create_forgot_password_token!
         get :edit, tid: token.guid
         response.should render_template('layouts/application')
       end
 
       it 'should redirect to the forgot password page if no valid token is found' do
-        user = FactoryGirl.create(:user_with_identity)
+        user = FactoryGirl.create(:user_with_verified_identity)
         token = user.create_forgot_password_token!
         Timecop.travel(Time.gm(*Time.now) + 25.hours) do
           get :edit, tid: token.guid
@@ -61,14 +61,14 @@ describe PasswordsController do
 
     context 'logged-in user' do
       it 'should allow access if the user has signed-in' do
-        user = FactoryGirl.create(:user_with_identity)
+        user = FactoryGirl.create(:user_with_verified_identity)
         sign_in(user)
         get :edit
         response.should be_ok
       end
 
       it 'should render the application template if the user has signed-in' do
-        user = FactoryGirl.create(:user_with_identity)
+        user = FactoryGirl.create(:user_with_verified_identity)
         sign_in(user)
         get :edit
         response.should render_template('layouts/application')

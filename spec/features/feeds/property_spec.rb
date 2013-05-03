@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'feed for property' do
   context 'user from sign up page', js: true do
-    let(:user)    { FactoryGirl.create(:user_with_identity) }
+    let(:user)    { FactoryGirl.create(:user_with_verified_identity) }
     let!(:feed)   { FactoryGirl.create(:feed, feed_type: :create_property, user: user) }
 
     before do

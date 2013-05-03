@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'property page address', js: true do
-  let(:user)      { FactoryGirl.create(:user_with_identity) }
+  let(:user)      { FactoryGirl.create(:user_with_verified_identity) }
   let!(:property) { FactoryGirl.create(:property, user: user) }
   let!(:calendar) { FactoryGirl.create(:calendar, property: property) }
 

@@ -8,7 +8,7 @@ describe Feed do
       template:    'path/to/template',
       icon:        'icon-name',
       parent_id:   1,
-      user:        FactoryGirl.create(:user_with_identity),
+      user:        FactoryGirl.create(:user_with_verified_identity),
     }
   end
 

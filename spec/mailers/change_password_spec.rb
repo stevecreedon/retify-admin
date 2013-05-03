@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe ChangePassword do
 
-  let(:user){FactoryGirl.create(:user_with_identity)}
+  let(:user){FactoryGirl.create(:user_with_verified_identity)}
   let(:mail) {
     Timecop.travel(Time.new(2013,10,11,20,30)) do
       ChangePassword.request_new(user)

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Verifier do
 
-  let(:user){FactoryGirl.create(:user_with_identity)}
+  let(:user){FactoryGirl.create(:user_with_verified_identity)}
   let(:mail) {Verifier.verify(user.password_identity)}
    
   it 'should have the correct subject' do
