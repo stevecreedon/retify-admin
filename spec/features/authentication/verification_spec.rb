@@ -6,7 +6,7 @@ describe 'email verification' do
     it 'should show allow a new user to log in but show a nag screen' do
 
       user = FactoryGirl.create(:user_with_identity)
-      sign_in(user.password_identity.email)
+      sign_in(user)
 
       visit root_path
 
@@ -22,7 +22,7 @@ describe 'email verification' do
       identity.verify!
       identity.save!
 
-      sign_in(identity.email, 'passwd')
+      sign_in(user)
 
       visit root_path
 

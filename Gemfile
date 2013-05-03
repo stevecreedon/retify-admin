@@ -51,6 +51,7 @@ group :test, :development do
   gem 'launchy'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'rack_session_access'
 
   gem 'pry'
   gem 'pry-debugger'

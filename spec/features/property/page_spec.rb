@@ -6,7 +6,7 @@ describe 'property pages', js: true do
   let!(:article)      { FactoryGirl.create(:article, source_id: property.id, source_type: 'property' ) }
 
   before do
-    sign_in(user.password_identity.email)
+    sign_in(user)
     visit "/app#/properties/#{property.id}"
     page.should have_content(property.title)
 

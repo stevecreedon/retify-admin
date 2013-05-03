@@ -5,6 +5,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 #require 'capybara/rails'
 require 'capybara/rspec'
+require 'rack_session_access/capybara'
 require 'xmlsimple'
 
 # Requires supporting ruby files with custom matchers and macros, etc,

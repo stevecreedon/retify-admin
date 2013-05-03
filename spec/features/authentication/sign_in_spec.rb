@@ -14,9 +14,9 @@ describe 'sign-in' do
      it 'should redirect an existing user to the sign-in page where they try and sign-up by mistake' do
 
        visit root_path
-       
+
        fill_in 'password_identity[email]', :with => identity.email
-           
+
        click_on 'Get started'
 
        current_path.should == new_session_path
@@ -28,10 +28,10 @@ describe 'sign-in' do
      it 'should, on redirect, include the existing users email so that they only repeat the password' do
 
        visit root_path
-       
+
        fill_in 'password_identity[email]', :with => identity.email
        fill_in 'password_identity[password]', :with => 'does not matter'
-     
+
        click_on 'Get started'
 
        current_path.should == new_session_path

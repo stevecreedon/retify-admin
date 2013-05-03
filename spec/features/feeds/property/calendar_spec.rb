@@ -7,7 +7,7 @@ describe 'feed for property calendar' do
     let!(:feed)    { FactoryGirl.create(:feed, feed_type: :create_property_calendar, user: user, parent_id: property.id) }
 
     before do
-      sign_in(user.password_identity.email)
+      sign_in(user)
       visit app_path
 
       find("a[href='#item-#{feed.id}']").click

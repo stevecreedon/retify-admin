@@ -14,7 +14,7 @@ describe 'change password' do
 
     it 'should allow the user to change their password', :js => true do
 
-      sign_in(user.email)
+      sign_in(user)
 
       visit app_path
 
@@ -33,7 +33,7 @@ describe 'change password' do
 
       sign_out
 
-      sign_in(user.email, 'abcxzy')
+      sign_in_with_ui(user.email, 'abcxzy')
 
       current_path.should == app_path
 
@@ -41,7 +41,7 @@ describe 'change password' do
 
     it 'should return the user to the change password page if the password/confirmation are not valid' do
 
-        sign_in(user.email)
+        sign_in(user)
 
         visit edit_password_path
 

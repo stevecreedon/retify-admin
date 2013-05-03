@@ -5,7 +5,7 @@ describe 'settings page' do
     let(:user)    { FactoryGirl.create(:user_with_identity) }
 
     before do
-      sign_in(user.password_identity.email)
+      sign_in(user)
       visit app_path
 
       FactoryGirl.create(:site, user: user)

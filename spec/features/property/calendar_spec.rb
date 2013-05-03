@@ -6,7 +6,7 @@ describe 'property page address', js: true do
   let!(:calendar) { FactoryGirl.create(:calendar, property: property) }
 
   before do
-    sign_in(user.password_identity.email)
+    sign_in(user)
     visit "/app#/properties/#{property.id}"
     page.should have_content(property.title)
 

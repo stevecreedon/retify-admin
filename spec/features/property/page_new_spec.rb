@@ -5,7 +5,7 @@ describe 'property page new', js: true do
   let!(:property) { FactoryGirl.create(:property, user: user) }
 
   before do
-    sign_in(user.password_identity.email)
+    sign_in(user)
     visit "/app#/properties/#{property.id}"
     page.should have_content(property.title)
 

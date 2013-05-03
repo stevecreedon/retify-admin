@@ -6,7 +6,7 @@ describe 'feed for property' do
     let!(:feed)   { FactoryGirl.create(:feed, feed_type: :create_property, user: user) }
 
     before do
-      sign_in(user.password_identity.email)
+      sign_in(user)
       visit app_path
 
       find("a[href='#item-#{feed.id}']").click
