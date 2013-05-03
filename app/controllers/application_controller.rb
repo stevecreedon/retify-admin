@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate!
   before_filter :check_account_for_user
-  before_filter :set_notifications
 
   helper_method :current_user, :notifications
 
@@ -18,12 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
 protected
-
-  def set_notifications
-    if current_user && current_user.password_identity.try(:verifying?)
-      notifications << "please verify your email address"
-    end
-  end
 
   def authenticate!
     redirect_to new_session_path unless current_user

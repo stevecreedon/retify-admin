@@ -46,11 +46,11 @@ class PasswordIdentity < Identity
     end
   end
   
-private
-
   def send_verification_email
     Verifier.verify(self).deliver
   end
+
+private
 
   def denormalize_email
     self.email = self.info.try(:[], "email")

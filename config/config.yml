@@ -1,9 +1,0 @@
-production:
-  domain: kuztus.com
-
-development:
-  domain: rentify.com
-
-test:
-  domain: example.com
-

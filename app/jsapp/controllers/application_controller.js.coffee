@@ -1,7 +1,26 @@
 window.ApplicationController = ($scope, $location) ->
+  $scope.alert = ( options ) ->
+    opts = { type: 'error' }
+    $scope.noty(angular.extend(opts, options))
+
+  $scope.notify = ( options ) ->
+    opts = { type: 'success' }
+    $scope.noty(angular.extend(opts, options))
+
+  $scope.noty = ( options ) ->
+    opts =
+      layout: 'topCenter'
+      timeout: 5000
+      type: 'success'
+    noty(angular.extend(opts, options))
+
   attributes = $('meta[name="current-user"]').attr('content')
   if attributes
     $scope.current_user = JSON.parse(attributes)
+    if $scope.current_user.password_identity && $scope.current_user.password_identity.state == 'verifying'
+      $scope.alert
+        text: "Please verify your email address. <a href='#/verification'>Send again</a>"
+        timeout: 10000
   else
     window.location = '/session/sign_in'
 
@@ -23,20 +42,5 @@ window.ApplicationController = ($scope, $location) ->
         $location.path('/404')
       else
         $location.path('/500')
-
-  $scope.alert = ( options ) ->
-    opts = { type: 'error' }
-    $scope.noty(angular.extend(opts, options))
-
-  $scope.notify = ( options ) ->
-    opts = { type: 'success' }
-    $scope.noty(angular.extend(opts, options))
-
-  $scope.noty = ( options ) ->
-    opts =
-      layout: 'topCenter'
-      timeout: 5000
-      type: 'success'
-    noty(angular.extend(opts, options))
 
 window.ApplicationController.$inject = ['$scope', '$location']

@@ -10,7 +10,7 @@ describe 'email verification' do
 
       visit root_path
 
-      page.should have_content('please verify your email address')
+      page.should have_content('Please verify your email address')
 
     end
 
@@ -22,8 +22,29 @@ describe 'email verification' do
 
       visit root_path
 
-      page.should_not have_content('please verify your email address')
+      page.should_not have_content('Please verify your email address')
 
+    end
+
+    it 'resends email' do
+      user = FactoryGirl.create(:user_with_identity)
+      sign_in(user)
+
+      visit app_path
+
+      page.should have_content('Please verify your email address')
+
+      click_on 'Send again'
+
+      page.should have_content('Verification')
+
+      ActionMailer::Base.deliveries = []
+
+      click_on 'Send email again'
+
+      page.should have_content('Verification email sent')
+
+      ActionMailer::Base.deliveries.should_not be_empty
     end
   end
 

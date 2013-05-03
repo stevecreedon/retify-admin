@@ -1,9 +1,11 @@
 RentifyAdmin::Application.routes.draw do
 
+
   get '/app', :to => 'app#index'
   get '/app/*foo', :to => 'app#index'
 
   namespace 'api' do
+    get "registration/send_again"
     resources :sites,        controller: 'sites',                 only: [ :index, :show, :new, :create, :update ]
     resources :addresses,    controller: 'addresses',             only: [ :show ]
     resources :identities,   controller: 'identities',            only: [ :create ]
