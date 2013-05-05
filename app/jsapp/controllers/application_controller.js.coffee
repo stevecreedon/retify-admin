@@ -1,33 +1,18 @@
-window.ApplicationController = ($scope, $location) ->
-  $scope.alert = ( options ) ->
-    opts = { type: 'error' }
-    $scope.noty(angular.extend(opts, options))
+window.ApplicationController = ($scope, $location, Notify, Messages, DataLoader, Site) ->
+  $scope.init = ->
+    $scope.notify   = Notify
+    $scope.messages = Messages
+    $scope.set_body_class('feeds')
+    $scope.load_user()
+    $scope.current_site = new Site(DataLoader.from_meta('site'))
 
-  $scope.notify = ( options ) ->
-    opts = { type: 'success' }
-    $scope.noty(angular.extend(opts, options))
+  $scope.load_user = ->
+    $scope.current_user = DataLoader.from_meta('current-user')
 
-  $scope.noty = ( options ) ->
-    opts =
-      layout: 'topCenter'
-      timeout: 5000
-      type: 'success'
-    noty(angular.extend(opts, options))
+    window.location = '/session/sign_in' unless $scope.current_user
 
-  attributes = $('meta[name="current-user"]').attr('content')
-  if attributes
-    $scope.current_user = JSON.parse(attributes)
     if $scope.current_user.password_identity && $scope.current_user.password_identity.state == 'verifying'
-      $scope.alert
-        text: "Please verify your email address. <a href='#/verification'>Send again</a>"
-        timeout: 10000
-  else
-    window.location = '/session/sign_in'
-
-  $scope.errors =
-    required: "can't be blank"
-
-  $scope.body_class = 'feeds'
+      $scope.notify.alert text: $scope.messages.user.verify, timeout: 10000
 
   $scope.set_body_class = (class_name)->
     $scope.body_class = class_name
@@ -37,10 +22,11 @@ window.ApplicationController = ($scope, $location) ->
       when 400
         response.config.data.errors = response.data.errors
         for error in response.data.errors
-          $scope.alert({ text: error })
+          $scope.notify.alert text: error
       when 404
         $location.path('/404')
       else
         $location.path('/500')
 
-window.ApplicationController.$inject = ['$scope', '$location']
+   $scope.init()
+window.ApplicationController.$inject = ['$scope', '$location', 'Notify', 'Messages', 'DataLoader', 'Site']

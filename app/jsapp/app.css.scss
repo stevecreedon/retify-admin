@@ -48,6 +48,17 @@ body.properties {
   }
 }
 
+.navbar .nav li.link-to-site {
+  font-size:10px;
+  line-height:12px;
+  padding-top: 5px;
+  color: #fff;
+  a {
+   display: inline;
+   padding: 0;
+  }
+}
+
 #properties-search {
   text-align: center;
 }

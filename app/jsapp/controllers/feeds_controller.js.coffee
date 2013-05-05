@@ -7,7 +7,8 @@ window.FeedsController = ($scope, Feed) ->
       success = (response, header) ->
         scope.model = angular.copy response
         $scope.update_feeds()
-        $scope.notify text: options['message'] if options['message']
+        options['success']() if options['success']
+        $scope.notify.success text: options['message'] if options['message']
       if scope.model.id
         scope.model.$update params, success, $scope.process_error_response
       else

@@ -21,7 +21,7 @@ window.PropertyDirectionNewController = ($scope, PropertyDirection) ->
         $scope.property_cached.directions.push($scope.direction)
         $scope.property.directions = angular.copy $scope.property_cached.directions
         $scope.show('directions', $scope.direction.title)
-        $scope.notify text: 'Direction was created'
+        $scope.notify.success text: 'Direction was created'
       ), $scope.process_error_response
 
   $scope.reset = () ->

@@ -19,6 +19,7 @@ describe 'feed for site' do
 
       page.should_not have_css("a[href='#item-#{feed.id}']")
       page.should have_content("Site was saved")
+      page.should have_content('wdomain.kuztus.com')
 
       user.reload
       site = user.sites.first

@@ -8,7 +8,7 @@ window.PropertyCalendarController = ($scope, PropertyCalendar) ->
         $scope.calendar        = resource
         $scope.calendar_cached.provider = $scope.calendar.provider
         $scope.calendar_cached.path     = $scope.calendar.path
-        $scope.notify text: 'Calendar was saved'
+        $scope.notify.success text: 'Calendar was saved'
       ), $scope.process_error_response
 
   $scope.reset = () ->

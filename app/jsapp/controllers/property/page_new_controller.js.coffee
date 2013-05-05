@@ -23,7 +23,7 @@ window.PropertyPageNewController = ($scope, PropertyArticle) ->
         $scope.property_cached.articles.push($scope.page)
         $scope.property.articles = angular.copy $scope.property_cached.articles
         $scope.show('pages', $scope.page.title)
-        $scope.notify text: 'Page was created'
+        $scope.notify.success text: 'Page was created'
       ), $scope.process_error_response
 
 

@@ -10,7 +10,7 @@ window.PropertyCalendarNewController = ($scope, PropertyCalendar) ->
         $scope.property_cached.calendars.push($scope.calendar)
         $scope.property.calendars = angular.copy $scope.property_cached.calendars
         $scope.show('calendars', $scope.calendar.provider)
-        $scope.notify text: 'Calendar was created'
+        $scope.notify.success text: 'Calendar was created'
       ), $scope.process_error_response
 
   $scope.reset = () ->

@@ -7,7 +7,7 @@ window.PropertyDirectionController = ($scope, PropertyDirection) ->
       new PropertyDirection($scope.direction).$update ( (resource, header)->
         $scope.direction = resource
         $scope.direction_cached.description = $scope.direction.description
-        $scope.notify text: 'Direction was saved'
+        $scope.notify.success text: 'Direction was saved'
       ), $scope.process_error_response
 
   $scope.reset = () ->

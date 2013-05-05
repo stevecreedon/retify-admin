@@ -4,7 +4,11 @@ window.FeedsSiteNewController = ($scope, Site) ->
 
   $scope.save = () ->
     $scope.submited = true
-    $scope.process_saving($scope, {}, { message: 'Site was saved' } )
+    $scope.process_saving($scope, {},
+      message: 'Site was saved'
+      success: ->
+        $scope.current_site.subdomain = $scope.model.subdomain
+    )
 
   $scope.cancel = ->
     $scope.submited = false

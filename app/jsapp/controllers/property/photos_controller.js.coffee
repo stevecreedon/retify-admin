@@ -11,7 +11,7 @@ window.PropertyPhotosController = ($scope, PropertyPhoto) ->
         $.each data.result, (index, file) ->
           $scope.$apply (scope) ->
             scope.property.photos.push(new PropertyPhoto(file))
-            scope.notify text: 'Photo was saved'
+            scope.notify.success text: 'Photo was saved'
 
   $scope.delete = (photo) ->
     new PropertyPhoto(photo).$delete ->

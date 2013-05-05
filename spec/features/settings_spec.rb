@@ -20,6 +20,7 @@ describe 'settings page' do
         click_on('Save')
 
         page.should have_content('Settings saved')
+        page.should have_content('wdomain.kuztus.com')
 
         user.reload
         user.feeds.where( feed_type: :create_site ).count.should == 0

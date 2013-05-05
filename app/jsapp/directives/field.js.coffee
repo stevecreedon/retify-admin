@@ -42,7 +42,7 @@ angular.module('lovebnb.directives.field', [])
 
       errors = ""
       if attr.required != undefined
-        errors += "<span class='help-inline' ng-show='form.#{formId}.$error.required'> can't be blank</span>"
+        errors += "<span class='help-inline' ng-show='form.#{formId}.$error.required'> {{messages.errors.required}}</span>"
       if attr.maxlength
         errors += "<span class='help-inline' ng-show='form.#{formId}.$error.maxlength'> too long</span>"
       if attr.minlength

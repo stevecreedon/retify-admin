@@ -8,7 +8,7 @@ window.PropertyPageController = ($scope, PropertyArticle) ->
         $scope.page        = angular.copy resource
         $scope.page_cached.title       = $scope.page.title
         $scope.page_cached.description = $scope.page.description
-        $scope.notify text: 'Page was saved'
+        $scope.notify.success text: 'Page was saved'
       ), $scope.process_error_response
 
   $scope.reset = () ->
