@@ -4,12 +4,11 @@ window.PropertyCalendarController = ($scope, PropertyCalendar) ->
   $scope.save = () ->
     $scope.submited = true
     if $scope.form.$valid && $scope.is_changed()
-      new PropertyCalendar($scope.calendar).$update ( (resource, header) ->
+      new PropertyCalendar($scope.calendar).$update (resource, header) ->
         $scope.calendar        = resource
         $scope.calendar_cached.provider = $scope.calendar.provider
         $scope.calendar_cached.path     = $scope.calendar.path
         $scope.notify.success text: 'Calendar was saved'
-      ), $scope.process_error_response
 
   $scope.reset = () ->
     $scope.submited = false

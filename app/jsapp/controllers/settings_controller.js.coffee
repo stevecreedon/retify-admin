@@ -19,9 +19,9 @@ window.SettingsController = ($scope, Site) ->
         $scope.current_site.subdomain = $scope.site.subdomain
         $scope.notify.success text: 'Settings saved'
       if $scope.site.id
-        $scope.site.$update success, $scope.process_error_response
+        $scope.site.$update success
       else
-        $scope.site.$save success, $scope.process_error_response
+        $scope.site.$save success
 
   $scope.cancel = ->
     $scope.submited = false

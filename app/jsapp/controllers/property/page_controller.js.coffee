@@ -4,12 +4,11 @@ window.PropertyPageController = ($scope, PropertyArticle) ->
   $scope.save = () ->
     $scope.submited = true
     if $scope.form.$valid && $scope.is_changed()
-      new PropertyArticle($scope.page).$update ( (resource, headers) ->
+      new PropertyArticle($scope.page).$update (resource, headers) ->
         $scope.page        = angular.copy resource
         $scope.page_cached.title       = $scope.page.title
         $scope.page_cached.description = $scope.page.description
         $scope.notify.success text: 'Page was saved'
-      ), $scope.process_error_response
 
   $scope.reset = () ->
     $scope.submited = false

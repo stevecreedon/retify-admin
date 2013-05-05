@@ -10,9 +10,9 @@ window.FeedsController = ($scope, Feed) ->
         options['success']() if options['success']
         $scope.notify.success text: options['message'] if options['message']
       if scope.model.id
-        scope.model.$update params, success, $scope.process_error_response
+        scope.model.$update params, success
       else
-        scope.model.$save   params, success, $scope.process_error_response
+        scope.model.$save   params, success
       return true
     return false
 

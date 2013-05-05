@@ -18,7 +18,6 @@ module MyHelpers
 
     def sign_out
       page.set_rack_session(:user_id => nil)
-      #visit destroy_session_path
     end
   end
 end

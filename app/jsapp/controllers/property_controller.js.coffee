@@ -58,10 +58,9 @@ window.PropertyController = ($scope, $routeParams, Property) ->
   # property saving section
 
   $scope.save_property = (options) ->
-    $scope.property.$update ((model, header)->
+    $scope.property.$update (model, header)->
       $scope.property        = angular.copy model
       $scope.property_cached = angular.copy model
       $scope.notify.success text: options['message'] if options['message']
-    ) , $scope.process_error_response
 
 window.PropertyController.$inject = ['$scope', '$routeParams', 'Property']

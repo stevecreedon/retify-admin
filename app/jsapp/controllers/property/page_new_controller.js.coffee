@@ -18,13 +18,12 @@ window.PropertyPageNewController = ($scope, PropertyArticle) ->
   $scope.save = () ->
     $scope.submited = true
     if $scope.form.$valid
-      $scope.page.$save ( (resource, headers)->
+      $scope.page.$save (resource, headers)->
         $scope.page = resource
         $scope.property_cached.articles.push($scope.page)
         $scope.property.articles = angular.copy $scope.property_cached.articles
         $scope.show('pages', $scope.page.title)
         $scope.notify.success text: 'Page was created'
-      ), $scope.process_error_response
 
 
   $scope.reset = () ->

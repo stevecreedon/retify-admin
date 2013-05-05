@@ -8,6 +8,8 @@ window.VerificationController = ($scope, $http, $location) ->
       ).
       error( (data, status, headers, config) ->
         switch status
+          when 401
+            window.location = '/session/sign_in'
           when 404
             $location.path('/404')
           else

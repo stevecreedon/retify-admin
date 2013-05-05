@@ -4,11 +4,10 @@ window.PropertyDirectionController = ($scope, PropertyDirection) ->
   $scope.save = () ->
     $scope.submited = true
     if $scope.form.$valid && $scope.is_changed()
-      new PropertyDirection($scope.direction).$update ( (resource, header)->
+      new PropertyDirection($scope.direction).$update (resource, header)->
         $scope.direction = resource
         $scope.direction_cached.description = $scope.direction.description
         $scope.notify.success text: 'Direction was saved'
-      ), $scope.process_error_response
 
   $scope.reset = () ->
     $scope.submited = false
