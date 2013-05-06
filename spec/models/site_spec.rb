@@ -97,7 +97,7 @@ describe Site do
     end
 
     it 'should be not valid if the domain contains our website name' do
-      site = Site.new(valid_attributes.merge(domain: 'xxx.kuztus.com'))
+      site = Site.new(valid_attributes.merge(domain: 'xxx.lovebnb.com'))
       site.valid?.should be_false
       site.errors.to_a.should include("Domain can't contain our domain name")
     end

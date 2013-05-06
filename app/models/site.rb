@@ -41,7 +41,7 @@ class Site < ActiveRecord::Base
 private
 
   def domain_cannot_contain_our_domain
-    if domain && domain.match('kuztus.com')
+    if domain && domain.match('lovebnb.com')
       errors.add(:domain, "can't contain our domain name")
     end
   end
