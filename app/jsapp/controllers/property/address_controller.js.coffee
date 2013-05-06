@@ -4,7 +4,11 @@ window.PropertyAddressController = ($scope) ->
   $scope.save = () ->
     $scope.submited = true
     if $scope.form.$valid && $scope.is_changed()
-      $scope.save_property(message: 'Property address was saved')
+      $scope.block()
+      $scope.property.$update (model, header)->
+        $scope.property_cached.address = angular.copy $scope.property.address
+        $scope.notify.success text: 'Property address was saved'
+        $scope.unblock()
 
   $scope.reset = () ->
     $scope.submited = false

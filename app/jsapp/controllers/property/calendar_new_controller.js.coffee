@@ -5,12 +5,14 @@ window.PropertyCalendarNewController = ($scope, PropertyCalendar) ->
   $scope.save = () ->
     $scope.submited = true
     if $scope.form.$valid
+      $scope.block()
       $scope.calendar.$save (resource, header) ->
         $scope.calendar = resource
         $scope.property_cached.calendars.push($scope.calendar)
         $scope.property.calendars = angular.copy $scope.property_cached.calendars
         $scope.show('calendars', $scope.calendar.provider)
         $scope.notify.success text: 'Calendar was created'
+        $scope.unblock()
 
   $scope.reset = () ->
     $scope.submited = false

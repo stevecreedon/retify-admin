@@ -7,11 +7,13 @@ window.FeedsPropertyPhotoNewController = ($scope, PropertyPhoto) ->
       headers: { 'X-CSRF-Token' : $('meta[name=csrf-token]').attr('content') }
       url: "/api/properties/#{$scope.feed.parent_id}/photos"
       add: (e, data) ->
+        $scope.block()
         data.submit()
       done: (e, data) ->
         $.each data.result, (index, file) ->
           $scope.$apply (scope) ->
             scope.photos.push(new PropertyPhoto(file))
+            $scope.unblock()
 
   $scope.done = ->
     $scope.update_feeds()

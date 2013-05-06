@@ -38,6 +38,6 @@ class Api::PropertiesController < ApiController
     property.address.attributes = params[:address]
 
     status = property.update_attributes(params[:property].except(:address)) ? 200 : 400
-    render json: property, status: status, include_associations: false
+    render json: property, status: status
   end
 end

@@ -6,6 +6,28 @@ window.ApplicationController = ($scope, $location, Notify, Messages, DataLoader,
     $scope.load_user()
     $scope.current_site = new Site(DataLoader.from_meta('site'))
 
+  $scope.block = ->
+    $.blockUI
+      message: 'Loading ...'
+      fadeIn: 50
+      fadeOut: 100
+      #baseZ: 2000 # uncoment if menu needed to be blocked as well
+      css:
+        border: 'none'
+        padding: '15px'
+        backgroundColor: '#000'
+        '-webkit-border-radius': '10px'
+        '-moz-border-radius': '10px'
+        opacity: .5
+        color: '#fff'
+      overlayCSS:
+        backgroundColor: '#000'
+        opacity:         0.1
+        cursor:          'wait'
+
+  $scope.unblock = ->
+    $.unblockUI()
+
   $scope.load_user = ->
     $scope.current_user = DataLoader.from_meta('current-user')
 

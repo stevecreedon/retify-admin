@@ -4,7 +4,11 @@ window.PropertyTitleController = ($scope) ->
   $scope.save = () ->
     $scope.submited = true
     if $scope.form.$valid && $scope.is_changed()
-      $scope.save_property(message: 'Property title was saved')
+      $scope.block()
+      $scope.property.$update (model, header)->
+        $scope.property_cached.title = $scope.property.title
+        $scope.notify.success text: 'Property title was saved'
+        $scope.unblock()
 
   $scope.reset = () ->
     $scope.submited = false

@@ -16,12 +16,14 @@ window.PropertyDirectionNewController = ($scope, PropertyDirection) ->
   $scope.save = () ->
     $scope.submited = true
     if $scope.form.$valid
+      $scope.block()
       $scope.direction.$save (resource, headers) ->
         $scope.direction = resource
         $scope.property_cached.directions.push($scope.direction)
         $scope.property.directions = angular.copy $scope.property_cached.directions
         $scope.show('directions', $scope.direction.title)
         $scope.notify.success text: 'Direction was created'
+        $scope.unblock()
 
   $scope.reset = () ->
     $scope.submited = false

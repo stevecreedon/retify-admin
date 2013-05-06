@@ -2,7 +2,9 @@ window.PropertyController = ($scope, $routeParams, Property) ->
   $scope.to_md = (text) ->
     marked.parser(marked.lexer(text)) if text
 
+  $scope.block()
   $scope.property = Property.get property_id: $routeParams.id, ->
+    $scope.unblock()
     $scope.property_cached = angular.copy $scope.property
 
   $scope.set_body_class   'properties'
@@ -54,13 +56,5 @@ window.PropertyController = ($scope, $routeParams, Property) ->
     for item in collection
       if item[field] == value
         return item
-
-  # property saving section
-
-  $scope.save_property = (options) ->
-    $scope.property.$update (model, header)->
-      $scope.property        = angular.copy model
-      $scope.property_cached = angular.copy model
-      $scope.notify.success text: options['message'] if options['message']
 
 window.PropertyController.$inject = ['$scope', '$routeParams', 'Property']

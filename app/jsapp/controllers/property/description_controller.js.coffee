@@ -4,7 +4,11 @@ window.PropertyDescriptionController = ($scope) ->
   $scope.save = () ->
     $scope.submited = true
     if $scope.form.$valid && $scope.is_changed()
-      $scope.save_property(message: 'Property description was saved')
+      $scope.block()
+      $scope.property.$update (model, header)->
+        $scope.property_cached.description = $scope.property.description
+        $scope.notify.success text: 'Property description was saved'
+        $scope.unblock()
 
   $scope.reset = () ->
     $scope.submited = false
