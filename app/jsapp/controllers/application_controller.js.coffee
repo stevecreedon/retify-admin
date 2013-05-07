@@ -9,8 +9,8 @@ window.ApplicationController = ($scope, $location, Notify, Messages, DataLoader,
   $scope.block = ->
     $.blockUI
       message: 'Loading ...'
-      fadeIn: 50
-      fadeOut: 100
+      fadeIn: 100
+      fadeOut: 200
       #baseZ: 2000 # uncoment if menu needed to be blocked as well
       css:
         border: 'none'
