@@ -2,7 +2,7 @@ window.FeedsPropertyNewController = ($scope, Property, Geocode) ->
   $scope.geocode = new Geocode()
 
   $scope.model = Property.new () ->
-    $scope.check_address() unless $scope.model.address.lat
+    $scope.check_address() if $scope.model.address && !$scope.model.address.lat
   $scope.submited = false
 
   $scope.save = () ->

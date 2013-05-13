@@ -9,7 +9,8 @@ angular.module('lovebnb.factories.geocode', [])
         self = this
         this.timeout_id = window.setTimeout((() -> self.find(address, success, error)) , timeout)
       find: (address, success, error) ->
-        address_array = [ address.address, address.city, address.post_code, address.country ].filter((x) -> x != undefined)
+        return unless address
+        address_array = [ address.address, address.city, address.post_code, address.country ].filter((x) -> x != undefined && x != '')
         if address_array.length == 4
           this.geocoder.geocode address: address_array.join(', '), (results, status) ->
             switch status

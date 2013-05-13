@@ -1,4 +1,7 @@
 angular.module('lovebnb.models', ['ngResource'])
+  .factory('User', ['$resource', ($resource) ->
+    $resource '/api/users/:user_id', { user_id:'@id' }
+  ])
   .factory('Feed', ['$resource', ($resource) ->
     $resource '/api/feeds/:feed_id', { feed_id:'@id' }
   ])

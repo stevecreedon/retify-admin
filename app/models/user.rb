@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   end
 
   def account_incomplete?
-    self.phone.blank? && self.address.blank?
+    self.phone.blank? && self.name.blank?
   end
  
 end

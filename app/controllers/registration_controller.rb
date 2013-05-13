@@ -23,7 +23,7 @@ class RegistrationController < ApplicationController
 
     if user.save
       session[:user_id] = user.id
-      redirect_to edit_account_path(user.id), notice: "welcome to loveBnB, we hope you'll come back often"
+      redirect_to app_path, notice: "welcome to loveBnB, we hope you'll come back often"
     else
       flash[:email] = params[:password_identity].try(:[], :email)
       redirect_to new_registration_path, alert: "sorry we couldn't sign you up because: #{user.password_identity.errors.full_messages.join(" ")}"

@@ -16,6 +16,12 @@ describe 'settings page' do
 
       it 'creates settings' do
         fill_in('Website domain',   with: 'wdomain' )
+        fill_in('Street',           with: '55 Oxford street' )
+        fill_in('City',             with: 'London' )
+        fill_in('Country',          with: 'UK' )
+        fill_in('Post code',        with: 'W1D 2EQ' )
+
+        page.should have_content('Address found: 55 Oxford Street')
 
         click_on('Save')
 

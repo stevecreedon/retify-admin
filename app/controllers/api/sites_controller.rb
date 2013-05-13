@@ -10,7 +10,6 @@ class Api::SitesController < ApiController
 
   def new
     render json: Site.new(
-      address: current_user.address.dup,
       phone: current_user.phone,
       email: current_user.email
     )

@@ -11,7 +11,7 @@ describe 'sign-up' do
 
       click_on 'Get started'
 
-      current_path.should == edit_account_path(User.first.id)
+      current_path.should == app_path
 
       page.should have_content("welcome to loveBnB, we hope you'll come back often")
       
@@ -58,7 +58,7 @@ describe 'sign-up' do
 
       click_on 'Sign up'
       
-      current_path.should == edit_account_path(User.first.id)
+      current_path.should == app_path
 
       Identity.where(email: 'some.email@address.co.uk', provider: 'password').first.should_not be_nil
    end

@@ -12,7 +12,7 @@ window.SettingsController = ($scope, Site, Geocode) ->
       $scope.site          = angular.copy $scope.sites[0]
       $scope.site_cached   = angular.copy $scope.sites[0]
       $scope.addresses = [$scope.site.address]
-      $scope.check_address() unless $scope.site.address.lat
+      $scope.check_address() if $scope.site.address && !$scope.site.address.lat
 
 
   $scope.set_body_class   'properties'

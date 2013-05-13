@@ -6,6 +6,7 @@ RentifyAdmin::Application.routes.draw do
 
   namespace 'api' do
     get "registration/send_again"
+    resources :users,        controller: 'users',                 only: [ :update ]
     resources :sites,        controller: 'sites',                 only: [ :index, :show, :new, :create, :update ]
     resources :addresses,    controller: 'addresses',             only: [ :show ]
     resources :identities,   controller: 'identities',            only: [ :create ]
@@ -34,8 +35,6 @@ RentifyAdmin::Application.routes.draw do
       get 'verify'
     end
   end
-
-  resources :accounts, only: [:edit, :update]
 
   resource :password, only: [:edit, :update] do
     member do

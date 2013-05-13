@@ -16,6 +16,13 @@ describe 'feed for property' do
       fill_in('Title',       with: 'Property Title' )
       fill_in('Description', with: 'Property Description' )
 
+      fill_in('Street',           with: '55 Oxford street' )
+      fill_in('City',             with: 'London' )
+      fill_in('Country',          with: 'UK' )
+      fill_in('Post code',        with: 'W1D 2EQ' )
+
+      page.should have_content('Address found: 55 Oxford Street')
+
       click_on('Save')
 
       page.should_not have_css("a[href='#item-#{feed.id}']")

@@ -10,7 +10,7 @@ describe 'property page', js: true do
 
   it 'shows all properties' do
     property = FactoryGirl.create(:property, user: user, title: 'House title',  description: 'house description')
-   
+
     click_on('Properties')
 
     page.should have_content(property.title)

@@ -6,6 +6,8 @@ angular.module('lovebnb.routes', [])
       templateUrl: '/assets/views/settings.html',         controller: @SettingsController
     $routeProvider.when '/account_settings',
       templateUrl: '/assets/views/account_settings.html', controller: @AccountSettingsController
+    $routeProvider.when '/account',
+      templateUrl: '/assets/views/account.html',          controller: @AccountController
     $routeProvider.when '/properties',
       templateUrl: '/assets/views/properties.html',       controller: @PropertiesController
     $routeProvider.when '/properties/:id',

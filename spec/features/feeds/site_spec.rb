@@ -15,6 +15,13 @@ describe 'feed for site' do
     it 'creates site' do
       fill_in('Website domain', with: 'wdomain' )
 
+      fill_in('Street',           with: '55 Oxford street' )
+      fill_in('City',             with: 'London' )
+      fill_in('Country',          with: 'UK' )
+      fill_in('Post code',        with: 'W1D 2EQ' )
+
+      page.should have_content('Address found: 55 Oxford Street')
+
       click_on('Save')
 
       page.should_not have_css("a[href='#item-#{feed.id}']")
@@ -63,10 +70,18 @@ describe 'feed for site' do
 
         page.should have_css("a[href='#item-#{feed.id}']")
       end
+
       it 'shows server erros if there are' do
         another_user = FactoryGirl.create(:user_with_verified_identity)
         site         = FactoryGirl.create(:site, subdomain: 'test', user: another_user)
         fill_in('Website domain', with: 'test' )
+
+        fill_in('Street',           with: '55 Oxford street' )
+        fill_in('City',             with: 'London' )
+        fill_in('Country',          with: 'UK' )
+        fill_in('Post code',        with: 'W1D 2EQ' )
+
+        page.should have_content('Address found: 55 Oxford Street')
 
         click_on('Save')
 

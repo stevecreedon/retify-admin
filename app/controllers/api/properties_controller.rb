@@ -8,9 +8,7 @@ class Api::PropertiesController < ApiController
   end
 
   def new
-    render json: Property.new(
-      address: current_user.address.dup,
-    )
+    render json: Property.new
   end
 
   def create

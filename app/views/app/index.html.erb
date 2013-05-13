@@ -3,7 +3,7 @@
     <div class="navbar-inner">
       <div class="container-fluid">
         <a class="brand" href="/">LoveBNB</a>
-        <ul class="nav pull-right">
+        <ul class="nav pull-right" ng-show='current_user.name'>
           <li class='link-to-site' ng-show='current_site.subdomain'>
             Open website <br> <a ng-href='http://{{current_site.subdomain}}.lovebnb.com' href>{{current_site.subdomain}}.lovebnb.com</a> →
           </li>
@@ -25,12 +25,12 @@
             </ul>
           </li>
         </ul>
-        <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse" ng-show='current_user.name'>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <div class="nav-collapse collapse">
+        <div class="nav-collapse collapse" ng-show='current_user.name'>
           <ul class="nav">
             <li><a href='#'>Home</a></li>
             <li><a href='#/properties'>Properties</a>

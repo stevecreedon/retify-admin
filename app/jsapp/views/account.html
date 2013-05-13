@@ -1,0 +1,23 @@
+<div class="row-fluid">
+  <div class="span10 offset1 well">
+    <h3>Some final details before your account is set up</h3>
+    <hr>
+    <form name='form' class="form-horizontal" ng-controller='AccountController'>
+      <field value='user.name'required> Name: </field>
+      <field value='user.phone'required> Phone: </field>
+      <div class="form-actions">
+        <a href ng-click="save()" class='btn btn-primary'>I'm done</a>
+        <a href ng-click="show_help()" class="btn btn-primary btn-interactive-help">I've already set up a LoveBnB account !</a>
+        <div class="help_container">
+          <p>You're seeng this page because you are trying to open a new account with your Google account.</p>
+          <p>Don't worry, if you already have a LoveBnB account you'd like to attach this Google account to just
+            <a href ng-click='delete()'>cancel this registration</a> and sign in as normal. Choose the 'connect to
+             Google' option from the top right drop down menu.</p>
+        </div>
+      </div>
+      <ul ng-show="server_errors" ng-hide='user.errors.length == 0'>
+        <li ng-repeat='message in user.errors'>{{message}}</li>
+      </ul>
+    </form>
+  </div>
+</div>
