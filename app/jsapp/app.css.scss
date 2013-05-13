@@ -45,7 +45,15 @@ body.properties {
     .well {
       background: #fafdff;
     }
+    .well.error {
+      background: #b94a48;
+      color: #fff;
+    }
   }
+}
+
+.google-map {
+  height: 300px;
 }
 
 .navbar .nav li.link-to-site {

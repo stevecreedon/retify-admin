@@ -13,20 +13,22 @@ describe 'property page address', js: true do
   end
 
   it 'shows all properties' do
-    fill_in "Street",    with: 'New Street'
-    fill_in "City",      with: 'New City'
-    fill_in "Country",   with: 'New Country'
-    fill_in "Post code", with: 'New Post Code'
+    fill_in "Street",    with: '7 Soho Square'
+    fill_in "City",      with: 'London'
+    fill_in "Country",   with: 'UK'
+    fill_in "Post code", with: 'W1D 3QB'
+
+    page.should have_content('Address found: 7 Soho Square, London, Greater London W1D 3QB, UK')
 
     click_on 'Save'
    
     page.should have_content('Property address was saved')
 
     property.reload
-    property.address.address.should   == 'New Street'
-    property.address.city.should      == 'New City'
-    property.address.country.should   == 'New Country'
-    property.address.post_code.should == 'New Post Code'
+    property.address.address.should   == '7 Soho Square'
+    property.address.city.should      == 'London'
+    property.address.country.should   == 'UK'
+    property.address.post_code.should == 'W1D 3QB'
   end
 
   context 'invalid parameters' do

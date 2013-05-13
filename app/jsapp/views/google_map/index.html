@@ -1,0 +1,17 @@
+<div class='well error' ng-show='addresses && (addresses.length > 1 || addresses.length == 0)'>
+  The address you entered is not precise enough. Please check if the address you entered is correct and complete.<br>
+  <div ng-show='addresses.length > 1'>
+    Addresses found:
+    <ul>
+      <li ng-repeat='address in addresses'>{{address.google_formatted_address}}</li>
+    </ul>
+  </div>
+</div>
+<div ng-show='addresses && addresses.length == 1'>
+  <div class='well'>
+    You can drag and drop the marker on a map to correct it location<br>
+    Address found: {{addresses[0].google_formatted_address}}
+  </div>
+  <div id='{{mapId}}' class='google-map span9 offset1'></div>
+</div>
+

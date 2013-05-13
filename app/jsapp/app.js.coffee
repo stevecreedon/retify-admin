@@ -40,6 +40,8 @@ window.Lovebnb = angular.module('lovebnb', [
   'lovebnb.factories.messages',
   'lovebnb.factories.data_loader',
   'lovebnb.factories.http_interceptor',
+  'lovebnb.factories.geocode',
   'lovebnb.directives.field',
+  'lovebnb.directives.google_map',
   'lovebnb.directives.eat_click'
 ])

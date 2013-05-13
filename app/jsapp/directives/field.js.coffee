@@ -15,6 +15,8 @@ angular.module('lovebnb.directives.field', [])
         inputAttr += " ng-maxlength='{#{attr.maxlength}}'"
       if attr.minlength
         inputAttr += " ng-minlength='{#{attr.minlength}}'"
+      if attr.change
+          inputAttr += " ng-change='#{attr.change}'"
 
       if attr.type == 'textarea'
         if attr.rows
@@ -28,6 +30,7 @@ angular.module('lovebnb.directives.field', [])
         input = "<select #{inputAttr}></select>"
       else
         input = "<input type='#{attr.type || 'text'}' #{inputAttr}/>"
+
 
       if attr.prepend
         input = "<div class='input-prepend'>"+

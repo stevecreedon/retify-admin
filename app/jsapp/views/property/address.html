@@ -7,10 +7,11 @@
   <hr>
   <div class='row-fluid'>
     <div class='span12'>
-      <field value='property.address.address' required> Street: </field>
-      <field value='property.address.city' required> City: </field>
-      <field value='property.address.country' required> Country: </field>
-      <field value='property.address.post_code' required> Post code: </field>
+      <field value='property.address.address'   required change='check_address()'> Street: </field>
+      <field value='property.address.city'      required change='check_address()'> City: </field>
+      <field value='property.address.country'   required change='check_address()'> Country: </field>
+      <field value='property.address.post_code' required change='check_address()'> Post code: </field>
+      <google-map map-id='google_map' address='property.address' addresses='addresses'></google-map>
     </div>
   </div>
   <div class='row-fluid'>

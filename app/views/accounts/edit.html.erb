@@ -36,13 +36,6 @@
                       <%= address.error_message(:address) %>
                     </div>
                   </div>
-                  <div class="control-group <%= 'error' if address.has_error?(:state) %>">
-                    <%= address_form.label :state, 'State', class: 'control-label' %>
-                    <div class="controls">
-                      <%= address_form.text_field :state, class: 'input-xlarge' %>
-                      <%= address.error_message(:state) %>
-                    </div>
-                  </div>
                   <div class="control-group <%= 'error' if address.has_error?(:city) %>">
                     <%= address_form.label :city, 'City', class: 'control-label' %>
                     <div class="controls">

@@ -1,7 +1,6 @@
 angular.module('lovebnb.factories.http_interceptor', [])
   .factory('http_interceptor', [ '$q', '$location', 'Notify', ($q, $location, Notify) ->
     (promise) ->
-      console.log $q
       promise.then(( (response) ->
         return response
       ), ( (response) ->
@@ -13,16 +12,13 @@ angular.module('lovebnb.factories.http_interceptor', [])
                 for error in response.data.errors
                   Notify.alert text: error
             when 401
-              $.unblockUI()
               window.location = '/session/sign_in'
             when 404
-              $.unblockUI()
               $location.path('/404')
             else
-              $.unblockUI()
-              console.log response.status
               $location.path('/500')
-        return response
+          $.unblockUI()
+        return $q.reject(response)
       ))
   ])
   .config(['$httpProvider', ($httpProvider) ->

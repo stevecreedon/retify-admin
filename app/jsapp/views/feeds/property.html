@@ -4,10 +4,11 @@
     <field value='model.description' required type='textarea' rows='3'> Description: </field>
     <fieldset>
       <legend>Address</legend>
-      <field value='model.address.address' required> Street: </field>
-      <field value='model.address.city' required> City: </field>
-      <field value='model.address.country' required> Country: </field>
-      <field value='model.address.post_code' required> Post code: </field>
+      <field value='model.address.address'   required change='check_address()'> Street: </field>
+      <field value='model.address.city'      required change='check_address()'> City: </field>
+      <field value='model.address.country'   required change='check_address()'> Country: </field>
+      <field value='model.address.post_code' required change='check_address()'> Post code: </field>
+      <google-map map-id='property_google_map' address='model.address' addresses='addresses'></google-map>
     </fieldset>
   </fieldset>
   <div class="form-actions">

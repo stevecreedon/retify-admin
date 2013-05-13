@@ -11,7 +11,7 @@ describe 'feed for site' do
 
       find("a[href='#item-#{feed.id}']").click
     end
-   
+
     it 'creates site' do
       fill_in('Website domain', with: 'wdomain' )
 

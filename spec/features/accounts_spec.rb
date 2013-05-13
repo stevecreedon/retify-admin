@@ -29,7 +29,6 @@ describe 'accounts' do
         fill_in('Name',      :with => 'First Last' )
         fill_in('Street',    :with => '11. Street')
         fill_in('City',      :with => 'London')
-        fill_in('State',     :with => 'London')
         fill_in('Country',   :with => 'UK')
         fill_in('Post code', :with => 'SW1234')
         fill_in('Phone',     :with => '0987654321')
@@ -42,7 +41,6 @@ describe 'accounts' do
         user.phone.should      == '0987654321'
         user.address.address   == '11. Street'
         user.address.city      == 'London'
-        user.address.state     == 'London'
         user.address.country   == 'UK'
         user.address.post_code == 'SW1234'
       end

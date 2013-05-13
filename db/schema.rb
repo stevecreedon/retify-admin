@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130428165549) do
+ActiveRecord::Schema.define(:version => 20130508122755) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address"
@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(:version => 20130428165549) do
     t.float    "lng"
     t.float    "user_set_lat"
     t.float    "user_set_lng"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.string   "google_formatted_address"
   end
 
   create_table "articles", :force => true do |t|

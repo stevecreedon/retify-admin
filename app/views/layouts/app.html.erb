@@ -25,6 +25,7 @@
 
   <!-- start: JavaScript -->
   <%= javascript_include_tag "app" %>
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=<%= configatron.google.api_key %>" type="text/javascript"></script>
   <!-- end: JavaScript -->
 </head>
 <body ng-controller='ApplicationController' ng-class='body_class'>

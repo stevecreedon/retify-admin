@@ -2,15 +2,11 @@
 
 FactoryGirl.define do
   factory :address do
-    address      "Address line 1"
-    address2     "Address line 2"
+    address      "55 Oxford street"
     country      "United Kingdom"
     city         "London"
-    state        "London"
-    post_code    "E11EE"
-    lat          1.5
-    lng          1.5
-    user_set_lat 1.6
-    user_set_lng 1.6
+    post_code    "W1D 2EQ"
+    lat          1
+    lng          1
   end
 end
