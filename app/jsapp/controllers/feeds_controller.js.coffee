@@ -1,7 +1,12 @@
 window.FeedsController = ($scope, Feed) ->
   $scope.update_feeds = ->
     $scope.block()
-    $scope.feeds = Feed.query ->
+    $scope.show_feeds = false
+    $scope.feeds = Feed.query () ->
+      $scope.show_feeds = true
+      $scope.unblock()
+    , () ->
+      $scope.show_feeds = true
       $scope.unblock()
 
   $scope.process_saving = (scope, params, options) ->
