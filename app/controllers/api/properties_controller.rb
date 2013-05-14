@@ -8,7 +8,10 @@ class Api::PropertiesController < ApiController
   end
 
   def new
-    render json: Property.new
+    property = Property.new
+    property.address = current_user.sites.first.address.dup if !current_user.sites.blank? && !current_user.sites.first.address.blank?
+
+    render json: property
   end
 
   def create

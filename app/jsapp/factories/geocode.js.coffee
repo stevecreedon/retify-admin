@@ -29,9 +29,6 @@ angular.module('lovebnb.factories.geocode', [])
                 else
                   error(res) if error
               when google.maps.GeocoderStatus.ZERO_RESULTS
-                success([]) if error
+                error([]) if error
               when google.maps.GeocoderStatus.ERROR, google.maps.GeocoderStatus.INVALID_REQUEST, google.maps.GeocoderStatus.OVER_QUERY_LIMIT, google.maps.GeocoderStatus.REQUEST_DENIED, google.maps.GeocoderStatus.UNKNOWN_ERROR
                 error([]) if error
-        else
-          success([]) if success
-

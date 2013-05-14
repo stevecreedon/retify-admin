@@ -34,6 +34,6 @@ window.PropertyAddressController = ($scope, Geocode) ->
       $scope.$apply ->
         $scope.addresses = addresses
 
-  $scope.check_address()
+  $scope.addresses = [ $scope.property.address ]
 
 window.PropertyAddressController.$inject = ['$scope', 'Geocode']

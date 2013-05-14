@@ -58,6 +58,14 @@ body.properties {
 
 .google-map {
   height: 300px;
+  position: relative;
+  img, object, embed {
+    max-width: none;
+  }
+  label {
+    width: auto;
+    display:inline;
+  }
 }
 
 .navbar .nav li.link-to-site {

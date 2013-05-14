@@ -7,29 +7,28 @@ angular.module('lovebnb.directives.google_map', [])
       mapId: '@'
     templateUrl: '/assets/views/google_map/index.html'
     link: (scope, element, attrs) ->
-      window.scope = scope
-      scope.$watch 'address', (value) ->
-        if value
-          scope.address = value
+      scope.show_map = (scope, lat, lng) ->
+        scope.latlng  = new google.maps.LatLng(lat, lng)
 
-          if scope.address.user_set_lat
-            latlng  = new google.maps.LatLng(scope.address.user_set_lat, scope.address.user_set_lng)
-          else
-            latlng  = new google.maps.LatLng(scope.address.lat, scope.address.lng)
+        google.maps.event.clearListeners(scope.map, 'idle') if scope.map
 
-          unless scope.map
-            options =
-              zoom: 14,
-              center: latlng,
-              mapTypeId: google.maps.MapTypeId.ROADMAP
+        options =
+          zoom: 14
+          center: scope.latlng
+          mapTypeId: google.maps.MapTypeId.ROADMAP
 
-            scope.map = new google.maps.Map document.getElementById(attrs.mapId), options
+        scope.map = new google.maps.Map document.getElementById(attrs.mapId), options
 
-          if scope.marker
-            scope.marker.setPosition(latlng)
-          else
+        if scope.marker
+          google.maps.event.clearListeners(scope.marker, 'dragend')
+          scope.marker.setMap(null)
+          scope.marker = null
+
+        google.maps.event.addListener scope.map, 'idle', () ->
+
+          unless scope.marker
             scope.marker  = new google.maps.Marker
-              position: latlng
+              position: scope.latlng
               map: scope.map
               draggable: true
 
@@ -37,9 +36,24 @@ angular.module('lovebnb.directives.google_map', [])
               scope.$apply ->
                 scope.address.user_set_lat = scope.marker.getPosition().lat()
                 scope.address.user_set_lng = scope.marker.getPosition().lng()
+              return
+            return
+          return
+        return
 
-          google.maps.event.trigger(scope.map, 'resize')
-          scope.map.setCenter(latlng)
+      scope.location_changed = (new_address, old_address) ->
+        return false unless new_address && old_address
+        return !(new_address.lat == old_address.lat && new_address.lng == old_address.lng)
+
+      window.scope = scope
+
+      scope.$watch 'address', (new_address, old_address) ->
+        if scope.location_changed(new_address, old_address) || # location is changed
+           (new_address && !old_address && new_address.lat) || # there is no old_address and new address have coordinaates
+           (new_address && new_address.lat && !scope.map)      # map is not displayed yet 
+          scope.show_map(scope, new_address.user_set_lat || new_address.lat, new_address.user_set_lng || new_address.lng)
+
+        return
 
       , true
 
