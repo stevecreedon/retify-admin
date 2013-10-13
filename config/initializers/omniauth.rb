@@ -6,6 +6,8 @@ Rails.application.config.middleware.use OmniAuth::Builder do
            }
 end
 
+OmniAuth.config.logger = Rails.logger
+
 OmniAuth.config.on_failure do |env|
   exception = env['omniauth.error']
   error_type = env['omniauth.error.type']
