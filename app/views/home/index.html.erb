@@ -1,11 +1,11 @@
 <section id='start-page-top'>
   <div class="wrap">
-    <h1>Use LoveBNB to manage and market your Holiday Rental.</h1>
+    <h1>LoveBNB the easiest way to keep your best customers</h1>
+    <p>It takes just a few moments to get started, costs only 9 Euros a month
+       and keeps you in touch with the people you want to come back.</p>
     <div>
-         <p><a href="/auth/google_oauth2" class="btn btn-success btn-large">Sign up using your Google account</a></p>
-         <h3>We recommend signing in with Google - <a href="#">find out why</a></h3>
+      <p><a href="/auth/google_oauth2" class="btn btn-success btn-large">Sign up using your Google account</a></p>
     </div>
-    <h1>or</h1>
     <%= form_for(@identity, {url: registration_index_path, html: {class: 'form-inline signup_form', autocomplete: 'off'}}) do |f| %>
       <%= f.email_field :email, class: "input-large", autocomplete: "off", placeholder: "Email" %>
       <%= f.password_field :password, class: "input-large", autocomplete: "off", placeholder: "Password" %>
@@ -77,41 +77,5 @@
   <div class="container">
     <h2>Try LoveBNB for 30 days free, without a credit card</h2>
     <p> After your trial ends, pick a plan that best fits you needs </p>
-    <table class='table'>
-      <thead>
-        <tr>
-          <th></th>
-          <th>Most popular</th>
-          <th></th>
-          <th></th>
-        </tr>
-        <tr>
-          <th>Solo</th>
-          <th>Basic</th>
-          <th>Profesional</th>
-          <th>More?</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>£ 9/month</td>
-          <td>£ 18/month</td>
-          <td>£ 36/month</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>1 property</td>
-          <td>2 - 5 properties</td>
-          <td>6 - 19 properties</td>
-          <td>20+ properties</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>Contact Us</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </section>
